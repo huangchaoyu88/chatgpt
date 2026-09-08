@@ -1,0 +1,5 @@
+interface:
+  display_name: "拍照記帳分帳"
+  short_description: "從帳單照片整理記帳與多人分帳"
+  brand_color: "#2F6F68"
+  default_prompt: "使用 $photo-expense-split，從我上傳的帳單照片辨識品項、記帳並計算每個人應付與結算。"
