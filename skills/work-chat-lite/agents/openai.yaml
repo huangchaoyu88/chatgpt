@@ -1,0 +1,4 @@
+interface:
+  display_name: "WORK Chat Lite"
+  short_description: "讓 WORK 以輕量 Chat 風格處理簡單問題與改寫"
+  default_prompt: "使用 WORK Chat Lite，先判斷這個需求是否適合用輕量 Chat 風格處理."
