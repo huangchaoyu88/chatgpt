@@ -2,6 +2,11 @@ name: Publish direction game
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'games/direction-counting/**'
+      - '.github/workflows/publish-direction-game.yml'
 
 permissions:
   contents: read
@@ -15,25 +20,33 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check game logic, pronunciation and audio recovery
+        run: |
+          node --test games/direction-counting/tests/game.test.cjs
+          node --check games/direction-counting/game.js
+          node --check games/direction-counting/engine.js
+          node --check games/direction-counting/audio.js
+          python -m py_compile games/direction-counting/generate_audio.py
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Generate Edge TTS audio
         run: |
-          python -m pip install --disable-pip-version-check edge-tts
+          python -m pip install --disable-pip-version-check edge-tts==7.2.8
           python games/direction-counting/generate_audio.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Stage site
-        run: |
-          mkdir -p _site/audio
-          cp games/direction-counting/index.html _site/index.html
-          cp games/direction-counting/audio/*.mp3 _site/audio/
-          touch _site/.nojekyll
+        run: node games/direction-counting/build.mjs
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
@@ -42,6 +55,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
