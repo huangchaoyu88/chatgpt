@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4eb">
+  <meta name="description" content="���Ѯv�ƾǥ��ȡG�Τ��������m�߼ƶq����B��������B�ƪ����X�B�ϧέp�ƻP�ͬ��[��C">
+  <title>�ƾǤp���X���ȡU���Ѯv</title>
+  <style>
+    :root {
+      --ink: #24374a;
+      --muted: #667989;
+      --paper: #fffdf8;
+      --cream: #f7f4eb;
+      --teal: #167c78;
+      --teal-dark: #105f5b;
+      --coral: #f27962;
+      --yellow: #f5c65d;
+      --blue: #ddecf4;
+      --green: #3a9b75;
+      --purple: #8c73c9;
+      --line: #dfe5df;
+      --shadow: 0 16px 40px rgba(35, 55, 74, .10);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: radial-gradient(circle at 8% 6%, #fff8de 0 9rem, transparent 9.1rem), var(--cream); }
+    button { font: inherit; }
+    button:focus-visible { outline: 3px solid #f0a83c; outline-offset: 3px; }
+    .app { width: min(100%, 760px); margin: 0 auto; padding: 18px 18px 36px; min-height: 100vh; }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 2px 18px; }
+    .brand { display: flex; align-items: center; gap: 9px; font-weight: 900; letter-spacing: .04em; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 13px; color: white; background: var(--teal); font-size: 21px; }
+    .small, .primary, .answer, .next-button { border: 0; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+    .small { border: 1px solid var(--line); border-radius: 999px; color: var(--ink); background: rgba(255,255,255,.8); padding: 9px 14px; font-weight: 750; }
+    .small:hover { background: white; transform: translateY(-1px); }
+    .hero { text-align: center; padding: 22px 14px 16px; }
+    .hero-mark { font-size: clamp(46px, 11vw, 76px); line-height: 1; filter: drop-shadow(0 7px 0 rgba(242,121,98,.16)); }
+    h1 { margin: 13px 0 8px; font-size: clamp(29px, 7vw, 43px); letter-spacing: .04em; line-height: 1.2; }
+    .subtitle { margin: 0 auto; max-width: 490px; color: var(--muted); line-height: 1.75; }
+    .card { border: 1px solid rgba(36,55,74,.07); border-radius: 24px; background: var(--paper); box-shadow: var(--shadow); }
+    .home-card { margin-top: 17px; padding: 22px; }
+    .home-title { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; font-size: 20px; }
+    .route { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin: 15px 0 18px; }
+    .route-item { min-height: 88px; padding: 10px 7px; border-radius: 16px; text-align: center; background: #f2f6f2; color: var(--muted); border: 1px solid transparent; }
+    .route-item .route-icon { display: block; font-size: 23px; margin-bottom: 4px; }
+    .route-item strong { display: block; color: var(--ink); font-size: 12px; line-height: 1.35; }
+    .route-item small { display: block; margin-top: 4px; font-size: 11px; }
+    .route-item.active { border-color: #8bc9b3; background: #e7f5ef; }
+    .route-item.done { background: #fff5d8; }
+    .rulebox { display: flex; gap: 10px; align-items: flex-start; padding: 13px 15px; background: #fff7df; border-radius: 14px; color: #6d5724; line-height: 1.65; font-size: 14px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .primary { min-height: 48px; padding: 12px 22px; border-radius: 15px; color: white; background: var(--teal); font-weight: 850; box-shadow: 0 5px 0 var(--teal-dark); }
+    .primary:hover, .next-button:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--teal-dark); }
+    .primary:active, .next-button:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--teal-dark); }
+    .secondary { min-height: 48px; }
+    .fine { color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .privacy { text-align: center; margin: 17px 0 0; }
+    [hidden] { display: none !important; }
+    .game-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; margin: 0 0 12px; }
+    .game-top h2 { text-align: center; font-size: 18px; margin: 0; }
+    .game-top .small { justify-self: start; padding: 8px 11px; }
+    .star-count { justify-self: end; color: #9a7417; font-weight: 900; white-space: nowrap; }
+    .progress-wrap { margin: 8px 0 15px; }
+    .progress-label { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 12px; margin-bottom: 7px; }
+    .progress { height: 11px; overflow: hidden; border-radius: 99px; background: #e4e9e2; }
+    .progress-bar { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #55b78b, #167c78); transition: width .3s ease; }
+    .question-card { padding: clamp(17px, 4vw, 27px); }
+    .question-kicker { display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 99px; color: var(--teal-dark); background: #e7f5ef; font-size: 12px; font-weight: 850; }
+    .question { font-size: clamp(21px, 5vw, 28px); line-height: 1.5; margin: 15px 0 16px; }
+    .visual { border-radius: 18px; background: #f7f8f3; padding: 16px; margin: 0 0 16px; }
+    .visual-label { margin: 0 0 11px; text-align: center; color: var(--muted); font-size: 13px; font-weight: 750; }
+    .chart { display: grid; gap: 8px; }
+    .chart-row { display: grid; grid-template-columns: 34px 62px 1fr; align-items: center; gap: 8px; min-height: 43px; padding: 5px 8px; border-radius: 12px; background: white; }
+    .chart-emoji { font-size: 23px; text-align: center; }
+    .chart-name { font-weight: 800; font-size: 13px; }
+    .dots { display: flex; flex-wrap: wrap; gap: 5px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: #6bb99a; border: 2px solid #398d70; }
+    .chart-row:nth-child(2) .dot { background: #f7c75f; border-color: #dc9d26; }
+    .chart-row:nth-child(3) .dot { background: #f58a76; border-color: #df6554; }
+    .chart-row:nth-child(4) .dot { background: #8c9fe0; border-color: #687bc0; }
+    .solid-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; min-height: 150px; }
+    .solid-card svg { width: 112px; height: 94px; }
+    .solid-name { font-weight: 850; }
+    .bond { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .bond-box { min-width: 64px; min-height: 58px; padding: 12px; display: grid; place-items: center; border: 2px solid #8dbbb0; border-radius: 16px; background: white; font-size: 26px; font-weight: 900; color: var(--teal-dark); }
+    .bond-connector { font-size: 24px; color: var(--coral); font-weight: 900; }
+    .shape-grid { display: grid; grid-template-columns: repeat(4, minmax(48px, 1fr)); gap: 8px; max-width: 450px; margin: 0 auto; }
+    .shape-cell { min-height: 66px; display: grid; place-items: center; border-radius: 13px; background: white; }
+    .shape-cell svg { width: 46px; height: 46px; }
+    .story-visual { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .story-groups { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .story-group { min-width: 105px; padding: 10px 12px; border-radius: 14px; background: white; text-align: center; }
+    .story-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 3px; max-width: 185px; margin: 0 auto 6px; font-size: 19px; }
+    .story-icons .removed { opacity: .34; text-decoration: line-through; }
+    .story-op { font-size: 24px; font-weight: 900; color: var(--coral); }
+    .story-caption { font-size: 12px; color: var(--muted); }
+    .choices-label { margin: 0 0 10px; font-weight: 800; }
+    .answers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .answer { min-height: 52px; padding: 11px 13px; border: 2px solid #dce7e2; border-radius: 15px; background: white; color: var(--ink); font-size: 17px; font-weight: 850; }
+    .answer:hover:not(:disabled) { border-color: #7bb9a7; background: #f1faf5; transform: translateY(-1px); }
+    .answer:disabled { cursor: default; opacity: .8; }
+    .answer.selected-correct { border-color: #49a67b; background: #e8f7ee; color: #246b4d; }
+    .feedback { min-height: 40px; margin: 14px 0 0; padding: 0; line-height: 1.65; }
+    .feedback.good { padding: 11px 13px; color: #246b4d; background: #e8f7ee; border-radius: 13px; }
+    .feedback.try { padding: 11px 13px; color: #815b26; background: #fff4d8; border-radius: 13px; }
+    .tools { display: flex; justify-content: center; flex-wrap: wrap; gap: 9px; margin: 13px 0 8px; }
+    .tip { margin: 10px 0 0; padding: 12px 14px; border-left: 4px solid var(--yellow); border-radius: 7px 13px 13px 7px; background: #fff7df; color: #6c592b; line-height: 1.65; font-size: 14px; }
+    .next-row { display: flex; justify-content: flex-end; margin-top: 14px; }
+    .next-button { border: 0; min-height: 47px; padding: 11px 20px; border-radius: 14px; color: white; background: var(--teal); font-weight: 850; box-shadow: 0 5px 0 var(--teal-dark); cursor: pointer; }
+    .checkpoint, .result { text-align: center; padding: clamp(22px, 6vw, 40px); }
+    .big-emoji { font-size: 62px; line-height: 1.1; }
+    .checkpoint h2, .result h2 { margin: 10px 0 7px; font-size: 26px; }
+    .checkpoint p, .result p { color: var(--muted); line-height: 1.75; }
+    .checkpoint-stars { margin: 14px 0; font-size: 27px; letter-spacing: 4px; }
+    .result-score { display: inline-flex; align-items: center; gap: 8px; margin: 10px auto 18px; padding: 10px 18px; border-radius: 99px; background: #fff4d8; color: #755916; font-weight: 900; }
+    .results-list { display: grid; gap: 8px; margin: 12px 0 18px; text-align: left; }
+    .result-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 13px; border-radius: 12px; background: #f4f7f2; }
+    .result-row span:last-child { font-size: 13px; font-weight: 850; color: var(--teal-dark); }
+    .footer-note { text-align: center; margin: 20px 0 0; color: #87939b; font-size: 11px; line-height: 1.6; }
+    .confetti { animation: bob 1.6s ease-in-out infinite alternate; }
+    @keyframes bob { to { transform: translateY(-7px) rotate(3deg); } }
+    @media (max-width: 520px) {
+      .app { padding: 12px 12px 28px; }
+      .home-card { padding: 17px; }
+      .route { gap: 6px; }
+      .route-item { min-height: 82px; padding: 8px 5px; }
+      .route-item strong { font-size: 11px; }
+      .chart-row { grid-template-columns: 30px 52px 1fr; gap: 5px; padding: 5px; }
+      .dot { width: 10px; height: 10px; }
+      .visual { padding: 12px 9px; }
+      .answers { gap: 7px; }
+      .answer { font-size: 15px; min-height: 49px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+<main class="app">
+  <header class="top">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">?</span><span>���Ѯv�ƾǥ���</span></div>
+    <button id="soundToggle" class="small" type="button" aria-pressed="true">?? �y���}</button>
+  </header>
+
+  <section id="home">
+    <div class="hero">
+      <div class="hero-mark" aria-hidden="true">???</div>
+      <h1>�ƾǤp���X����</h1>
+      <p class="subtitle">�@�_�Ƥ@�ơB�ݤ@�ݡB�Q�@�Q�A���� 6 �Ӥp���ȡA�����A���ƾǬP�P�I</p>
+    </div>
+    <div class="card home-card">
+      <h2 class="home-title"><span aria-hidden="true">???</span> ���������a��</h2>
+      <div id="route" class="route" aria-label="���Ӽƾǥ���"></div>
+      <div class="rulebox"><span aria-hidden="true">??</span><span>�ݤ��T�w�ɡA�i�H���u���ڴ��ܡv�C�����S���Y�A�C�C���k�F�Ĥ@������|�h�@���P�C</span></div>
+      <div class="actions">
+        <button id="startButton" class="primary" type="button">?? �}�l����</button>
+        <button id="resumeButton" class="small secondary" type="button" hidden>? �~��W��</button>
+      </div>
+    </div>
+    <p class="fine privacy">���ݭn��J�m�W�C�C���i�ץu�O�s�b�o�x�˸m���s�����C</p>
+  </section>
+
+  <section id="game" hidden>
+    <div class="game-top">
+      <button id="homeButton" class="small" type="button" aria-label="�^����Ȧa��">�� �a��</button>
+      <h2 id="stageTitle"></h2>
+      <span id="starCount" class="star-count" aria-label="�w��o�P�P">? 0</span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span id="progressText">���ȶi��</span><span id="questionNumber"></span></div>
+      <div class="progress" role="progressbar" aria-label="���������i��" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0"><div id="progressBar" class="progress-bar"></div></div>
+    </div>
+    <div class="card question-card">
+      <span id="questionKicker" class="question-kicker"></span>
+      <h3 id="questionText" class="question"></h3>
+      <div id="visual" class="visual"></div>
+      <p class="choices-label">��@�ӵ��סG</p>
+      <div id="answers" class="answers" role="group" aria-label="���׿ﶵ"></div>
+      <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+      <div class="tools">
+        <button id="speakButton" class="small" type="button">?? ��X�D��</button>
+        <button id="hintButton" class="small" type="button" aria-expanded="false">?? ���ڴ���</button>
+      </div>
+      <p id="hint" class="tip" hidden></p>
+      <div class="next-row"><button id="nextButton" class="next-button" type="button" hidden>�U�@�D ��</button></div>
+    </div>
+  </section>
+
+  <section id="checkpoint" class="card checkpoint" hidden>
+    <div class="big-emoji confetti" aria-hidden="true">??</div>
+    <h2 id="checkpointTitle"></h2>
+    <p id="checkpointMessage"></p>
+    <div id="checkpointStars" class="checkpoint-stars" aria-label="������o�P�P"></div>
+    <button id="continueButton" class="primary" type="button">�~��U�@�� ��</button>
+  </section>
+
+  <section id="complete" class="card result" hidden>
+    <div class="big-emoji confetti" aria-hidden="true">??</div>
+    <h2>���ȧ����I</h2>
+    <p id="resultMessage"></p>
+    <div id="resultScore" class="result-score"></div>
+    <div id="resultsList" class="results-list" aria-label="�U���Ƚm�ߵ��G"></div>
+    <div class="actions" style="justify-content:center">
+      <button id="againButton" class="primary" type="button">?? �A���@��</button>
+      <button id="mapFromResult" class="small secondary" type="button">�^���Ȧa��</button>
+    </div>
+  </section>
+  <p class="footer-note">�Ƥ@�ơB���X�Q�k�A�A�ﵪ�סC�C���m�߳��O�i�B�C</p>
+</main>
+
+<script>
+(() => {
+  "use strict";
+  const fruitChart = [
+    { icon: "??", name: "ī�G", count: 7 },
+    { icon: "??", name: "���l", count: 10 },
+    { icon: "??", name: "���", count: 4 }
+  ];
+  const stations = [
+    {
+      id: "count", icon: "??", title: "�ƶq���d��", short: "�ƶq���",
+      questions: [
+        { type: "chart", prompt: "���G�լd���A���@�ؼƶq�̦h�H", chart: fruitChart, options: ["ī�G", "���l", "���", "�@�˦h"], answer: "���l", hint: "�C�@�Ʊq����k�I�@���A�̫��@����@�Ƴ̪��C" },
+        { type: "chart", prompt: "���@�ؤ��G���ƶq�̤֡H", chart: fruitChart, options: ["ī�G", "���l", "���", "�@�˦h"], answer: "���", hint: "����C�@���I���A�A��Ʀr�̤p���@�ơC" },
+        { type: "chart", prompt: "���l�����h�X�ӡH", chart: fruitChart, options: ["4 ��", "5 ��", "6 ��", "7 ��"], answer: "6 ��", hint: "���Ʊ��l�M����A�A�θ��h���ƶq����֪��ƶq�C" }
+      ]
+    },
+    {
+      id: "solid", icon: "??", title: "����Ϊ���s��", short: "�����M����",
+      questions: [
+        { type: "solid", solid: "sphere", name: "�y", prompt: "�ֲy�������O���@�ءH", options: ["�u����������", "�u���s�s����", "���������M�s�s����"], answer: "�u���s�s����", hint: "�Q����N�ֲy�����G�N���쥭�������A��Ӫ������O�s�s���C" },
+        { type: "solid", solid: "cylinder", name: "��W��", prompt: "��������ꪺ�W�U���A�]�������C��������ح��H", options: ["�u����������", "�u���s�s����", "���������M�s�s����"], answer: "���������M�s�s����", hint: "�W�U�ꩳ�O�����A¶�b���䪺�@��O�����C" },
+        { type: "solid", solid: "box", name: "�貰", prompt: "�貰���~�����A�ݩ���@�ءH", options: ["�u����������", "�u���s�s����", "���������M�s�s����"], answer: "�u����������", hint: "���l�C�@�����O�����A�S�����y�����l�����s�s�������C" }
+      ]
+    },
+    {
+      id: "bond", icon: "??", title: "�Ʀr���X��a", short: "�ƪ��զX",
+      questions: [
+        { type: "bond", whole: 8, part: 5, prompt: "8 �i�H���� 5 �M�X�H", options: ["2", "3", "4", "5"], answer: "3", hint: "�q 5 �}�l���W�ƨ� 8�G6�B7�B8�A�@�@�h�F�X�ӡH" },
+        { type: "bond", mode: "pair", prompt: "���@�ռƦX�_�ӬO 10�H", options: ["4 �M 6", "5 �M 4", "2 �M 7", "6 �M 5"], answer: "4 �M 6", hint: "�i�H�q���j���ƶ}�l���W�ơA�ݬݥt�@�ӼƸɨ� 10 �ٮt�X�C" },
+        { type: "bond", whole: 9, part: 3, prompt: "9 �i�H���� 3 �M�X�H", options: ["5", "6", "7", "8"], answer: "6", hint: "�Q�@�Q�G3 �[�W�h�ַ|�ܦ� 9�H" }
+      ]
+    },
+    {
+      id: "flat", icon: "??", title: "�ϧμƼƪ��", short: "�����ϧέp��",
+      questions: [
+        { type: "shapes", shapes: ["triangle", "circle", "square", "triangle", "rectangle", "circle", "square", "triangle"], target: "triangle", prompt: "���ϸ̦��X�ӤT���ΡH", options: ["2 ��", "3 ��", "4 ��", "5 ��"], answer: "3 ��", hint: "�Τ���@�Ӥ@���I�A�u�ƤT���ΡF��L�Ϊ�������C" },
+        { type: "shapes", shapes: ["circle", "rectangle", "triangle", "rectangle", "square", "circle", "triangle", "circle"], target: "rectangle", prompt: "�ϸ̦��X�Ӫ���ΡH", options: ["1 ��", "2 ��", "3 ��", "4 ��"], answer: "2 ��", hint: "��������|��ΡA�v���I�ơF����Υ����n��i�ӡC" },
+        { type: "shapes", shapes: ["square", "circle", "triangle", "square", "circle", "rectangle", "circle", "square"], target: "circle", prompt: "�ϸ̦��X�Ӷ�ΡH", options: ["2 ��", "3 ��", "4 ��", "5 ��"], answer: "3 ��", hint: "��ΨS�����A�u�۹ϥѥ���k�ˬd�@���C" }
+      ]
+    },
+    {
+      id: "story", icon: "??", title: "�ͬ��⦡�p����", short: "�[������",
+      questions: [
+        { type: "story", icon: "??", object: "��l", start: 4, change: 3, operation: "+", prompt: "�x�l�̦� 4 ����l�A�S��i 3 ���C�{�b�@���X���H", options: ["6 ��", "7 ��", "8 ��", "9 ��"], answer: "7 ��", hint: "�u�S��i�v�N���ƶq�W�[�A�i�H�����X�_�ӡC" },
+        { type: "story", icon: "??", object: "�氮", start: 9, change: 4, operation: "-", prompt: "�L�l�W�� 9 ���氮�A�Y�� 4 ���A�ٳѴX���H", options: ["4 ��", "5 ��", "6 ��", "13 ��"], answer: "5 ��", hint: "�u�Y���B�ٳѡv�N�������@�����A�έ�Ӫ��ƶq��������ƶq�C" },
+        { type: "story", icon: "??", object: "�p��", start: 6, change: 2, operation: "+", prompt: "��W�즳 6 ���p���A�S���� 2 ���C�{�b���X���H", options: ["7 ��", "8 ��", "9 ��", "12 ��"], answer: "8 ��", hint: "�����Ӧ��h�֡A�A�ݬO�W�[�٬O�����F���Ӫ��ܼW�[�C" }
+      ]
+    },
+    {
+      id: "challenge", icon: "??", title: "�P�P�׷��D��", short: "�V�X����",
+      questions: [
+        { type: "chart", prompt: "�]���� 8 �K�B�ئ� 5 ��C�]����ئh�X�ӡH", chart: [{ icon: "??", name: "�]��", count: 8 }, { icon: "??", name: "��", count: 5 }, { icon: "??", name: "�����", count: 6 }], options: ["2 ��", "3 ��", "4 ��", "5 ��"], answer: "3 ��", hint: "����u�h�X�ӡv�ɡA����X���j���ơA�A��h���p���ơC" },
+        { type: "story", icon: "???", object: "����", start: 9, change: 3, operation: "-", prompt: "�� 9 �K�����A�����B�� 3 �K�A�ۤv�٦��X�K�H", options: ["5 �K", "6 �K", "7 �K", "12 �K"], answer: "6 �K", hint: "���X�h�N����W���ƶq�ܤ֡A�Q�Q 9 � 3�C" },
+        { type: "shapes", shapes: ["circle", "triangle", "square", "circle", "rectangle", "circle", "square", "circle"], target: "square", prompt: "�̫�@�i�ϸ̦��X�ӥ���ΡH", options: ["1 ��", "2 ��", "3 ��", "4 ��"], answer: "2 ��", hint: "����Φ��|���@�˪�����B�|�Ө��C����@�Ӥ@���I�ơC" }
+      ]
+    }
+  ];
+
+  const totalQuestions = stations.reduce((sum, station) => sum + station.questions.length, 0);
+  const storageKey = "huanglaoshi-math-mission-v1";
+  const freshState = () => ({
+    stage: 0, question: 0, stars: 0, completed: 0, firstTry: true,
+    pendingNext: false, pendingCheckpoint: false,
+    stageCorrect: stations.map(() => 0)
+  });
+  const loadState = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey));
+      if (!saved || !Array.isArray(saved.stageCorrect) || saved.stageCorrect.length !== stations.length) return freshState();
+      return Object.assign(freshState(), saved);
+    } catch (_) { return freshState(); }
+  };
+  let state = loadState();
+  let soundOn = true;
+  let hintVisible = false;
+  const $ = id => document.getElementById(id);
+  const screens = ["home", "game", "checkpoint", "complete"];
+  function save() {
+    try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) {}
+  }
+  function showScreen(id) {
+    screens.forEach(name => { $(name).hidden = name !== id; });
+  }
+  function renderRoute() {
+    const route = $("route");
+    route.innerHTML = stations.map((station, index) => {
+      const done = index < state.stage || state.stage === stations.length;
+      const active = index === state.stage && state.stage < stations.length;
+      const completed = state.stageCorrect[index] || 0;
+      return '<div class="route-item' + (active ? ' active' : '') + (done ? ' done' : '') + '"><span class="route-icon" aria-hidden="true">' + station.icon + '</span><strong>' + station.title + '</strong><small>' + (done ? "�w����" : (completed ? completed + "/3 �D" : "3 �D")) + '</small></div>';
+    }).join("");
+    const hasProgress = state.completed > 0 || state.stage > 0 || state.question > 0 || state.pendingCheckpoint || state.pendingNext || !state.firstTry;
+    $("resumeButton").hidden = !hasProgress || state.stage >= stations.length;
+    $("resumeButton").textContent = "?? ���s�}�l";
+    $("startButton").textContent = state.stage >= stations.length ? "?? ���������G" : (hasProgress ? "? �~��W��" : "?? �}�l����");
+  }
+  function start() {
+    if (state.stage >= stations.length) { renderComplete(); return; }
+    if (state.pendingCheckpoint) { renderCheckpoint(); return; }
+    showScreen("game");
+    renderQuestion();
+  }
+  function resume() {
+    if (state.stage >= stations.length) { renderComplete(); return; }
+    if (state.pendingCheckpoint) { renderCheckpoint(); return; }
+    showScreen("game");
+    renderQuestion();
+  }
+  function freshStart() {
+    state = freshState();
+    save();
+    renderRoute();
+    start();
+  }
+  function currentQuestion() { return stations[state.stage].questions[state.question]; }
+  function globalQuestionNumber() {
+    let number = state.question + 1;
+    for (let i = 0; i < state.stage; i++) number += stations[i].questions.length;
+    return number;
+  }
+  function renderProgress() {
+    const number = Math.min(state.completed, totalQuestions);
+    $("progressBar").style.width = Math.round(number / totalQuestions * 100) + "%";
+    $("progressBar").parentElement.setAttribute("aria-valuenow", String(number));
+    $("progressText").textContent = "�w���� " + number + " / " + totalQuestions + " �D";
+    $("questionNumber").textContent = "�� " + globalQuestionNumber() + " �D";
+    $("starCount").textContent = "? " + state.stars;
+    $("starCount").setAttribute("aria-label", "�w��o " + state.stars + " ���P�P");
+  }
+  function renderQuestion() {
+    if (state.stage >= stations.length) { renderComplete(); return; }
+    const station = stations[state.stage];
+    const question = currentQuestion();
+    hintVisible = false;
+    $("stageTitle").textContent = station.title;
+    $("questionKicker").textContent = station.icon + " ���� " + (state.stage + 1) + "�U" + station.short;
+    $("questionText").textContent = question.prompt;
+    $("visual").innerHTML = renderVisual(question);
+    $("feedback").className = "feedback";
+    $("feedback").textContent = "";
+    $("hint").hidden = true;
+    $("hint").textContent = "?? " + question.hint;
+    $("hintButton").setAttribute("aria-expanded", "false");
+    $("nextButton").hidden = !state.pendingNext;
+    $("nextButton").textContent = state.question === station.questions.length - 1 ? "�������� ��" : "�U�@�D ��";
+    const answerBox = $("answers");
+    answerBox.innerHTML = "";
+    question.options.forEach(option => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "answer";
+      button.textContent = option;
+      button.disabled = state.pendingNext;
+      if (state.pendingNext && option === question.answer) button.classList.add("selected-correct");
+      button.addEventListener("click", () => chooseAnswer(option));
+      answerBox.appendChild(button);
+    });
+    if (state.pendingNext) {
+      $("feedback").className = "feedback good";
+      $("feedback").textContent = "����F�I" + explanation(question);
+    }
+    renderProgress();
+  }
+  function renderVisual(question) {
+    if (question.type === "chart") {
+      return '<p class="visual-label">�v���I�ơA�ݬݨC�@�Ʀ��X��</p><div class="chart">' + question.chart.map(row => {
+        return '<div class="chart-row"><span class="chart-emoji" aria-hidden="true">' + row.icon + '</span><span class="chart-name">' + row.name + '</span><span class="dots" aria-label="' + row.count + ' ��">' + '<i class="dot"></i>'.repeat(row.count) + '</span></div>';
+      }).join("") + '</div>';
+    }
+    if (question.type === "solid") {
+      return '<div class="solid-card">' + solidSvg(question.solid) + '<span class="solid-name">' + question.name + '</span></div>';
+    }
+    if (question.type === "bond") {
+      if (question.mode === "pair") return '<p class="visual-label">��@��i�H�X�� 10 ���@���</p><div class="bond"><span class="bond-box">10</span><span class="bond-connector">��</span><span class="bond-box">�H</span><span class="bond-connector">��</span><span class="bond-box">�H</span></div>';
+      return '<p class="visual-label">�Q�@�Q�G����i�H�������ⳡ���H</p><div class="bond"><span class="bond-box">' + question.whole + '</span><span class="bond-connector">��</span><span class="bond-box">' + question.part + '</span><span class="bond-connector">��</span><span class="bond-box">�H</span></div>';
+    }
+    if (question.type === "shapes") {
+      return '<p class="visual-label">�u���D�ث��w���Ϊ�</p><div class="shape-grid" role="img" aria-label="�@�դ��P�����ϧ�">' + question.shapes.map(kind => '<div class="shape-cell">' + flatSvg(kind) + '</div>').join("") + '</div>';
+    }
+    if (question.type === "story") {
+      const startIcons = iconRun(question.icon, question.start, question.operation === "-" ? question.change : 0);
+      const changeIcons = question.operation === "+" ? iconRun(question.icon, question.change, 0) : "";
+      if (question.operation === "+") {
+        return '<p class="visual-label">�����X�_��</p><div class="story-visual"><div class="story-groups"><div class="story-group"><div class="story-icons">' + startIcons + '</div><span class="story-caption">��Ӧ� ' + question.start + " " + question.object + '</span></div><span class="story-op">��</span><div class="story-group"><div class="story-icons">' + changeIcons + '</div><span class="story-caption">�S�W�[ ' + question.change + " " + question.object + '</span></div></div></div>';
+      }
+      return '<p class="visual-label">�q��Ӫ��ƶq�����@����</p><div class="story-visual"><div class="story-group"><div class="story-icons">' + startIcons + '</div><span class="story-caption">��� ' + question.start + " " + question.object + "�A���� " + question.change + " " + question.object + '</span></div></div>';
+    }
+    return "";
+  }
+  function iconRun(icon, total, removed) {
+    let html = "";
+    for (let i = 0; i < total; i++) html += '<span' + (i >= total - removed ? ' class="removed"' : "") + '>' + icon + '</span>';
+    return html;
+  }
+  function flatSvg(kind) {
+    const labels = { triangle: "�T����", square: "�����", rectangle: "�����", circle: "���" };
+    let shape = "";
+    if (kind === "triangle") shape = '<polygon points="24,5 45,42 3,42" fill="#f5c65d" stroke="#7a6428" stroke-width="2.5" stroke-linejoin="round"/>';
+    if (kind === "square") shape = '<rect x="8" y="8" width="32" height="32" rx="2" fill="#8dc9ad" stroke="#28755f" stroke-width="2.5"/>';
+    if (kind === "rectangle") shape = '<rect x="3" y="12" width="42" height="25" rx="2" fill="#a9c8e8" stroke="#547ca5" stroke-width="2.5"/>';
+    if (kind === "circle") shape = '<circle cx="24" cy="24" r="17" fill="#f49a87" stroke="#a64e41" stroke-width="2.5"/>';
+    return '<svg viewBox="0 0 48 48" role="img" aria-label="' + labels[kind] + '">' + shape + '</svg>';
+  }
+  function solidSvg(shape) {
+    let content = "";
+    if (shape === "sphere") content = '<circle cx="48" cy="43" r="31" fill="#f5c65d" stroke="#8c6825" stroke-width="3"/><path d="M20 29c12 2 20 2 29-4M23 59c10-13 22-15 41-14M39 13c8 13 10 28 6 59" fill="none" stroke="#a77c2b" stroke-width="2.5"/>';
+    if (shape === "cylinder") content = '<path d="M18 21v45c0 8 60 8 60 0V21" fill="#a9d7c6" stroke="#277867" stroke-width="3"/><ellipse cx="48" cy="21" rx="30" ry="10" fill="#d4f0e3" stroke="#277867" stroke-width="3"/><path d="M18 66c0 9 60 9 60 0" fill="none" stroke="#277867" stroke-width="3"/>';
+    if (shape === "box") content = '<path d="M17 30 48 13 79 30 48 48Z" fill="#f2bd72" stroke="#8e5f28" stroke-width="3" stroke-linejoin="round"/><path d="M17 30v34l31 17V48Z" fill="#f6d49f" stroke="#8e5f28" stroke-width="3" stroke-linejoin="round"/><path d="M48 48 79 30v34L48 81Z" fill="#e6a855" stroke="#8e5f28" stroke-width="3" stroke-linejoin="round"/>';
+    return '<svg viewBox="0 0 96 92" role="img" aria-label="' + (shape === "sphere" ? "�y��" : shape === "cylinder" ? "��W��" : "�貰") + '">' + content + '</svg>';
+  }
+  function explanation(question) {
+    if (question.type === "chart") return "���I�ƦA����A�Q�u�h�X�ӡv�N�Τj�ƴ�p�ơC";
+    if (question.type === "solid") return "�[��C�@���G�������O�����A�N�_���s�s���O�����C";
+    if (question.type === "bond") return "������ⳡ���A�ⳡ���X�_�ӭn�M����@�˦h�C";
+    if (question.type === "shapes") return "�v���I�ƦP�@�عϧΡA�O�o�O���L�Ϊ���i�h�C";
+    return "�����Ӫ��ƶq�A�A�ݬO�W�[�٬O�����C";
+  }
+  function chooseAnswer(choice) {
+    if (state.pendingNext) return;
+    const question = currentQuestion();
+    if (choice === question.answer) {
+      if (state.firstTry) {
+        state.stars++;
+        state.stageCorrect[state.stage]++;
+      }
+      state.completed++;
+      state.pendingNext = true;
+      $("feedback").className = "feedback good";
+      $("feedback").textContent = "����F�I" + explanation(question);
+      $("answers").querySelectorAll("button").forEach(button => {
+        button.disabled = true;
+        if (button.textContent === question.answer) button.classList.add("selected-correct");
+      });
+      $("nextButton").hidden = false;
+      $("nextButton").textContent = state.question === stations[state.stage].questions.length - 1 ? "�������� ��" : "�U�@�D ��";
+    } else {
+      state.firstTry = false;
+      $("feedback").className = "feedback try";
+      $("feedback").textContent = "�A�Q�@�Q�I���Ӵ��ܪ���k�Ƥ@�M�A�]�i�H���u���ڴ��ܡv�C";
+    }
+    save();
+    renderProgress();
+  }
+  function advance() {
+    const station = stations[state.stage];
+    if (state.question < station.questions.length - 1) {
+      state.question++;
+      state.firstTry = true;
+      state.pendingNext = false;
+      save();
+      renderQuestion();
+    } else {
+      state.pendingCheckpoint = true;
+      save();
+      renderCheckpoint();
+    }
+  }
+  function renderCheckpoint() {
+    const station = stations[state.stage];
+    const count = state.stageCorrect[state.stage] || 0;
+    $("checkpointTitle").textContent = station.title + "�����I";
+    $("checkpointMessage").textContent = "�o�@���Ĥ@���N���� " + count + " �D�C�𮧤@�U�A�A���U�@���X�o�I";
+    $("checkpointStars").textContent = "��".repeat(count) + "��".repeat(station.questions.length - count);
+    $("checkpointStars").setAttribute("aria-label", "������o " + count + " ���P�P");
+    $("continueButton").textContent = state.stage === stations.length - 1 ? "�d�ݥ��ȵ��G ��" : "�~��U�@�� ��";
+    renderRoute();
+    showScreen("checkpoint");
+  }
+  function continueFromCheckpoint() {
+    state.pendingCheckpoint = false;
+    state.pendingNext = false;
+    state.question = 0;
+    state.firstTry = true;
+    state.stage++;
+    save();
+    renderRoute();
+    if (state.stage >= stations.length) renderComplete();
+    else { showScreen("game"); renderQuestion(); }
+  }
+  function renderComplete() {
+    state.stage = stations.length;
+    state.pendingCheckpoint = false;
+    state.pendingNext = false;
+    save();
+    const message = state.stars >= 15 ? "�A�[��o�ܥJ�ӡA�]��μƾǤ�k�ѨM���D�I" : state.stars >= 10 ? "�A�@�B�@�B�����F�ܦh���ȡA�A���@���|����m�I" : "�A�����F�������ȡC�h�m�X���A�ƼƩM�Q��k�|�V�ӶVí�I";
+    $("resultMessage").textContent = message;
+    $("resultScore").textContent = "? " + state.stars + " / " + totalQuestions + " ���P";
+    $("resultsList").innerHTML = stations.map((station, index) => {
+      const score = state.stageCorrect[index] || 0;
+      return '<div class="result-row"><span>' + station.icon + " " + station.title + '</span><span>' + score + " / " + station.questions.length + " �D�Ĥ@������</span></div>";
+    }).join("");
+    renderRoute();
+    showScreen("complete");
+  }
+  function toggleHint() {
+    hintVisible = !hintVisible;
+    $("hint").hidden = !hintVisible;
+    $("hintButton").setAttribute("aria-expanded", String(hintVisible));
+  }
+  function speakQuestion() {
+    if (!soundOn || !("speechSynthesis" in window)) {
+      $("feedback").className = "feedback try";
+      $("feedback").textContent = soundOn ? "�o���s�����ثe�S���y���\��A�i�H�ۤvŪ�D�س�C" : "�y���w�����A���k�W���i�H�}�ҡC";
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(currentQuestion().prompt);
+    utterance.lang = "zh-TW";
+    utterance.rate = 0.88;
+    window.speechSynthesis.speak(utterance);
+  }
+  $("startButton").addEventListener("click", () => {
+    if (state.stage >= stations.length) renderComplete();
+    else if (state.completed > 0 || state.stage > 0 || state.question > 0 || state.pendingCheckpoint || state.pendingNext || !state.firstTry) resume();
+    else freshStart();
+  });
+  $("resumeButton").addEventListener("click", () => {
+    if (window.confirm("���s�}�l�|�M���o���������i�סA�T�w�n���s�}�l�ܡH")) freshStart();
+  });
+  $("homeButton").addEventListener("click", () => { save(); renderRoute(); showScreen("home"); });
+  $("mapFromResult").addEventListener("click", () => { renderRoute(); showScreen("home"); });
+  $("nextButton").addEventListener("click", advance);
+  $("continueButton").addEventListener("click", continueFromCheckpoint);
+  $("againButton").addEventListener("click", freshStart);
+  $("hintButton").addEventListener("click", toggleHint);
+  $("speakButton").addEventListener("click", speakQuestion);
+  $("soundToggle").addEventListener("click", () => {
+    soundOn = !soundOn;
+    $("soundToggle").textContent = soundOn ? "?? �y���}" : "?? �y����";
+    $("soundToggle").setAttribute("aria-pressed", String(soundOn));
+    if (!soundOn && "speechSynthesis" in window) window.speechSynthesis.cancel();
+  });
+  renderRoute();
+})();
+</script>
+</body>
+</html>
+
