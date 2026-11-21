@@ -24,7 +24,7 @@ function bitmap(text,origin,angle,px=.021,z=.084,col=C.logo){const font={G:['011
 const RH=V(-1.29,.86,0),FH=V(1.29,.86,0),BB=V(-.23,.66,0),ST=V(-.48,1.73,0),HT=V(.80,1.94,0),HB=V(1.01,1.56,0);
 function makeWheel(c,isRear){active='wheels';const [x,y]=c;ring(x,y,.815,.044,0,C.rubber,92,12,.05);ring(x,y,.769,.016,0,C.blackSilver,84,10,.55);ring(x,y,.742,.021,0,C.silver,84,10,.75);ring(x,y,.726,.009,0,C.blackSilver,84,8,.6);ring(x,y,.842,.0035,-.013,C.graphite,84,6,.1);
 // Alternating spoke angles with true spatial lacing.
-const n=28;for(let i=0;i<n;i++){let a=2*Math.PI*i/n+(isRear?.03:0),r=.724;let spokeStart=[x+Math.cos(a)*r,y+Math.sin(a)*r,.012*(i%2===0?1:-1)];let a2=a+(i%2===0?.10:-.10);let hub=[x+Math.cos(a2)*.043,y+Math.sin(a2)*.043,i%2===0?.073:-.073];cylinder(hub,spokeStart,.0035,C.darkSilver,5,.65)}
+// Laced spokes are built once in the refinement pass below (32 per wheel).
 cylinder([x,y,-.117],[x,y,.117],.036,C.blackSilver,12,.45);cylinder([x,y,-.137],[x,y,-.117],.048,C.silver,12,.7);cylinder([x,y,.117],[x,y,.137],.047,C.darkSilver,12,.72);for(const z of [-.115,.115])sphere([x,y,z],.043,C.black,5,10,.35);
 // Valve and rim graphic accents.
 let aa=isRear?2.62:.85;cylinder([x+.739*Math.cos(aa),y+.739*Math.sin(aa),-.01],[x+.785*Math.cos(aa),y+.785*Math.sin(aa),-.01],.008,C.aluminium,7,.7);
@@ -49,7 +49,7 @@ bitmap('GIANT',[.40,1.185],Math.atan2(HB[1]-BB[1],HB[0]-BB[0]),.023,.074,C.logo)
 active='drive';
 const bx=BB[0],by=BB[1],rx=RH[0],ry=RH[1];
 // Cassette at the rear hub with stepped cogs.
-for(let i=0;i<7;i++)ring(rx,ry,.115+i*.010,.009,.15-i*.013,i%2?C.graphite:C.silver,36,7,.72);
+// Individual cassette cogs are added in the drivetrain refinement pass below.
 ring(bx,by,.264,.019,.155,C.black,48,9,.6);ring(bx,by,.208,.018,.188,C.graphite,46,9,.5);
 ring(bx,by,.148,.012,.202,C.blackSilver,42,8,.6);
 for(let i=0;i<5;i++){const a=2*Math.PI*i/5+.3;cylinder([bx+Math.cos(a)*.057,by+Math.sin(a)*.057,.192],[bx+Math.cos(a)*.228,by+Math.sin(a)*.228,.171],.028,C.blackSilver,10,.55)}
