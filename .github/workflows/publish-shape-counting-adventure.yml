@@ -1,4 +1,4 @@
-name: Publish shape-counting adventure
+name: Publish games and WebGPU bicycle
 
 on:
   workflow_dispatch:
@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - "games/shape-counting-adventure/**"
+      - "giant-webgpu-3d/**"
       - ".github/workflows/publish-shape-counting-adventure.yml"
 
 permissions:
@@ -33,6 +34,8 @@ jobs:
           node games/direction-counting/build.mjs --preview
           mkdir -p _site/shape-counting-adventure
           cp games/shape-counting-adventure/index.html _site/shape-counting-adventure/index.html
+          mkdir -p _site/giant-webgpu-3d
+          cp giant-webgpu-3d/index.html _site/giant-webgpu-3d/index.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
