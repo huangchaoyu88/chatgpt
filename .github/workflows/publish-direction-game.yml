@@ -46,7 +46,11 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Stage site
-        run: node games/direction-counting/build.mjs
+        run: |
+          node games/direction-counting/build.mjs
+          mkdir -p _site/shape-counting-adventure _site/giant-webgpu-3d
+          cp games/shape-counting-adventure/index.html _site/shape-counting-adventure/index.html
+          cp giant-webgpu-3d/index.html _site/giant-webgpu-3d/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
