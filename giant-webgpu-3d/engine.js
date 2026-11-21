@@ -272,7 +272,7 @@ const visible={frame:true,wheels:true,drive:true,cockpit:true,detail:true};
 const $=id=>document.getElementById(id);
 const perf=$('perf'),status=$('status'),toast=$('tourDescription');
 function setStatus(msg){status.textContent=msg;}
-function updatePerf(){if(!perf)return;let x=tiers[quality];perf.textContent=`${Math.round(fps)} FPS  ·  ${outputWidth}×${outputHeight}  ·  ${Math.round(dynamicScale*100)}%\n${quality.toUpperCase()} · ${x.msaa}× MSAA · ${x.shadow}px SHADOW`;
+function updatePerf(){if(!perf)return;let x=tiers[quality];perf.textContent=`${Math.round(fps)} FPS  ·  ${outputWidth}×${outputHeight}  ·  ${Math.round(dynamicScale*100)}%\n${quality.toUpperCase()} · ${portableMode?'PORTABLE · 1× MSAA · NO SHADOW':`${x.msaa}× MSAA · ${x.shadow}px SHADOW`}`;
 window.__bikeRendererInfo={fps:Math.round(fps),width:outputWidth,height:outputHeight,quality,scene:studio,autoScale,dynamicScale,shadowSize,msaa:renderSamples,vertexCount:window.__bikeVertexCount||0,deviceLosses:losses,active:running,portableMode,startStage,lastGPUError};}
 function disposeTargets(){for(const t of [depthTex,msaaTex,shadowTex])try{t?.destroy()}catch(_){} depthTex=null;msaaTex=null;shadowTex=null;}
 function resize(){if(!device)return;const tier=tiers[quality],dpr=Math.min(3,window.devicePixelRatio||1);
@@ -343,7 +343,7 @@ async function startGPU(){
  }
  const myGen=++generation;startStage='requestAdapter';
  adapter=null;let adapterError=null;
- for(const preference of [{powerPreference:'high-performance'},undefined,{powerPreference:'low-power'}]){
+ for(const preference of (portableMode?[undefined,{powerPreference:'low-power'},{powerPreference:'high-performance'}]:[{powerPreference:'high-performance'},undefined,{powerPreference:'low-power'}])){
   try{adapter=await navigator.gpu.requestAdapter(preference);}catch(error){adapterError=error;}
   if(adapter)break;
  }
