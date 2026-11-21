@@ -207,8 +207,9 @@ fn tonemap(linear:vec3<f32>)->vec3<f32> {
  let hemisphere=0.28+0.26*max(N.y,0.0)+softFill;
  let coat=pow(max(dot(N,H),0.0),90.0)*(1.0-metallic)*0.14;
  let vis=visibility(v.world,0.0014+0.0012*(1.0-NoL));
- let warm=select(vec3<f32>(1.0),vec3<f32>(1.14,0.96,0.84),U.params.x>0.5 && U.params.x<1.5);
- let cool=select(warm,vec3<f32>(0.77,0.98,1.22),U.params.x>1.5);
+ var cool=vec3<f32>(1.0);
+ if (U.params.x>0.5 && U.params.x<1.5) { cool=vec3<f32>(1.14,0.96,0.84); }
+ if (U.params.x>1.5) { cool=vec3<f32>(0.77,0.98,1.22); }
  let direct=(v.color*(vec3<f32>(1.0)-fresnel)*(1.0-metallic)/3.14159265 + specular)
        *NoL*3.0*cool*vis;
  let ambient=v.color*(1.0-0.76*metallic)*hemisphere;
@@ -280,7 +281,7 @@ function createPipelines(){const module=device.createShaderModule({label:'Road S
  const depth={format:'depth24plus',depthWriteEnabled:true,depthCompare:'less'};
  mainPipe=device.createRenderPipeline({label:'PBR bicycle + PCF shadows',layout,vertex:{module,entryPoint:'bikeVS',buffers:bikeBuffers},fragment:{module,entryPoint:'bikeFS',targets:[{format}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:depth,multisample:{count:samples}});
  floorPipe=device.createRenderPipeline({label:'Shadow-receiving studio floor',layout,vertex:{module,entryPoint:'floorVS',buffers:floorBuffers},fragment:{module,entryPoint:'floorFS',targets:[{format,blend:{color:{srcFactor:'src-alpha',dstFactor:'one-minus-src-alpha',operation:'add'},alpha:{srcFactor:'one',dstFactor:'one-minus-src-alpha',operation:'add'}}}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:false,depthCompare:'less'},multisample:{count:samples}});
- shadowPipe=device.createRenderPipeline({label:'True bicycle depth shadow map',layout,vertex:{module,entryPoint:'shadowVS',buffers:bikeBuffers},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:true,depthCompare:'less',depthBias:2,depthBiasSlopeScale:1.6}});
+ shadowPipe=device.createRenderPipeline({label:'True bicycle depth shadow map',layout,vertex:{module,entryPoint:'shadowVS',buffers:[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:true,depthCompare:'less',depthBias:2,depthBiasSlopeScale:1.6}});
 }
 function setQuality(next){if(!tiers[next]||quality===next)return;quality=next;dynamicScale=1;
  document.querySelectorAll('[data-quality]').forEach(b=>b.classList.toggle('active',b.dataset.quality===quality));
@@ -292,7 +293,7 @@ function maybeAdjustScale(now){if(!autoScale||!fps||now-lastScaleUpdate<1800)ret
  else if(fpsAvg>tier.target+4)dynamicScale=Math.min(1,dynamicScale+0.045);
  if(Math.abs(previous-dynamicScale)>0.001)resize();}
 function gpuLost(info,oldGeneration){if(oldGeneration!==generation)return;running=false;generation++;device=null;
- losses++;setStatus(`GPU 中斷，恢復中 (${losses})…`);$('loading').style.display='flex';$('loading').style.opacity='1';
+ losses++;updatePerf();setStatus(`GPU 中斷，恢復中 (${losses})…`);$('loading').style.display='flex';$('loading').style.opacity='1';
  clearTimeout(restartTimer);
  if(losses>4){showError('WebGPU 多次中斷，已停止重試。請重新整理並切換低畫質。');return;}
  restartTimer=setTimeout(()=>startGPU().catch(e=>{console.error(e);gpuStartFail(e);}),400+losses*700);
@@ -328,7 +329,7 @@ async function startGPU(){if(!navigator.gpu){showError('瀏覽器不支援 WebGP
  resize();if(myGen!==generation)return;
  setStatus('LIVE · WEBGPU');$('error').style.display='none';$('loading').style.opacity='0';
  setTimeout(() => {if(myGen===generation)$('loading').style.display='none';},350);
- running=true;frameLast=performance.now();frameStart=frameLast;frames=0;fpsAvg=60;
+ running=true;updatePerf();frameLast=performance.now();frameStart=frameLast;frames=0;fpsAvg=60;
  requestAnimationFrame(now=>render(now,myGen));
 }
 function render(now,myGen){if(!running||!device||myGen!==generation)return;
