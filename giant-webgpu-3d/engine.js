@@ -229,6 +229,26 @@ fn tonemap(linear:vec3<f32>)->vec3<f32> {
  return vec4<f32>(tonemap(shaded),clamp(exp(-d*0.19)*0.92,0.12,0.93));
 }
 `;
+
+const portableShader = /* wgsl */ `
+struct Globals {mvp:mat4x4<f32>,lightMVP:mat4x4<f32>,eye:vec4<f32>,key:vec4<f32>,fill:vec4<f32>,params:vec4<f32>,accents:vec4<f32>};
+@group(0) @binding(0) var<uniform> U:Globals;
+struct Out {@builtin(position) clip:vec4<f32>, @location(0) normal:vec3<f32>, @location(1) color:vec3<f32>};
+@vertex fn bikeVS(@location(0) pos:vec3<f32>, @location(1) norm:vec3<f32>, @location(2) paint:vec4<f32>)->Out{
+ var o:Out;o.clip=U.mvp*vec4<f32>(pos,1.0);o.normal=norm;o.color=paint.xyz;return o;
+}
+@vertex fn floorVS(@location(0) pos:vec3<f32>)->Out{
+ var o:Out;o.clip=U.mvp*vec4<f32>(pos,1.0);o.normal=vec3<f32>(0.0,1.0,0.0);o.color=vec3<f32>(0.17,0.22,0.26);return o;
+}
+@fragment fn bikeFS(o:Out)->@location(0) vec4<f32>{
+ let n=normalize(o.normal);
+ let a=max(0.0,dot(n,normalize(U.key.xyz)));
+ let b=max(0.0,dot(n,normalize(U.fill.xyz)));
+ let c=pow(clamp(o.color*(0.38+0.52*a+0.22*b),vec3<f32>(0.0),vec3<f32>(1.0)),vec3<f32>(0.86));
+ return vec4<f32>(c,1.0);
+}
+@fragment fn floorFS(o:Out)->@location(0) vec4<f32>{return vec4<f32>(o.color,0.9);}
+`;
 function persp(fov,aspect,near,far){const o=new Float32Array(16),f=1/Math.tan(fov/2);o[0]=f/aspect;o[5]=f;o[10]=far/(near-far);o[11]=-1;o[14]=far*near/(near-far);return o;}
 function look(eye,focus,up=[0,1,0]){const z=norm(sub(eye,focus)),x=norm(cross(up,z)),y=cross(z,x),o=new Float32Array(16);o[0]=x[0];o[1]=y[0];o[2]=z[0];o[4]=x[1];o[5]=y[1];o[6]=z[1];o[8]=x[2];o[9]=y[2];o[10]=z[2];o[12]=-dot(x,eye);o[13]=-dot(y,eye);o[14]=-dot(z,eye);o[15]=1;return o;}
 function multiply(a,b){const o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++){let n=0;for(let k=0;k<4;k++)n+=a[k*4+r]*b[c*4+k];o[c*4+r]=n;}return o;}
@@ -240,7 +260,8 @@ const scenePresets=[
  {name:'冷光展示',key:[-4.0,7.0,3.5],fill:[2.8,3.2,-4.3],accent:[0.5,0.88,1.0],clear:[0.045,0.094,0.12],exposure:1.25}
 ];
 const tiers={low:{dpr:0.85,cap:0.80e6,msaa:1,shadow:512,min:0.55,target:48},medium:{dpr:1.25,cap:1.55e6,msaa:4,shadow:1024,min:0.65,target:52},high:{dpr:1.85,cap:2.80e6,msaa:4,shadow:2048,min:0.68,target:55}};
-let quality=matchMedia('(max-width:650px)').matches?'medium':'high',studio=0,autoScale=true,dynamicScale=1;
+let quality=matchMedia('(max-width:650px)').matches?'low':'high',studio=0,autoScale=true,dynamicScale=1;
+let portableMode=false,startStage='preflight',lastGPUError='';
 let device=null,adapter=null,context=null,format=null,generation=0,running=false;
 let mainPipe=null,floorPipe=null,shadowPipe=null,bgl=null,shadowBGL=null,shadowBind=null,globalBuffer=null,globalBind=null;
 let shadowTex=null,shadowView=null,shadowSampler=null,depthTex=null,depthView=null,msaaTex=null,msaaView=null;
@@ -252,7 +273,7 @@ const $=id=>document.getElementById(id);
 const perf=$('perf'),status=$('status'),toast=$('tourDescription');
 function setStatus(msg){status.textContent=msg;}
 function updatePerf(){if(!perf)return;let x=tiers[quality];perf.textContent=`${Math.round(fps)} FPS  ·  ${outputWidth}×${outputHeight}  ·  ${Math.round(dynamicScale*100)}%\n${quality.toUpperCase()} · ${x.msaa}× MSAA · ${x.shadow}px SHADOW`;
-window.__bikeRendererInfo={fps:Math.round(fps),width:outputWidth,height:outputHeight,quality,scene:studio,autoScale,dynamicScale,shadowSize,msaa:renderSamples,vertexCount:window.__bikeVertexCount||0,deviceLosses:losses,active:running};}
+window.__bikeRendererInfo={fps:Math.round(fps),width:outputWidth,height:outputHeight,quality,scene:studio,autoScale,dynamicScale,shadowSize,msaa:renderSamples,vertexCount:window.__bikeVertexCount||0,deviceLosses:losses,active:running,portableMode,startStage,lastGPUError};}
 function disposeTargets(){for(const t of [depthTex,msaaTex,shadowTex])try{t?.destroy()}catch(_){} depthTex=null;msaaTex=null;shadowTex=null;}
 function resize(){if(!device)return;const tier=tiers[quality],dpr=Math.min(3,window.devicePixelRatio||1);
  let scale=tier.dpr*Math.min(dpr,1.5)*dynamicScale;
@@ -260,29 +281,30 @@ function resize(){if(!device)return;const tier=tiers[quality],dpr=Math.min(3,win
  scale=Math.min(scale,Math.sqrt(tier.cap/(cw*ch)));
  const maxDim=device.limits.maxTextureDimension2D;
  const w=clamp(Math.round(cw*scale),1,maxDim),h=clamp(Math.round(ch*scale),1,maxDim);
- if(w===outputWidth&&h===outputHeight&&depthTex&&renderSamples===tier.msaa)return;
+ const msaa=portableMode?1:tier.msaa;
+ if(w===outputWidth&&h===outputHeight&&depthTex&&renderSamples===msaa)return;
  outputWidth=w;outputHeight=h;canvas.width=w;canvas.height=h;
  depthTex?.destroy();msaaTex?.destroy();
- depthTex=device.createTexture({size:[w,h],sampleCount:tier.msaa,format:'depth24plus',usage:GPUTextureUsage.RENDER_ATTACHMENT});
+ depthTex=device.createTexture({size:[w,h],sampleCount:msaa,format:'depth24plus',usage:GPUTextureUsage.RENDER_ATTACHMENT});
  depthView=depthTex.createView();
- if(tier.msaa>1){msaaTex=device.createTexture({size:[w,h],sampleCount:tier.msaa,format,usage:GPUTextureUsage.RENDER_ATTACHMENT});msaaView=msaaTex.createView();}else{msaaTex=null;msaaView=null;}
- renderSamples=tier.msaa;
+ if(msaa>1){msaaTex=device.createTexture({size:[w,h],sampleCount:tier.msaa,format,usage:GPUTextureUsage.RENDER_ATTACHMENT});msaaView=msaaTex.createView();}else{msaaTex=null;msaaView=null;}
+ renderSamples=msaa;
 }
 function createShadow(){const dimension=tiers[quality].shadow;
  shadowTex?.destroy();shadowTex=device.createTexture({size:[dimension,dimension],format:'depth24plus',usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING});
  shadowView=shadowTex.createView();shadowSize=dimension;
  globalBind=device.createBindGroup({layout:bgl,entries:[{binding:0,resource:{buffer:globalBuffer}},{binding:1,resource:shadowView},{binding:2,resource:shadowSampler}]});
 }
-function createPipelines(){const module=device.createShaderModule({label:'Road Studio WGSL 2',code:shader});
+function createPipelines(){const module=device.createShaderModule({label:portableMode?'Road Studio portable WGSL':'Road Studio WGSL 2',code:portableMode?portableShader:shader});
  const layout=device.createPipelineLayout({bindGroupLayouts:[bgl]});
  const shadowLayout=device.createPipelineLayout({bindGroupLayouts:[shadowBGL]});
  const bikeBuffers=[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'},{shaderLocation:1,offset:12,format:'float32x3'},{shaderLocation:2,offset:24,format:'float32x4'}]}];
  const floorBuffers=[{arrayStride:12,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}];
- const samples=tiers[quality].msaa;
+ const samples=portableMode?1:tiers[quality].msaa;
  const depth={format:'depth24plus',depthWriteEnabled:true,depthCompare:'less'};
  mainPipe=device.createRenderPipeline({label:'PBR bicycle + PCF shadows',layout,vertex:{module,entryPoint:'bikeVS',buffers:bikeBuffers},fragment:{module,entryPoint:'bikeFS',targets:[{format}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:depth,multisample:{count:samples}});
  floorPipe=device.createRenderPipeline({label:'Shadow-receiving studio floor',layout,vertex:{module,entryPoint:'floorVS',buffers:floorBuffers},fragment:{module,entryPoint:'floorFS',targets:[{format,blend:{color:{srcFactor:'src-alpha',dstFactor:'one-minus-src-alpha',operation:'add'},alpha:{srcFactor:'one',dstFactor:'one-minus-src-alpha',operation:'add'}}}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:false,depthCompare:'less'},multisample:{count:samples}});
- shadowPipe=device.createRenderPipeline({label:'True bicycle depth shadow map',layout:shadowLayout,vertex:{module,entryPoint:'shadowVS',buffers:[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:true,depthCompare:'less',depthBias:2,depthBiasSlopeScale:1.6}});
+ shadowPipe=portableMode?null:device.createRenderPipeline({label:'True bicycle depth shadow map',layout:shadowLayout,vertex:{module,entryPoint:'shadowVS',buffers:[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:true,depthCompare:'less',depthBias:2,depthBiasSlopeScale:1.6}});
  return module;
 }
 function setQuality(next){if(!tiers[next]||quality===next)return;quality=next;dynamicScale=1;
@@ -302,17 +324,38 @@ function gpuLost(info,oldGeneration){if(oldGeneration!==generation)return;runnin
  if(losses>4){showError('WebGPU 多次中斷，已停止重試。請重新整理並切換低畫質。');return;}
  restartTimer=setTimeout(()=>startGPU().catch(e=>{console.error(e);gpuStartFail(e);}),400+losses*700);
 }
-function gpuStartFail(err){console.error('GPU init failed',err);if(losses<4){losses++;setStatus('嘗試重新連線 GPU…');restartTimer=setTimeout(()=>startGPU().catch(gpuStartFail),Math.min(4400,600*losses));}
- else showError('無法初始化 WebGPU：'+(err.message||err)+ '。請確認瀏覽器支援 WebGPU。');}
-async function startGPU(){if(!navigator.gpu){showError('瀏覽器不支援 WebGPU。請透過 HTTPS 使用最新版 Chrome／Edge（不提供 WebGL 備援）。');return;}
- const myGen=++generation;
- adapter=await navigator.gpu.requestAdapter({powerPreference:'high-performance'});
- if(!adapter)throw new Error('找不到 WebGPU Adapter');
+function gpuStartFail(err){
+ const message=err?.message||String(err);lastGPUError=startStage+': '+message;
+ console.error('WebGPU init failed at '+startStage,err);
+ if(losses<1&&navigator.gpu&&/adapter|device|context/i.test(startStage)){
+  losses++;portableMode=true;quality='low';setStatus('切換純 WebGPU 相容模式…');
+  clearTimeout(restartTimer);restartTimer=setTimeout(()=>startGPU().catch(gpuStartFail),450);return;
+ }
+ running=false;setStatus('WebGPU 初始化失敗');
+ showError('公路車渲染器在「'+startStage+'」階段出錯：'+message+'。WebGPU API '+(navigator.gpu?'已偵測到':'未暴露')+'，不代表瀏覽器不支援。裝置：'+navigator.userAgent);
+}
+async function startGPU(){
+ startStage='checking WebGPU API';
+ if(!navigator.gpu){
+  setStatus('本頁尚未取得 WebGPU API');
+  showError('此頁無法取得 navigator.gpu。安全連線：'+isSecureContext+'；網址：'+location.origin+'；裝置：'+navigator.userAgent+'。請確認與可運作的範例在相同瀏覽器開啟。');
+  return;
+ }
+ const myGen=++generation;startStage='requestAdapter';
+ adapter=null;let adapterError=null;
+ for(const preference of [{powerPreference:'high-performance'},undefined,{powerPreference:'low-power'}]){
+  try{adapter=await navigator.gpu.requestAdapter(preference);}catch(error){adapterError=error;}
+  if(adapter)break;
+ }
+ if(!adapter)throw new Error('WebGPU API 存在，但無法取得 Adapter。'+(adapterError?.message||''));
+ startStage='requestDevice';
  const newDevice=await adapter.requestDevice();if(myGen!==generation){newDevice.destroy();return;}
  device=newDevice;
  device.lost.then(info=>gpuLost(info,myGen));
  device.addEventListener?.('uncapturederror',e=>{const reason=e.error?.message||String(e);console.error('WebGPU validation:',reason);if(myGen===generation&&running){running=false;setStatus('GPU 渲染錯誤');showError('GPU 渲染發生驗證錯誤：'+reason+'。可按下重新啟動，或改用低畫質。');}});
+ startStage='getCanvasContext';
  context=canvas.getContext('webgpu');if(!context)throw new Error('Canvas 無法建立 WebGPU Context');
+ startStage='configureCanvas';
  format=navigator.gpu.getPreferredCanvasFormat();context.configure({device,format,alphaMode:'opaque'});
  groups=[];disposeTargets();outputWidth=0;outputHeight=0;firstFrameValidated=false;
  bgl=device.createBindGroupLayout({entries:[
@@ -324,13 +367,24 @@ async function startGPU(){if(!navigator.gpu){showError('瀏覽器不支援 WebGP
  globalBuffer=device.createBuffer({size:208,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});
  shadowBind=device.createBindGroup({layout:shadowBGL,entries:[{binding:0,resource:{buffer:globalBuffer}}]});
  shadowSampler=device.createSampler({compare:'less-equal',magFilter:'linear',minFilter:'linear',addressModeU:'clamp-to-edge',addressModeV:'clamp-to-edge'});
- device.pushErrorScope('validation');
- const program=createPipelines();createShadow();
- const comp=await program.getCompilationInfo();
- const fatal=comp.messages.filter(x=>x.type==='error');
- if(fatal.length){await device.popErrorScope();throw new Error('WGSL 編譯錯誤：'+fatal.map(x=>`第${x.lineNum}行 ${x.message}`).join('; ').slice(0,500));}
- const pipelineError=await device.popErrorScope();
- if(pipelineError)throw new Error('GPU 管線驗證失敗：'+pipelineError.message);
+ startStage='compileShadersAndPipelines';
+ async function buildAndValidate(){
+  device.pushErrorScope('validation');let module;
+  try{module=createPipelines();createShadow();}catch(err){await device.popErrorScope();throw err;}
+  const messages=(await module.getCompilationInfo()).messages.filter(m=>m.type==='error');
+  const validationError=await device.popErrorScope();
+  if(messages.length||validationError)throw new Error((messages.length?'WGSL: '+messages.map(m=>m.message).join('; '):'')+(validationError?' GPU: '+validationError.message:''));
+ }
+ try{await buildAndValidate();}
+ catch(err){
+  if(portableMode)throw err;
+  console.warn('Advanced renderer failed, falling back to portable WebGPU',err);
+  portableMode=true;quality='low';dynamicScale=1;
+  document.querySelectorAll('[data-quality]').forEach(b=>b.classList.toggle('active',b.dataset.quality===quality));
+  setStatus('簡化 WebGPU 管線啟動中…');
+  await buildAndValidate();
+ }
+ startStage='uploadBikeGeometry';
  for(const [name,vertices] of Object.entries(sets)){
   const raw=new Float32Array(vertices),buffer=device.createBuffer({size:Math.max(4,raw.byteLength),usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST});
   if(raw.byteLength)device.queue.writeBuffer(buffer,0,raw);groups.push({name,buffer,count:raw.length/10});
@@ -338,8 +392,9 @@ async function startGPU(){if(!navigator.gpu){showError('瀏覽器不支援 WebGP
  const floorVertices=new Float32Array([-12,-0.065,-12,12,-0.065,-12,12,-0.065,12,-12,-0.065,-12,12,-0.065,12,-12,-0.065,12]);
  floorBuffer=device.createBuffer({size:floorVertices.byteLength,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST});device.queue.writeBuffer(floorBuffer,0,floorVertices);
  window.__bikeVertexCount=groups.reduce((s,g)=>s+g.count,0);
+ startStage='resizeAndRender';
  resize();if(myGen!==generation)return;
- setStatus('LIVE · WEBGPU');$('error').style.display='none';$('loading').style.opacity='0';
+ setStatus(portableMode?'LIVE · WEBGPU / PORTABLE':'LIVE · WEBGPU');$('error').style.display='none';$('loading').style.opacity='0';
  setTimeout(() => {if(myGen===generation)$('loading').style.display='none';},350);
  running=true;updatePerf();frameLast=performance.now();frameStart=frameLast;frames=0;fpsAvg=60;
  requestAnimationFrame(now=>render(now,myGen));
@@ -361,10 +416,12 @@ function render(now,myGen){if(!running||!device||myGen!==generation)return;
  data.set([studio,now*0.001,quality==='low'?0:quality==='medium'?1:2,scene.exposure],44);
  data.set([...scene.accent,1],48);device.queue.writeBuffer(globalBuffer,0,data);
  const encoder=device.createCommandEncoder({label:'Bike+Studio frame'});
+ if(!portableMode){
  const shadowPass=encoder.beginRenderPass({label:'Real shadow depth pass',colorAttachments:[],depthStencilAttachment:{view:shadowView,depthLoadOp:'clear',depthClearValue:1,depthStoreOp:'store'}});
  shadowPass.setPipeline(shadowPipe);shadowPass.setBindGroup(0,shadowBind);
  for(const g of groups)if(visible[g.name]){shadowPass.setVertexBuffer(0,g.buffer);shadowPass.draw(g.count);}
  shadowPass.end();
+ }
  const screenView=context.getCurrentTexture().createView();
  const c=scene.clear;
  const colorAttachment={view:renderSamples>1?msaaView:screenView,loadOp:'clear',storeOp:'store',clearValue:{r:c[0],g:c[1],b:c[2],a:1}};
@@ -375,7 +432,7 @@ function render(now,myGen){if(!running||!device||myGen!==generation)return;
  // Validate the first actual draw submission, not only pipeline creation.
  if(!firstFrameValidated)device.pushErrorScope('validation');
  device.queue.submit([encoder.finish()]);
- if(!firstFrameValidated){firstFrameValidated=true;device.popErrorScope().then(err=>{if(err&&myGen===generation){running=false;setStatus('GPU 畫面錯誤');showError('無法繪製 3D 模型：'+err.message+'。請按下重新啟動。');}}).catch(console.error);}
+ if(!firstFrameValidated){firstFrameValidated=true;device.popErrorScope().then(err=>{if(err&&myGen===generation){running=false;lastGPUError='firstDraw: '+err.message;if(!portableMode){portableMode=true;quality='low';setStatus('切換簡化 WebGPU 繪製…');startGPU().catch(gpuStartFail);}else{setStatus('GPU 畫面錯誤');showError('WebGPU 首幀驗證失敗：'+err.message);}}}).catch(console.error);}
  frames++;if(now-frameStart>=900){fps=frames*1000/(now-frameStart);fpsAvg=fpsAvg*0.35+fps*0.65;frames=0;frameStart=now;maybeAdjustScale(now);updatePerf();}
  requestAnimationFrame(time=>render(time,myGen));
 }
