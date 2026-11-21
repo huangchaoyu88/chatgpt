@@ -27,6 +27,18 @@ button{font:inherit;cursor:pointer;transition:.2s ease}button:focus-visible,.swi
 @media(max-width:900px){#sidebar{width:274px;flex-basis:274px}.brand{padding:20px}.sidebar-body{padding:22px 18px}.stage-top{left:20px;top:24px}.gpu-tag{right:16px;top:22px}}
 @media(max-width:650px){body{overflow:auto}#app{display:block;height:auto;min-height:100dvh}#stage{height:69dvh;min-height:420px;max-height:760px}#sidebar{width:100%;display:block;border-left:0;border-top:1px solid #303a44;overflow:visible}.sidebar-body{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;padding:24px 20px}.sidebar-body .section-heading,.sidebar-body .reference,.sidebar-body .caption,.sidebar-body .sep,.sidebar-body .preset-grid,.sidebar-body .layers,.sidebar-body .note{grid-column:1/-1}.sidebar-body .section-heading{margin-top:10px}.brand{padding:17px 20px}.stage-top h1{font-size:25px}.stage-top .subtitle{font-size:11px}.gpu-tag{font-size:9px;padding:8px;right:14px;top:20px}.gpu-tag .label{display:none}.measure{left:20px;bottom:97px;font-size:9px}.hud{width:calc(100% - 28px);justify-content:center;bottom:15px}.hud button{flex:1;padding:11px 6px;font-size:10px}.hud button span{display:block;margin:0 0 2px}.reference{max-height:210px}.footer{margin-top:0}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* WebGPU 2: compact on-canvas telemetry and quality controls */
+.status{position:absolute;z-index:4;top:80px;right:30px;font-size:10px;color:#bcd6ca;letter-spacing:.12em;text-align:right}
+#perf{position:absolute;z-index:3;right:30px;bottom:104px;border:1px solid #45515d;border-radius:11px;padding:12px 14px;background:#151d25d9;color:#aee4c3;font:11px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre;text-align:right;pointer-events:none}
+#tourDescription{position:absolute;z-index:3;left:50%;bottom:100px;transform:translateX(-50%);font-size:12px;white-space:nowrap;max-width:85%;overflow:hidden;text-overflow:ellipsis;color:#d9e6df;padding:10px 16px;border:1px solid #59646b;border-radius:30px;background:#1b242bdc;opacity:0;transition:opacity .4s;pointer-events:none}
+#tourDescription.visible{opacity:1}
+.preset-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.preset-grid.three .preset{min-width:0;padding:11px 6px}
+.section-note{font-size:11px;color:#8b9da7;margin:6px 0 14px;line-height:1.7}
+.gpu-option{display:flex;gap:9px;align-items:center;padding:12px 4px;color:#c8d3db;font-size:12px}
+.gpu-option input{accent-color:#b8dac8}
+#retry{padding:12px 18px;margin-top:14px;border:1px solid #7c9b8b;border-radius:10px;background:#36554a;color:white}
+@media(max-width:650px){.status{right:16px;top:66px}.gpu-tag{right:16px;top:18px}.gpu-tag .label{display:none}#perf{right:15px;bottom:92px;padding:8px;font-size:9px}.hud{left:12px;right:12px;transform:none;justify-content:center}.hud button{font-size:11px;padding:10px 8px}.hud button span{display:none}#tourDescription{bottom:152px;font-size:10px}}
 </style>
 </head>
 <body>
@@ -35,15 +47,19 @@ button{font:inherit;cursor:pointer;transition:.2s ease}button:focus-visible,.swi
  <canvas id="gpu" aria-label="拖曳旋轉自行車三維模型"></canvas>
  <div class="stage-top"><div class="eyebrow">DIGITAL GARAGE / 01</div><h1>公路車<br/>3D 檢視器</h1><div class="subtitle">以實車照片為參考・互動式模型</div></div>
  <div class="gpu-tag"><i class="dot" id="readyDot"></i><span>WebGPU</span><span class="label">ONLY RENDERER</span></div>
+ <div class="status" id="status" aria-live="polite">LOADING WEBGPU</div>
+ <div id="perf" aria-label="渲染效能資訊">啟動中…</div>
+ <div id="tourDescription" role="status"></div>
  <div class="measure">360° FREE ORBIT <b>拖曳旋轉 · 滾輪縮放 · 雙指操作</b></div>
  <div class="hud" role="toolbar" aria-label="檢視器工具">
+  <button id="tour" aria-pressed="false" title="自動導覽各零件"><span>▷</span>導覽</button>
   <button id="reset" title="回到初始檢視"><span>↺</span>重設視角</button>
   <button id="spin" title="自動旋轉"><span>⟳</span>自動旋轉</button>
   <button id="zoomIn" title="放大"><span>＋</span>放大</button>
   <button id="zoomOut" title="縮小"><span>－</span>縮小</button>
  </div>
  <div id="loading"><div class="loader" aria-label="正在載入"></div></div>
- <div id="error" role="alert"><div class="err-panel"><h2>無法啟動 WebGPU</h2><p id="errorText">請使用支援 WebGPU 的最新版 Chrome、Edge 或其他相容瀏覽器，並透過 HTTPS 或 localhost 開啟。依照要求，本頁不會改用 WebGL。</p></div></div>
+ <div id="error" role="alert"><div class="err-panel"><h2>無法啟動 WebGPU</h2><p id="errorText">請使用支援 WebGPU 的最新版 Chrome、Edge 或其他相容瀏覽器，並透過 HTTPS 或 localhost 開啟。依照要求，本頁不會改用 WebGL。</p><button id="retry">重試 WebGPU</button></div></div>
 </main>
 <aside id="sidebar">
  <header class="brand"><div class="brand-icon">G</div><div><b>ROAD STUDIO</b><small>PHOTO TO 3D / WEBGPU</small></div></header>
@@ -59,6 +75,31 @@ button{font:inherit;cursor:pointer;transition:.2s ease}button:focus-visible,.swi
    <button class="preset" data-view="front"><span class="view-icon">⊙</span>正面</button>
    <button class="preset" data-view="top"><span class="view-icon">◇</span>俯視</button>
   </div>
+
+  <div class="sep"></div>
+  <h2 class="section-heading">DETAIL TOUR / 零件特寫</h2>
+  <div class="preset-grid">
+   <button class="preset" data-focus="frame">車架烤漆</button>
+   <button class="preset" data-focus="wheels">輪組輻條</button>
+   <button class="preset" data-focus="drive">傳動系統</button>
+   <button class="preset" data-focus="cockpit">彎把煞變</button>
+  </div>
+  <div class="sep"></div>
+  <h2 class="section-heading">QUALITY / 畫質</h2>
+  <div class="preset-grid three">
+   <button class="preset" data-quality="low">低</button>
+   <button class="preset active" data-quality="medium">中</button>
+   <button class="preset" data-quality="high">高</button>
+  </div>
+  <label class="gpu-option"><input type="checkbox" id="autoScale" checked/> 自動調整解析度／FPS</label>
+  <p class="section-note">低：1×抗鋸齒｜中、高：4×MSAA；所有畫質都有真正的 WebGPU 投影陰影。</p>
+  <div class="sep"></div>
+  <h2 class="section-heading">LIGHTING / 攝影棚燈光</h2>
+  <div class="preset-grid three">
+   <button class="preset active" data-studio="0">中性</button>
+   <button class="preset" data-studio="1">暖光</button>
+   <button class="preset" data-studio="2">冷光</button>
+  </div>
   <div class="sep"></div>
   <h2 class="section-heading">COMPONENTS / 顯示零件</h2>
   <div class="layers">
@@ -70,164 +111,8 @@ button{font:inherit;cursor:pointer;transition:.2s ease}button:focus-visible,.swi
   </div>
   <div class="note"><strong>模型說明</strong><br/>單張照片無法還原車身背面及精確尺寸；此為可自由旋轉的程序化 3D 近似模型，並非實車的 3D 掃描檔。</div>
  </div>
- <div class="footer">RAW WEBGPU · WGSL SHADERS · NO WEBGL</div>
+ <div class="footer">WEBGPU · WGSL · 4× MSAA · REAL SHADOWS · NO WEBGL</div>
 </aside>
 </div>
-<script type="module">
-'use strict';
-// Procedural road-bike mesh: CPU geometry construction, GPU rendering exclusively through WebGPU/WGSL.
-const canvas = document.getElementById('gpu');
-const errorBox=document.getElementById('error');
-const showError = msg=>{ document.getElementById('loading').style.display='none'; errorBox.style.display='flex'; if(msg) document.getElementById('errorText').textContent=msg; };
-const V=(x,y,z=0)=>[x,y,z],add=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],mul=(a,t)=>a.map(x=>x*t),dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],norm=a=>{const d=Math.hypot(...a);return d>1e-8?mul(a,1/d):[0,1,0];},mix=(a,b,t)=>add(mul(a,1-t),mul(b,t));
-const rgb=(s)=>{let x=s.replace('#','');return [parseInt(x.substring(0,2),16),parseInt(x.substring(2,4),16),parseInt(x.substring(4,6),16)].map(v=>v/255)};
-const C={white:rgb('#e5e9e5'),bright:rgb('#f4f6f1'),whiteShadow:rgb('#c6d1cd'),silver:rgb('#8d9a9f'),aluminium:rgb('#bec5c9'),darkSilver:rgb('#6d7b83'),black:rgb('#1d252a'),rubber:rgb('#0c1115'),blackSilver:rgb('#303b40'),tape:rgb('#151b21'),chain:rgb('#8f999c'),graphite:rgb('#434e56'),logo:rgb('#9da8a4')};
-const layers={frame:[],wheels:[],drive:[],cockpit:[],detail:[]};
-let active='frame';const sets=layers;
-const put=(p,n,c,metal=0)=>sets[active].push(p[0],p[1],p[2],n[0],n[1],n[2],c[0],c[1],c[2],metal);
-function triangle(a,b,c,color,metal=0){const n=norm(cross(sub(b,a),sub(c,a)));put(a,n,color,metal);put(b,n,color,metal);put(c,n,color,metal)}
-function quad(a,b,c,d,color,metal=0){triangle(a,b,c,color,metal);triangle(a,c,d,color,metal)}
-function cylinder(a,b,r,color,seg=10,metal=.2,rx=r){const d=norm(sub(b,a));let u=norm(cross(d,[0,0,1]));if(Math.hypot(...u)<.01)u=norm(cross(d,[0,1,0]));const v=norm(cross(d,u));for(let i=0;i<seg;i++){let th=2*Math.PI*i/seg,th2=2*Math.PI*(i+1)/seg;const ring=(center,t)=>add(center,add(mul(u,Math.cos(t)*r),mul(v,Math.sin(t)*rx)));const n1=norm(add(mul(u,Math.cos(th)/r),mul(v,Math.sin(th)/rx))),n2=norm(add(mul(u,Math.cos(th2)/r),mul(v,Math.sin(th2)/rx)));const p=ring(a,th),q=ring(a,th2),p2=ring(b,th),q2=ring(b,th2);put(p,n1,color,metal);put(q,n2,color,metal);put(q2,n2,color,metal);put(p,n1,color,metal);put(q2,n2,color,metal);put(p2,n1,color,metal);
-const nn=mul(d,-1);put(a,nn,color,metal);put(q,nn,color,metal);put(p,nn,color,metal);put(b,d,color,metal);put(p2,d,color,metal);put(q2,d,color,metal);}}
-function cone(a,b,ra,rb,color,seg=12,metal=.3){const d=norm(sub(b,a));let u=norm(cross(d,[0,0,1]));if(Math.hypot(...u)<.01)u=[1,0,0];const v=norm(cross(d,u));for(let i=0;i<seg;i++){const t=i*2*Math.PI/seg,s=(i+1)*2*Math.PI/seg;const a1=add(a,add(mul(u,ra*Math.cos(t)),mul(v,ra*Math.sin(t)))),a2=add(a,add(mul(u,ra*Math.cos(s)),mul(v,ra*Math.sin(s))));const b1=add(b,add(mul(u,rb*Math.cos(t)),mul(v,rb*Math.sin(t)))),b2=add(b,add(mul(u,rb*Math.cos(s)),mul(v,rb*Math.sin(s))));let n1=norm(add(mul(u,Math.cos(t)),mul(v,Math.sin(t)))),n2=norm(add(mul(u,Math.cos(s)),mul(v,Math.sin(s))));put(a1,n1,color,metal);put(a2,n2,color,metal);put(b2,n2,color,metal);put(a1,n1,color,metal);put(b2,n2,color,metal);put(b1,n1,color,metal);}}
-function ring(cx,cy,r,tube,z,color,seg=72,side=10,metal=.4){for(let i=0;i<seg;i++){const a=2*Math.PI*i/seg,b=2*Math.PI*(i+1)/seg;for(let j=0;j<side;j++){const t=2*Math.PI*j/side,s=2*Math.PI*(j+1)/side;const point=(u,v)=>[cx+(r+tube*Math.cos(v))*Math.cos(u),cy+(r+tube*Math.cos(v))*Math.sin(u),z+tube*Math.sin(v)];const normal=(u,v)=>[Math.cos(v)*Math.cos(u),Math.cos(v)*Math.sin(u),Math.sin(v)];const p=point(a,t),q=point(b,t),rr=point(b,s),ss=point(a,s);const n=normal(a,t),nq=normal(b,t),nr=normal(b,s),ns=normal(a,s);put(p,n,color,metal);put(q,nq,color,metal);put(rr,nr,color,metal);put(p,n,color,metal);put(rr,nr,color,metal);put(ss,ns,color,metal);}}}
-function path(points,r,color,seg=9,metal=.0){if(points.length<2)return;for(let i=0;i<points.length-1;i++){cylinder(points[i],points[i+1],r,color,seg,metal)}for(let i=1;i<points.length-1;i++){sphere(points[i],r*1.07,color,5,9,metal)}}
-function sphere(o,r,col,rings=5,seg=10,metal=.25){for(let i=0;i<rings;i++){const a=-Math.PI/2+Math.PI*i/rings,b=-Math.PI/2+Math.PI*(i+1)/rings;for(let j=0;j<seg;j++){const u=2*Math.PI*j/seg,v=2*Math.PI*(j+1)/seg;const p=(el,az)=>add(o,[r*Math.cos(el)*Math.cos(az),r*Math.sin(el),r*Math.cos(el)*Math.sin(az)]);const p1=p(a,u),p2=p(a,v),p3=p(b,v),p4=p(b,u);for(let pair of [[p1,p2,p3],[p1,p3,p4]])for(let point of pair)put(point,norm(sub(point,o)),col,metal);}}}
-function box(x1,y1,z1,x2,y2,z2,col,metal=.3){const a=[x1,y1,z1],b=[x2,y1,z1],c=[x2,y2,z1],d=[x1,y2,z1],e=[x1,y1,z2],f=[x2,y1,z2],g=[x2,y2,z2],h=[x1,y2,z2];for(let q of [[a,d,c,b],[e,f,g,h],[a,e,h,d],[b,c,g,f],[d,h,g,c],[a,b,f,e]])quad(...q,col,metal)}
-function bitmap(text,origin,angle,px=.021,z=.084,col=C.logo){const font={G:['01110','10001','10000','10111','10001','10001','01110'],I:['11111','00100','00100','00100','00100','00100','11111'],A:['01110','10001','10001','11111','10001','10001','10001'],N:['10001','11001','10101','10011','10001','10001','10001'],T:['11111','00100','00100','00100','00100','00100','00100']};const dir=[Math.cos(angle),Math.sin(angle)],vert=[-Math.sin(angle),Math.cos(angle)],cols=text.length*6-1;for(let k=0;k<text.length;k++)for(let y=0;y<7;y++)for(let x=0;x<5;x++)if(font[text[k]]?.[y]?.[x]==='1'){let u=(k*6+x-(cols-1)/2)*px,v=(3-y)*px;const p=(du,dv)=>[origin[0]+dir[0]*(u+du)+vert[0]*(v+dv),origin[1]+dir[1]*(u+du)+vert[1]*(v+dv),z];quad(p(-px*.45,-px*.45),p(px*.45,-px*.45),p(px*.45,px*.45),p(-px*.45,px*.45),col,.35)}}
-// Dimensions are approximate because the input photo is a single view.
-const RH=V(-1.29,.86,0),FH=V(1.29,.86,0),BB=V(-.23,.66,0),ST=V(-.48,1.73,0),HT=V(.80,1.94,0),HB=V(1.01,1.56,0);
-function makeWheel(c,isRear){active='wheels';const [x,y]=c;ring(x,y,.815,.044,0,C.rubber,92,12,.05);ring(x,y,.769,.016,0,C.blackSilver,84,10,.55);ring(x,y,.742,.021,0,C.silver,84,10,.75);ring(x,y,.726,.009,0,C.blackSilver,84,8,.6);ring(x,y,.842,.0035,-.013,C.graphite,84,6,.1);
-// Alternating spoke angles with true spatial lacing.
-const n=28;for(let i=0;i<n;i++){let a=2*Math.PI*i/n+(isRear?.03:0),r=.724;let spokeStart=[x+Math.cos(a)*r,y+Math.sin(a)*r,.012*(i%2===0?1:-1)];let a2=a+(i%2===0?.10:-.10);let hub=[x+Math.cos(a2)*.043,y+Math.sin(a2)*.043,i%2===0?.073:-.073];cylinder(hub,spokeStart,.0035,C.darkSilver,5,.65)}
-cylinder([x,y,-.117],[x,y,.117],.036,C.blackSilver,12,.45);cylinder([x,y,-.137],[x,y,-.117],.048,C.silver,12,.7);cylinder([x,y,.117],[x,y,.137],.047,C.darkSilver,12,.72);for(const z of [-.115,.115])sphere([x,y,z],.043,C.black,5,10,.35);
-// Valve and rim graphic accents.
-let aa=isRear?2.62:.85;cylinder([x+.739*Math.cos(aa),y+.739*Math.sin(aa),-.01],[x+.785*Math.cos(aa),y+.785*Math.sin(aa),-.01],.008,C.aluminium,7,.7);
-for(let i=0;i<7;i++){let a=.35+i*.031+(isRear?1.7:3.2);cylinder([x+.752*Math.cos(a),y+.752*Math.sin(a),.027],[x+.754*Math.cos(a+.013),y+.754*Math.sin(a+.013),.027],.005,C.silver,5,.65)}}
-makeWheel(RH,true);makeWheel(FH,false);
-active='frame';
-// Alloy triangular frame, tuned to the photo's gently sloped top-tube and straight fork.
-cylinder(BB,ST,.059,C.white,18,.42,.049);cylinder(ST,HT,.049,C.bright,17,.42,.039);cylinder(BB,HB,.075,C.white,20,.46,.052);
-// Painting/highlights along the two dominant tubes.
-cylinder(mix(BB,HB,.07),mix(BB,HB,.90),.016,C.bright,10,.14,.013);
-cylinder(HT,HB,.085,C.whiteShadow,18,.55,.077);cylinder(mix(HT,HB,.08),mix(HT,HB,.86),.079,C.white,18,.48,.071);
-// Seatstay and chainstay are paired on the near and far side.
-for(const z of [-.071,.071]){cylinder([RH[0],RH[1],z],[ST[0]+.013,ST[1]-.08,z*.65],.029,C.white,13,.32,.023);cylinder([RH[0],RH[1],z],[BB[0]-.02,BB[1]-.025,z*.80],.036,C.whiteShadow,13,.29,.027)}
-// Fork crown and two gently rake-forward blades.
-cylinder([1.032,1.52,0],[1.075,1.42,0],.075,C.white,14,.33,.065);
-for(const z of [-.092,.092]){cone([1.07,1.43,z*.62],[1.23,.94,z],.059,.037,C.white,16,.36);cone([1.23,.94,z],[FH[0],FH[1],z],.038,.026,C.bright,12,.35)}
-cylinder([RH[0],RH[1],-.13],[RH[0],RH[1],.13],.025,C.aluminium,12,.8);cylinder([FH[0],FH[1],-.15],[FH[0],FH[1],.15],.025,C.aluminium,12,.8);
-// Saddle clamp collar and tube seams.
-cylinder(mix(BB,ST,.91),mix(BB,ST,.96),.070,C.silver,16,.73,.059);sphere(ST,.062,C.bright,8,12,.38);sphere(BB,.069,C.whiteShadow,8,12,.43);
-bitmap('GIANT',[.40,1.185],Math.atan2(HB[1]-BB[1],HB[0]-BB[0]),.023,.074,C.logo);
-// Chainset, rear sprockets and derailleur.
-active='drive';
-const bx=BB[0],by=BB[1],rx=RH[0],ry=RH[1];
-// Cassette at the rear hub with stepped cogs.
-for(let i=0;i<7;i++)ring(rx,ry,.115+i*.010,.009,.15-i*.013,i%2?C.graphite:C.silver,36,7,.72);
-ring(bx,by,.264,.019,.155,C.black,48,9,.6);ring(bx,by,.208,.018,.188,C.graphite,46,9,.5);
-ring(bx,by,.148,.012,.202,C.blackSilver,42,8,.6);
-for(let i=0;i<5;i++){const a=2*Math.PI*i/5+.3;cylinder([bx+Math.cos(a)*.057,by+Math.sin(a)*.057,.192],[bx+Math.cos(a)*.228,by+Math.sin(a)*.228,.171],.028,C.blackSilver,10,.55)}
-// Teeth, visible near the outer sprocket edge.
-for(let i=0;i<42;i++){const a=i*2*Math.PI/42;const o=[bx+.280*Math.cos(a),by+.280*Math.sin(a),.155];cylinder(o,[bx+.292*Math.cos(a),by+.292*Math.sin(a),.155],.006,C.blackSilver,6,.28)}
-// Chain run with individual link pins and around the two sprockets.
-const chainZ=.185,cr=.272,rr=.145;
-const upper1=[rx,ry+rr,chainZ],upper2=[bx,by+cr,chainZ],lower1=[rx,ry-rr,chainZ],lower2=[bx,by-cr,chainZ];
-path([upper1,upper2],.009,C.chain,6,.7);path([lower1,lower2],.009,C.chain,6,.7);
-for(let i=0;i<19;i++){const t=i/18;for(let [a,b] of [[upper1,upper2],[lower1,lower2]])sphere(mix(a,b,t),.014,i%2?C.silver:C.darkSilver,3,6,.65)}
-for(let i=0;i<16;i++){let a=-Math.PI/2+i*Math.PI/15;const p=[bx+cr*Math.cos(a),by+cr*Math.sin(a),chainZ];sphere(p,.013,C.chain,3,6,.5)}
-for(let i=0;i<12;i++){let a=Math.PI/2+i*Math.PI/11;const p=[rx+rr*Math.cos(a),ry+rr*Math.sin(a),chainZ];sphere(p,.013,C.chain,3,6,.5)}
-// Bottom-bracket, crank arms and platform pedals.
-cylinder([bx,by,-.21],[bx,by,.22],.063,C.blackSilver,15,.55);cylinder([bx,by,.20],[bx,by,.245],.074,C.graphite,16,.55);
-const pedalA=[bx+.360,by-.054,.24],pedalB=[bx-.355,by+.054,-.23];cylinder([bx,by,.238],pedalA,.041,C.black,13,.43);cylinder([bx,by,-.226],pedalB,.042,C.blackSilver,13,.43);
-box(pedalA[0]-.075,pedalA[1]-.031,pedalA[2]-.14,pedalA[0]+.075,pedalA[1]+.031,pedalA[2]+.14,C.black,.16);box(pedalB[0]-.075,pedalB[1]-.033,pedalB[2]-.14,pedalB[0]+.075,pedalB[1]+.033,pedalB[2]+.14,C.black,.16);
-for(let a of [pedalA,pedalB]){for(let s of [-1,1])box(a[0]-.05,a[1]+s*.023,a[2]-.115,a[0]+.05,a[1]+s*.027,a[2]+.115,C.graphite,.28)}
-// Rear derailleur body, guide wheels, rear dropout.
-sphere([rx-.105,ry-.105,.184],.072,C.black,6,12,.35);cylinder([rx-.08,ry-.115,.182],[rx-.16,ry-.32,.185],.035,C.blackSilver,12,.3);sphere([rx-.156,ry-.32,.185],.057,C.black,7,12,.3);ring(rx-.156,ry-.32,.038,.009,.211,C.silver,24,6,.65);path([[rx-.17,ry-.21,.203],[rx-.20,ry-.33,.203],[rx-.17,ry-.35,.203]],.009,C.chain,7,.48);
-active='cockpit';
-// Black anodized seat post and anatomically tapered racing saddle.
-cylinder([ST[0],ST[1]-.035,0],[-.54,2.255,0],.042,C.blackSilver,14,.5);
-for(let z of [-.075,.075])path([[-.75,2.255,z],[-.60,2.226,z],[-.37,2.235,z*.72],[-.19,2.27,z*.4]],.010,C.silver,7,.75);
-const stations=[[-.91,2.316,.087],[-.81,2.340,.159],[-.66,2.337,.164],[-.50,2.325,.134],[-.35,2.307,.085],[-.15,2.298,.038]];
-for(let i=0;i<stations.length-1;i++){let [x,y,w]=stations[i],[u,v,q]=stations[i+1];let z0=.01;quad([x,y,w],[u,v,q],[u,v,-q],[x,y,-w],C.black,.08);quad([x,y-.075,w*.84],[x,y,w],[x,y,-w],[x,y-.075,-w*.84],C.tape,.1);quad([u,v-.075,q*.84],[u,v,q],[x,y,w],[x,y-.075,w*.84],C.blackSilver,.1);quad([x,y,-w],[u,v,-q],[u,v-.075,-q*.84],[x,y-.075,-w*.84],C.tape,.12)}
-// Stem, headset and steer tube.
-cylinder([.81,1.85,0],[.76,2.19,0],.042,C.blackSilver,15,.45);cylinder([.76,2.19,0],[1.09,2.245,0],.051,C.black,14,.43);sphere([1.09,2.245,0],.056,C.graphite,9,12,.4);
-// Drop handlebars: tapered bar, wide flares and swept-back hooked drops.
-for(const sg of [-1,1]){const z=.36*sg;path([[1.08,2.245,0],[1.14,2.235,z*.50],[1.27,2.255,z*.92],[1.45,2.267,z],[1.60,2.249,z],[1.65,2.183,z],[1.645,2.056,z],[1.595,1.955,z],[1.47,1.935,z],[1.37,1.947,z]],.031,C.tape,11,.13);
-// Brake lever bodies and rubber hoods.
-cone([1.62,2.254,z],[1.71,2.335,z],.046,.034,C.black,12,.22);
-path([[1.68,2.276,z],[1.72,2.19,z],[1.72,2.01,z]],.016,C.blackSilver,8,.46);
-cylinder([1.45,2.265,z],[1.49,2.264,z],.035,C.graphite,10,.25)}
-// Thin central exposed clamp section and brake-hood detailing.
-cylinder([1.09,2.245,-.08],[1.09,2.245,.08],.039,C.silver,12,.62);
-active='detail';
-// Side-pull calipers, pad carriers, housing and derailleur cables.
-function brake(cx,cy){sphere([cx,cy,.10],.048,C.blackSilver,6,12,.44);path([[cx,cy,.096],[cx-.15,cy-.13,.11]],.020,C.black,9,.35);path([[cx,cy,.096],[cx+.15,cy-.13,.11]],.020,C.black,9,.35);for(let s of [-1,1]){box(cx+s*.13-.035,cy-.16,.087,cx+s*.13+.035,cy-.12,.153,C.tape,.2)}cylinder([cx,cy,-.08],[cx,cy,.17],.012,C.silver,9,.85)}
-brake(1.087,1.665);brake(-.73,1.58);
-// Bowden cables visible in side view, routed in 3D arcs from handlebars.
-path([[1.695,2.28,.37],[1.73,2.18,.38],[1.67,1.95,.37],[1.52,1.77,.25],[1.10,1.68,.12]],.011,C.black,8,.05);
-path([[1.70,2.28,-.36],[1.50,2.29,-.29],[1.17,2.17,-.14],[.87,2.02,.07],[.35,1.85,.08],[-.30,1.73,.07],[-.73,1.59,.11]],.010,C.black,8,.04);
-path([[1.65,2.19,.38],[1.50,2.05,.24],[1.09,1.90,.08],[.35,1.38,.12],[-.41,.82,.20],[-1.16,.60,.18],[-1.40,.74,.19]],.009,C.blackSilver,8,.15);
-// Bottle bosses and skewer quick release levers.
-for(let p of [[-.01,.89,.071],[.38,1.21,.073],[-.37,1.17,.07],[-.40,1.42,.07]])sphere(p,.016,C.darkSilver,5,8,.7);
-path([[FH[0],FH[1],.138],[FH[0]+.10,FH[1]+.08,.18]],.010,C.silver,8,.7);
-path([[RH[0],RH[1],.137],[RH[0]-.07,RH[1]+.09,.17]],.010,C.silver,8,.7);
-// WebGPU setup
-const shader=`
-struct Globals {mvp:mat4x4<f32>,eye:vec4<f32>,light:vec4<f32>,params:vec4<f32>};
-@group(0) @binding(0) var<uniform> U:Globals;
-struct VertexOut { @builtin(position) clip:vec4<f32>,@location(0) world:vec3<f32>,@location(1) norm:vec3<f32>,@location(2) color:vec3<f32>,@location(3) metal:f32 };
-@vertex fn vs(@location(0) pos:vec3<f32>,@location(1) normal:vec3<f32>,@location(2) base:vec4<f32>)->VertexOut{var o:VertexOut;o.clip=U.mvp*vec4<f32>(pos,1.);o.world=pos;o.norm=normal;o.color=base.xyz;o.metal=base.w;return o;}
-@fragment fn fs(v:VertexOut)->@location(0) vec4<f32>{let N=normalize(v.norm);let L=normalize(U.light.xyz);let V=normalize(U.eye.xyz-v.world);let H=normalize(L+V);let diffuse=max(dot(N,L),0.0);let back=max(dot(N,vec3<f32>(0.32,0.23,-0.92)),0.);let fresnel=pow(1.-max(dot(N,V),0.),2.5);let spec=pow(max(dot(N,H),0.),mix(20.,115.,v.metal))*(0.08+v.metal*.38);let ambient=.40+diffuse*.59+back*.14+fresnel*.1;let col=v.color*ambient+vec3<f32>(spec);return vec4<f32>(col,1.);}
-`;
-const floorShader=`
-struct Globals {mvp:mat4x4<f32>,eye:vec4<f32>,light:vec4<f32>,params:vec4<f32>};
-@group(0) @binding(0) var<uniform> U:Globals;
-struct VSOut{@builtin(position) pos:vec4<f32>,@location(0) world:vec3<f32>};
-@vertex fn vs(@location(0) pos:vec3<f32>)->VSOut{var o:VSOut;o.pos=U.mvp*vec4<f32>(pos,1.);o.world=pos;return o;}
-@fragment fn fs(i:VSOut)->@location(0) vec4<f32>{
-let p=i.world.xz;let d=length(p);let coord=p*2.5;let f=abs(fract(coord)-.5);let line=1.-smoothstep(.478,.495,max(f.x,f.y));let fade=exp(-d*.36);let sh1=exp(-pow((p.x+1.28)*1.6,2.)-pow(p.y*2.5,2.));let sh2=exp(-pow((p.x-1.29)*1.6,2.)-pow(p.y*2.5,2.));let sh3=exp(-pow(p.x*.5,2.)-pow(p.y*2.7,2.));let shadow=max(sh1,sh2)*.24+sh3*.11;let base=vec3<f32>(.115,.146,.177);let col=base+vec3<f32>(.035,.065,.075)*line*fade-vec3<f32>(shadow);return vec4<f32>(col,clamp(.22*fade+shadow*.7,0.,.48));}
-`;
-function persp(fov,aspect,near,far){let o=new Float32Array(16),f=1/Math.tan(fov/2);o[0]=f/aspect;o[5]=f;o[10]=far/(near-far);o[11]=-1;o[14]=far*near/(near-far);return o}
-function look(eye,target,up=[0,1,0]){let z=norm(sub(eye,target)),x=norm(cross(up,z)),y=cross(z,x),o=new Float32Array(16);o[0]=x[0];o[1]=y[0];o[2]=z[0];o[4]=x[1];o[5]=y[1];o[6]=z[1];o[8]=x[2];o[9]=y[2];o[10]=z[2];o[12]=-dot(x,eye);o[13]=-dot(y,eye);o[14]=-dot(z,eye);o[15]=1;return o}
-function multiply(a,b){let o=new Float32Array(16);for(let col=0;col<4;col++)for(let row=0;row<4;row++){let v=0;for(let k=0;k<4;k++)v+=a[k*4+row]*b[col*4+k];o[col*4+row]=v}return o}
-let device,context,format,pipeline,floorPipeline,uniform,bindGroup,depthTexture,depthView;
-let orbit={az:.10,el:.14,radius:5.6},target={...orbit},spinning=false,groups=[];
-const visible={frame:true,wheels:true,drive:true,cockpit:true,detail:true};
-const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-async function init(){if(!navigator.gpu){showError('目前瀏覽器沒有提供 WebGPU。請使用最新版 Chrome / Edge，並透過 HTTPS 或 localhost 開啟本頁；此專案不使用 WebGL。');return;}
-let adapter=await navigator.gpu.requestAdapter({powerPreference:'high-performance'});if(!adapter){showError('未找到可用的 WebGPU GPU 裝置。請確認瀏覽器與顯示卡支援 WebGPU。');return;}
-device=await adapter.requestDevice();device.lost.then(info=>showError('WebGPU 裝置已中斷：'+info.message));context=canvas.getContext('webgpu');if(!context){showError('無法建立 WebGPU 畫布。');return;}
-format=navigator.gpu.getPreferredCanvasFormat();context.configure({device,format,alphaMode:'opaque'});
-const shaderMod=device.createShaderModule({code:shader}),floorMod=device.createShaderModule({code:floorShader});
-const bgl=device.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}}]});
-const layout=device.createPipelineLayout({bindGroupLayouts:[bgl]});
-pipeline=device.createRenderPipeline({layout,vertex:{module:shaderMod,entryPoint:'vs',buffers:[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'},{shaderLocation:1,offset:12,format:'float32x3'},{shaderLocation:2,offset:24,format:'float32x4'}]}]},fragment:{module:shaderMod,entryPoint:'fs',targets:[{format}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:true,depthCompare:'less'},multisample:{count:1}});
-floorPipeline=device.createRenderPipeline({layout,vertex:{module:floorMod,entryPoint:'vs',buffers:[{arrayStride:12,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}]},fragment:{module:floorMod,entryPoint:'fs',targets:[{format,blend:{color:{srcFactor:'src-alpha',dstFactor:'one-minus-src-alpha',operation:'add'},alpha:{srcFactor:'one',dstFactor:'one-minus-src-alpha',operation:'add'}}}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:false,depthCompare:'less'}});
-uniform=device.createBuffer({size:112,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});bindGroup=device.createBindGroup({layout:bgl,entries:[{binding:0,resource:{buffer:uniform}}]});
-for(let [name,raw] of Object.entries(sets)){let data=new Float32Array(raw);let buf=device.createBuffer({size:Math.max(4,data.byteLength),usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST});if(data.byteLength)device.queue.writeBuffer(buf,0,data);groups.push({name,buf,count:data.length/10});sets[name]=null}
-const floorVerts=new Float32Array([-12,-.065,-12,12,-.065,-12,12,-.065,12,-12,-.065,-12,12,-.065,12,-12,-.065,12]);const floorBuf=device.createBuffer({size:floorVerts.byteLength,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST});device.queue.writeBuffer(floorBuf,0,floorVerts);window.__bikeVertexCount=groups.reduce((s,g)=>s+g.count,0);
-function resize(){let scale=Math.min(device.limits.maxTextureDimension2D,Math.max(1,Math.floor(window.devicePixelRatio||1)*1));let w=Math.min(device.limits.maxTextureDimension2D,Math.max(1,Math.round(canvas.clientWidth*scale))),h=Math.min(device.limits.maxTextureDimension2D,Math.max(1,Math.round(canvas.clientHeight*scale)));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;depthTexture?.destroy();depthTexture=device.createTexture({size:[w,h],format:'depth24plus',usage:GPUTextureUsage.RENDER_ATTACHMENT});depthView=depthTexture.createView()}}
-let then=performance.now();function render(now){if(!device)return;const dt=Math.min(.05,(now-then)/1000);then=now;if(spinning)target.az+=dt*.30;
-let err=0;for(let key of ['az','el','radius']){let d=target[key]-orbit[key];orbit[key]+=d*(1-Math.exp(-dt*10));err+=Math.abs(d)}
-resize();let aspect=canvas.width/canvas.height;let radius=orbit.radius*(aspect<.78?1.58:aspect<1?1.27:1);let center=[.02,1.18,0];let ey=[center[0]+radius*Math.sin(orbit.az)*Math.cos(orbit.el),center[1]+radius*Math.sin(orbit.el),center[2]+radius*Math.cos(orbit.az)*Math.cos(orbit.el)];const vp=multiply(persp(.72,aspect,.06,110),look(ey,center));const packed=new Float32Array(28);packed.set(vp,0);packed.set([...ey,1],16);packed.set([-.45,.84,.50,1],20);packed.set([0,0,0,0],24);device.queue.writeBuffer(uniform,0,packed);
-const encoder=device.createCommandEncoder();const pass=encoder.beginRenderPass({colorAttachments:[{view:context.getCurrentTexture().createView(),loadOp:'clear',storeOp:'store',clearValue:{r:.09,g:.123,b:.153,a:1}}],depthStencilAttachment:{view:depthView,depthClearValue:1,depthLoadOp:'clear',depthStoreOp:'store'}});
-pass.setBindGroup(0,bindGroup);pass.setPipeline(floorPipeline);pass.setVertexBuffer(0,floorBuf);pass.draw(6);
-pass.setPipeline(pipeline);for(let g of groups)if(visible[g.name]){pass.setVertexBuffer(0,g.buf);pass.draw(g.count)}pass.end();device.queue.submit([encoder.finish()]);requestAnimationFrame(render)}
-document.getElementById('loading').style.opacity='0';setTimeout(()=>document.getElementById('loading')?.remove(),750);requestAnimationFrame(render)}
-let pointers=new Map(),lastPinch=0,gestureMoved=false;
-canvas.addEventListener('pointerdown',ev=>{canvas.setPointerCapture(ev.pointerId);pointers.set(ev.pointerId,[ev.clientX,ev.clientY]);lastPinch=0;gestureMoved=false;if(spinning){spinning=false;document.getElementById('spin').classList.remove('active')}});
-canvas.addEventListener('pointermove',ev=>{if(!pointers.has(ev.pointerId))return;let prev=pointers.get(ev.pointerId),dx=ev.clientX-prev[0],dy=ev.clientY-prev[1];pointers.set(ev.pointerId,[ev.clientX,ev.clientY]);if(Math.abs(dx)+Math.abs(dy)>0)gestureMoved=true;if(pointers.size===1){target.az-=dx*.008;target.el=clamp(target.el+dy*.008,-1.36,1.46)}else if(pointers.size>=2){let arr=[...pointers.values()],dist=Math.hypot(arr[0][0]-arr[1][0],arr[0][1]-arr[1][1]);if(lastPinch)target.radius=clamp(target.radius*(lastPinch/dist),3.2,12.5);lastPinch=dist}}, {passive:true});
-function release(ev){pointers.delete(ev.pointerId);lastPinch=0}canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);
-canvas.addEventListener('wheel',ev=>{ev.preventDefault();target.radius=clamp(target.radius*Math.exp(ev.deltaY*.0009),3.0,13)}, {passive:false});
-const viewAngles={side:[0,.08,5.6],angle:[.76,.28,5.5],front:[Math.PI/2,.11,5.7],top:[.24,1.32,6.7]};
-function setView(which){let view=viewAngles[which];if(!view)return;target.az=view[0];target.el=view[1];target.radius=view[2];document.querySelectorAll('.preset').forEach(b=>b.classList.toggle('active',b.dataset.view===which))}
-document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
-document.getElementById('reset').addEventListener('click',()=>{spinning=false;document.getElementById('spin').classList.remove('active');setView('side')});
-document.getElementById('spin').addEventListener('click',ev=>{spinning=!spinning;ev.currentTarget.classList.toggle('active',spinning)});
-document.getElementById('zoomIn').addEventListener('click',()=>target.radius=clamp(target.radius*.83,3,13));
-document.getElementById('zoomOut').addEventListener('click',()=>target.radius=clamp(target.radius*1.2,3,13));
-document.querySelectorAll('[data-layer]').forEach(el=>el.addEventListener('change',ev=>visible[ev.target.dataset.layer]=ev.target.checked));
-init().catch(e=>{console.error('WebGPU error',e);showError('啟動 WebGPU 時發生錯誤：'+e.message+'。請檢查 GPU 與瀏覽器設定。')});
-</script>
+<script type="module" src="./engine.js"></script>
 </body></html>
