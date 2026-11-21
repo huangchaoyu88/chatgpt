@@ -177,7 +177,7 @@ fn visibility(pos:vec3<f32>, bias:f32)->f32 {
  for(var y=-radius;y<=radius;y=y+1) {
    for(var x=-radius;x<=radius;x=x+1) {
      if (U.params.z<1.5 && (x==1 || y==1)) {continue;}
-     total+=textureSampleCompare(shadowDepth,shadowSampler,uv+vec2<f32>(f32(x),f32(y))*inv,clip.z-bias);
+     total+=textureSampleCompareLevel(shadowDepth,shadowSampler,uv+vec2<f32>(f32(x),f32(y))*inv,clip.z-bias);
      count+=1.0;
    }
  }
@@ -242,11 +242,11 @@ const scenePresets=[
 const tiers={low:{dpr:0.85,cap:0.80e6,msaa:1,shadow:512,min:0.55,target:48},medium:{dpr:1.25,cap:1.55e6,msaa:4,shadow:1024,min:0.65,target:52},high:{dpr:1.85,cap:2.80e6,msaa:4,shadow:2048,min:0.68,target:55}};
 let quality=matchMedia('(max-width:650px)').matches?'medium':'high',studio=0,autoScale=true,dynamicScale=1;
 let device=null,adapter=null,context=null,format=null,generation=0,running=false;
-let mainPipe=null,floorPipe=null,shadowPipe=null,bgl=null,globalBuffer=null,globalBind=null;
+let mainPipe=null,floorPipe=null,shadowPipe=null,bgl=null,shadowBGL=null,shadowBind=null,globalBuffer=null,globalBind=null;
 let shadowTex=null,shadowView=null,shadowSampler=null,depthTex=null,depthView=null,msaaTex=null,msaaView=null;
 let groups=[],floorBuffer=null,outputWidth=0,outputHeight=0,renderSamples=0,shadowSize=0;
 let orbit={az:.10,el:.14,radius:5.6,focus:[.02,1.18,0]},target={az:.10,el:.14,radius:5.6,focus:[.02,1.18,0]},spinning=false;
-let fps=0,fpsAvg=60,frames=0,frameStart=0,frameLast=0,lastScaleUpdate=0,losses=0,restartTimer=null;
+let fps=0,fpsAvg=60,frames=0,frameStart=0,frameLast=0,lastScaleUpdate=0,losses=0,restartTimer=null,firstFrameValidated=false;
 const visible={frame:true,wheels:true,drive:true,cockpit:true,detail:true};
 const $=id=>document.getElementById(id);
 const perf=$('perf'),status=$('status'),toast=$('tourDescription');
@@ -275,17 +275,21 @@ function createShadow(){const dimension=tiers[quality].shadow;
 }
 function createPipelines(){const module=device.createShaderModule({label:'Road Studio WGSL 2',code:shader});
  const layout=device.createPipelineLayout({bindGroupLayouts:[bgl]});
+ const shadowLayout=device.createPipelineLayout({bindGroupLayouts:[shadowBGL]});
  const bikeBuffers=[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'},{shaderLocation:1,offset:12,format:'float32x3'},{shaderLocation:2,offset:24,format:'float32x4'}]}];
  const floorBuffers=[{arrayStride:12,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}];
  const samples=tiers[quality].msaa;
  const depth={format:'depth24plus',depthWriteEnabled:true,depthCompare:'less'};
  mainPipe=device.createRenderPipeline({label:'PBR bicycle + PCF shadows',layout,vertex:{module,entryPoint:'bikeVS',buffers:bikeBuffers},fragment:{module,entryPoint:'bikeFS',targets:[{format}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:depth,multisample:{count:samples}});
  floorPipe=device.createRenderPipeline({label:'Shadow-receiving studio floor',layout,vertex:{module,entryPoint:'floorVS',buffers:floorBuffers},fragment:{module,entryPoint:'floorFS',targets:[{format,blend:{color:{srcFactor:'src-alpha',dstFactor:'one-minus-src-alpha',operation:'add'},alpha:{srcFactor:'one',dstFactor:'one-minus-src-alpha',operation:'add'}}}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:false,depthCompare:'less'},multisample:{count:samples}});
- shadowPipe=device.createRenderPipeline({label:'True bicycle depth shadow map',layout,vertex:{module,entryPoint:'shadowVS',buffers:[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:true,depthCompare:'less',depthBias:2,depthBiasSlopeScale:1.6}});
+ shadowPipe=device.createRenderPipeline({label:'True bicycle depth shadow map',layout:shadowLayout,vertex:{module,entryPoint:'shadowVS',buffers:[{arrayStride:40,attributes:[{shaderLocation:0,offset:0,format:'float32x3'}]}]},primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth24plus',depthWriteEnabled:true,depthCompare:'less',depthBias:2,depthBiasSlopeScale:1.6}});
+ return module;
 }
 function setQuality(next){if(!tiers[next]||quality===next)return;quality=next;dynamicScale=1;
  document.querySelectorAll('[data-quality]').forEach(b=>b.classList.toggle('active',b.dataset.quality===quality));
- if(device){createPipelines();createShadow();resize();}updatePerf();}
+ if(device){device.pushErrorScope('validation');const shaderProgram=createPipelines();createShadow();resize();shaderProgram.getCompilationInfo().then(info=>{
+  const errors=info.messages.filter(m=>m.type==='error');if(errors.length){running=false;showError('畫質切換 WGSL 錯誤：'+errors[0].message);}
+ });device.popErrorScope().then(e=>{if(e){running=false;showError('畫質切換 GPU 錯誤：'+e.message);}});firstFrameValidated=false;}updatePerf();}
 function setScene(index){studio=clamp(Number(index)||0,0,2);document.querySelectorAll('[data-studio]').forEach(b=>b.classList.toggle('active',Number(b.dataset.studio)===studio));updatePerf();}
 function maybeAdjustScale(now){if(!autoScale||!fps||now-lastScaleUpdate<1800)return;lastScaleUpdate=now;
  const tier=tiers[quality],previous=dynamicScale;
@@ -307,18 +311,26 @@ async function startGPU(){if(!navigator.gpu){showError('瀏覽器不支援 WebGP
  const newDevice=await adapter.requestDevice();if(myGen!==generation){newDevice.destroy();return;}
  device=newDevice;
  device.lost.then(info=>gpuLost(info,myGen));
- device.addEventListener?.('uncapturederror',e=>console.warn('WebGPU validation:',e.error?.message||e));
+ device.addEventListener?.('uncapturederror',e=>{const reason=e.error?.message||String(e);console.error('WebGPU validation:',reason);if(myGen===generation&&running){running=false;setStatus('GPU 渲染錯誤');showError('GPU 渲染發生驗證錯誤：'+reason+'。可按下重新啟動，或改用低畫質。');}});
  context=canvas.getContext('webgpu');if(!context)throw new Error('Canvas 無法建立 WebGPU Context');
  format=navigator.gpu.getPreferredCanvasFormat();context.configure({device,format,alphaMode:'opaque'});
- groups=[];disposeTargets();outputWidth=0;outputHeight=0;
+ groups=[];disposeTargets();outputWidth=0;outputHeight=0;firstFrameValidated=false;
  bgl=device.createBindGroupLayout({entries:[
   {binding:0,visibility:GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}},
   {binding:1,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth'}},
   {binding:2,visibility:GPUShaderStage.FRAGMENT,sampler:{type:'comparison'}}
  ]});
+ shadowBGL=device.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.VERTEX,buffer:{type:'uniform'}}]});
  globalBuffer=device.createBuffer({size:208,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});
+ shadowBind=device.createBindGroup({layout:shadowBGL,entries:[{binding:0,resource:{buffer:globalBuffer}}]});
  shadowSampler=device.createSampler({compare:'less-equal',magFilter:'linear',minFilter:'linear',addressModeU:'clamp-to-edge',addressModeV:'clamp-to-edge'});
- createPipelines();createShadow();
+ device.pushErrorScope('validation');
+ const program=createPipelines();createShadow();
+ const comp=await program.getCompilationInfo();
+ const fatal=comp.messages.filter(x=>x.type==='error');
+ if(fatal.length){await device.popErrorScope();throw new Error('WGSL 編譯錯誤：'+fatal.map(x=>`第${x.lineNum}行 ${x.message}`).join('; ').slice(0,500));}
+ const pipelineError=await device.popErrorScope();
+ if(pipelineError)throw new Error('GPU 管線驗證失敗：'+pipelineError.message);
  for(const [name,vertices] of Object.entries(sets)){
   const raw=new Float32Array(vertices),buffer=device.createBuffer({size:Math.max(4,raw.byteLength),usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST});
   if(raw.byteLength)device.queue.writeBuffer(buffer,0,raw);groups.push({name,buffer,count:raw.length/10});
@@ -350,7 +362,7 @@ function render(now,myGen){if(!running||!device||myGen!==generation)return;
  data.set([...scene.accent,1],48);device.queue.writeBuffer(globalBuffer,0,data);
  const encoder=device.createCommandEncoder({label:'Bike+Studio frame'});
  const shadowPass=encoder.beginRenderPass({label:'Real shadow depth pass',colorAttachments:[],depthStencilAttachment:{view:shadowView,depthLoadOp:'clear',depthClearValue:1,depthStoreOp:'store'}});
- shadowPass.setPipeline(shadowPipe);shadowPass.setBindGroup(0,globalBind);
+ shadowPass.setPipeline(shadowPipe);shadowPass.setBindGroup(0,shadowBind);
  for(const g of groups)if(visible[g.name]){shadowPass.setVertexBuffer(0,g.buffer);shadowPass.draw(g.count);}
  shadowPass.end();
  const screenView=context.getCurrentTexture().createView();
@@ -360,7 +372,10 @@ function render(now,myGen){if(!running||!device||myGen!==generation)return;
  const pass=encoder.beginRenderPass({label:'PBR + MSAA studio pass',colorAttachments:[colorAttachment],depthStencilAttachment:{view:depthView,depthLoadOp:'clear',depthClearValue:1,depthStoreOp:'store'}});
  pass.setBindGroup(0,globalBind);pass.setPipeline(floorPipe);pass.setVertexBuffer(0,floorBuffer);pass.draw(6);
  pass.setPipeline(mainPipe);for(const g of groups)if(visible[g.name]){pass.setVertexBuffer(0,g.buffer);pass.draw(g.count);}pass.end();
+ // Validate the first actual draw submission, not only pipeline creation.
+ if(!firstFrameValidated)device.pushErrorScope('validation');
  device.queue.submit([encoder.finish()]);
+ if(!firstFrameValidated){firstFrameValidated=true;device.popErrorScope().then(err=>{if(err&&myGen===generation){running=false;setStatus('GPU 畫面錯誤');showError('無法繪製 3D 模型：'+err.message+'。請按下重新啟動。');}}).catch(console.error);}
  frames++;if(now-frameStart>=900){fps=frames*1000/(now-frameStart);fpsAvg=fpsAvg*0.35+fps*0.65;frames=0;frameStart=now;maybeAdjustScale(now);updatePerf();}
  requestAnimationFrame(time=>render(time,myGen));
 }
