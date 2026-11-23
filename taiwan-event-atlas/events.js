@@ -150,5 +150,65 @@ window.ATLAS_EVENTS = [
         "url": "https://www.sunmoonlake.gov.tw/attractions/Attractions?a=20&id=54"
       }
     ]
+  },
+  {
+    "id": "anping-sword-lion",
+    "title": "安平劍獅・鎮宅辟邪傳說",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安平區・安平老街",
+    "lat": 23,
+    "lng": 120.163,
+    "precision": "安平歷史街區概略示意；非私人宅門",
+    "summary": "劍獅門飾與鎮宅辟邪民俗",
+    "body": "臺南安平老街常見獅首銜劍的劍獅裝飾，民間相信能鎮宅、避邪與祈福。其起源有不同說法：一說源自閩南原鄉信仰，另一說與明清軍人把劍及獅面盾牌掛在門前有關，久而久之形成門楣圖像。劍的方向亦被賦予祈福或制煞寓意。如今劍獅已成安平文化象徵，但老屋改建也使部分實物逐漸消失。這些驅邪效果屬民俗信念，並非客觀證實的超自然作用。",
+    "sources": [
+      {
+        "name": "國家文化記憶庫",
+        "url": "https://tcmb.culture.tw/zh-tw/detail?id=268102&indexCode=Culture_Object"
+      }
+    ]
+  },
+  {
+    "id": "penghu-yuanxiao-qigui",
+    "title": "澎湖上元乞龜・向神明求平安",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "澎湖縣",
+    "place": "馬公市・南甲海靈殿周邊",
+    "lat": 23.5634,
+    "lng": 119.5659,
+    "precision": "公開宮廟周邊示意；習俗遍及澎湖",
+    "summary": "元宵乞求龜形供品象徵平安與還願",
+    "body": "澎湖農曆正月十五的上元乞龜，是跨越多個鄉鎮的宮廟民俗。信眾向神明稟告心願，擲筊求得麵龜、米龜等龜形供品，常約定隔年增重奉還，寓意平安、富足與互信。地方志已記錄早年的元宵祈杯與麵龜習俗，後來供品種類日益多元，並結合過平安橋、猜燈謎等活動。這項傳統已獲地方無形文化資產登錄；求得庇佑是信仰意涵，並非超自然效力的科學證明。",
+    "sources": [
+      {
+        "name": "國家文化記憶庫",
+        "url": "https://tcmb.culture.tw/zh-tw/detail?id=20250716000001&indexCode=BOCH_CountryCulture_51"
+      }
+    ]
+  },
+  {
+    "id": "miaoli-banglong",
+    "title": "苗栗𪹚龍・祥龍點睛與化龍返天",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "苗栗縣",
+    "place": "苗栗市・玉清宮周邊",
+    "lat": 24.5648,
+    "lng": 120.8266,
+    "precision": "玉清宮公開場域概略示意",
+    "summary": "客家𪹚龍以點睛、炸龍與化龍返天祈福",
+    "body": "苗栗客庄元宵𪹚龍源自舞龍傳統，形成獨特的爆竹炸龍祭儀。民俗觀念將龍視為介於人與神之間的祥瑞象徵，從糊龍、點睛、迎龍、跈龍到𪹚龍，寄託除煞、祈福與豐收願望。活動結束後，以焚化龍身象徵神龍返回天界，稱為化龍返天。玉清宮周邊是重要活動場域，如今也成為地方文化節慶。神龍返天屬儀式象徵及民間信仰，沒有客觀證據證明超自然事件發生。",
+    "sources": [
+      {
+        "name": "內政部宗教百景",
+        "url": "https://taiwangods.moi.gov.tw/religious_culture/html/landscape/1_0011.aspx?i=35"
+      }
+    ]
   }
 ];
