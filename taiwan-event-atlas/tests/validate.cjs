@@ -32,3 +32,5 @@ for(const id of ["healthy-kindergarten-bus-1992","changhua-qiaoyou-fire-2021","w
 
 // This run: verify new source-backed event narratives and prevent duplicate IDs.
 for(const id of ["meiling-tourbus-2006","smangus-bus-2012","aloha-okayama-2017"]){const e=records.find(x=>x.id===id);assert(e,"Missing new entry "+id);assert([...e.body].length>=140&&[...e.body].length<=160,id+" narrative must be 140–160 chars");assert(e.sources.length>=2,id+" requires corroborating sources");}
+
+for(const id of ["eastern-science-park-fire-2001","nanya-chiayi-fire-2010","longde-shipyard-2021"]){const e=records.find(x=>x.id===id);assert(e,id+" missing");assert([...e.body].length>=140&&[...e.body].length<=160,id+" narrative");assert(e.sources.length>=2,id+" sources");}
