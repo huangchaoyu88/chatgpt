@@ -41,6 +41,11 @@ jobs:
         run: node --check giant-webgpu-3d/engine.js
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Add Taiwan Event Atlas
+        run: |
+          node --test taiwan-event-atlas/tests/validate.cjs
+          mkdir -p _site/taiwan-event-atlas
+          cp taiwan-event-atlas/index.html taiwan-event-atlas/style.css taiwan-event-atlas/app.js taiwan-event-atlas/events.js _site/taiwan-event-atlas/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
