@@ -870,5 +870,145 @@ window.ATLAS_EVENTS = [
         "url": "https://www.gep.ntpc.gov.tw/xmdoc/cont?sid=0K297506389378174143&xsmsid=0K259558079306285510"
       }
     ]
+  },
+  {
+    "id": "danshui-seven",
+    "title": "淡水鵬山七善公・石將軍託夢",
+    "category": "paranormal",
+    "date": null,
+    "year": null,
+    "city": "新北市",
+    "place": "淡水區・竹圍福德里",
+    "lat": 25.139,
+    "lng": 121.458,
+    "precision": "地方文化區域示意；非精確事件地點",
+    "summary": "口述稱石頭公託夢顯現外國海軍軍服形象",
+    "body": "口述稱石頭公託夢顯現外國海軍軍服形象。這是地方口傳與民俗信仰的內容，相關文字可在政府文化、教育或宗教資料中找到。故事反映居民面對自然、疾病與生活不確定性時的想像，也讓地方景物具有共同記憶。各種顯靈或神奇情節並非科學證實的事件；不同講述版本可能有所出入。地圖只採公開景區或聚落的概略座標，不把傳說指向私人住所，也不宣稱精確發生時間。",
+    "sources": [
+      {
+        "name": "地方政府文化史料與田野調查",
+        "url": "https://www.tshs.ntpc.gov.tw/files/file_pool/1/0L011532310825901679/%282%29%E6%B7%A1%E6%B0%B4%E8%80%81%E6%95%85%E4%BA%8B%E8%92%90%E9%9B%86%E6%A1%88%E6%88%90%E6%9E%9C%E5%A0%B1%E5%91%8A%E6%9B%B8.pdf"
+      }
+    ]
+  },
+  {
+    "id": "dali-stone",
+    "title": "大里東湖石頭公・護童傳說",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺中市",
+    "place": "大里區・東湖里",
+    "lat": 24.086,
+    "lng": 120.697,
+    "precision": "地方文化區域示意；非精確事件地點",
+    "summary": "地方奉特殊岩石為神，祈求孩童健康",
+    "body": "地方奉特殊岩石為神，祈求孩童健康。這是地方口傳與民俗信仰的內容，相關文字可在政府文化、教育或宗教資料中找到。故事反映居民面對自然、疾病與生活不確定性時的想像，也讓地方景物具有共同記憶。各種顯靈或神奇情節並非科學證實的事件；不同講述版本可能有所出入。地圖只採公開景區或聚落的概略座標，不把傳說指向私人住所，也不宣稱精確發生時間。",
+    "sources": [
+      {
+        "name": "地方政府文化史料與田野調查",
+        "url": "https://www.dali.taichung.gov.tw/media/324384/3369113371.pdf"
+      }
+    ]
+  },
+  {
+    "id": "guanxi-shiye",
+    "title": "關西金山石爺・救命伯公",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "新竹縣",
+    "place": "關西鎮・金山里",
+    "lat": 24.796,
+    "lng": 121.204,
+    "precision": "地方文化區域示意；非精確事件地點",
+    "summary": "地方口述稱居民躲於大石後獲救，因而奉石為伯公",
+    "body": "地方口述稱居民躲於大石後獲救，因而奉石為伯公。這是地方口傳與民俗信仰的內容，相關文字可在政府文化、教育或宗教資料中找到。故事反映居民面對自然、疾病與生活不確定性時的想像，也讓地方景物具有共同記憶。各種顯靈或神奇情節並非科學證實的事件；不同講述版本可能有所出入。地圖只採公開景區或聚落的概略座標，不把傳說指向私人住所，也不宣稱精確發生時間。",
+    "sources": [
+      {
+        "name": "地方政府文化史料與田野調查",
+        "url": "https://file.moc.gov.tw/Download.ashx?n=MDM1X%2Bahg%2BWckuOAgeaWsOerueWcsOWNgOeahOWOn%2BWuouaXj%2Be%2BpOS6kuWLleiIh%2BS8r%2BWFrOS%2FoeS7sOWCs%2BiqqiDiipnmooHlu7fmr5MucGRm&u=LzAwMS9VcGxvYWQvNTI4L3JlbGZpbGUvMTQ3MDkvMjA1Mzg1L2EwZmMwYjNlLTliZTItNDQ0OC04NzlkLWVlOTg5ODg1YmZkNy5wZGY%3D"
+      }
+    ]
+  },
+  {
+    "id": "anping-stone-generals",
+    "title": "安平石將軍夫婦・託夢建廟",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安平區・開臺天后宮",
+    "lat": 23.001,
+    "lng": 120.161,
+    "precision": "地方文化區域示意；非精確事件地點",
+    "summary": "石將軍夫婦託夢表達建廟願望的故事流傳於安平",
+    "body": "石將軍夫婦託夢表達建廟願望的故事流傳於安平。這是地方口傳與民俗信仰的內容，相關文字可在政府文化、教育或宗教資料中找到。故事反映居民面對自然、疾病與生活不確定性時的想像，也讓地方景物具有共同記憶。各種顯靈或神奇情節並非科學證實的事件；不同講述版本可能有所出入。地圖只採公開景區或聚落的概略座標，不把傳說指向私人住所，也不宣稱精確發生時間。",
+    "sources": [
+      {
+        "name": "地方政府文化史料與田野調查",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=149&inter=publication&page=7"
+      }
+    ]
+  },
+  {
+    "id": "anping-marriage",
+    "title": "安平海頭社與囝仔宮社・禁婚傳說",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安平區・安平舊聚落",
+    "lat": 23.001,
+    "lng": 120.163,
+    "precision": "地方文化區域示意；非精確事件地點",
+    "summary": "地方耆老講述兩角頭曾有不能通婚的習俗與由來",
+    "body": "地方耆老講述兩角頭曾有不能通婚的習俗與由來。這是地方口傳與民俗信仰的內容，相關文字可在政府文化、教育或宗教資料中找到。故事反映居民面對自然、疾病與生活不確定性時的想像，也讓地方景物具有共同記憶。各種顯靈或神奇情節並非科學證實的事件；不同講述版本可能有所出入。地圖只採公開景區或聚落的概略座標，不把傳說指向私人住所，也不宣稱精確發生時間。",
+    "sources": [
+      {
+        "name": "地方政府文化史料與田野調查",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=149&inter=publication&page=7"
+      }
+    ]
+  },
+  {
+    "id": "anping-yifu",
+    "title": "安平伊府千歲・降駕傳說",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安平區・海頭社",
+    "lat": 23.002,
+    "lng": 120.164,
+    "precision": "地方文化區域示意；非精確事件地點",
+    "summary": "信徒口述陌生伊府千歲降駕並指引返鄉服務",
+    "body": "信徒口述陌生伊府千歲降駕並指引返鄉服務。這是地方口傳與民俗信仰的內容，相關文字可在政府文化、教育或宗教資料中找到。故事反映居民面對自然、疾病與生活不確定性時的想像，也讓地方景物具有共同記憶。各種顯靈或神奇情節並非科學證實的事件；不同講述版本可能有所出入。地圖只採公開景區或聚落的概略座標，不把傳說指向私人住所，也不宣稱精確發生時間。",
+    "sources": [
+      {
+        "name": "地方政府文化史料與田野調查",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=149&inter=publication&page=7"
+      }
+    ]
+  },
+  {
+    "id": "anping-ghost-alley",
+    "title": "安平幽暗巷弄・鬧鬼口傳",
+    "category": "paranormal",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安平區・安平舊聚落",
+    "lat": 23.001,
+    "lng": 120.163,
+    "precision": "地方文化區域示意；非精確事件地點",
+    "summary": "耆老記述舊聚落夜間風聲與幽暗巷弄的鬧鬼故事",
+    "body": "耆老記述舊聚落夜間風聲與幽暗巷弄的鬧鬼故事。這是地方口傳與民俗信仰的內容，相關文字可在政府文化、教育或宗教資料中找到。故事反映居民面對自然、疾病與生活不確定性時的想像，也讓地方景物具有共同記憶。各種顯靈或神奇情節並非科學證實的事件；不同講述版本可能有所出入。地圖只採公開景區或聚落的概略座標，不把傳說指向私人住所，也不宣稱精確發生時間。",
+    "sources": [
+      {
+        "name": "地方政府文化史料與田野調查",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=149&inter=publication&page=7"
+      }
+    ]
   }
 ];
