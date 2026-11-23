@@ -172,7 +172,7 @@ window.ATLAS_EVENTS = [
     "title": "紅衣小女孩・大坑傳聞",
     "category": "legend",
     "date": null,
-    "year": 1998,
+    "year": null,
     "city": "臺中市",
     "place": "北屯區・大坑風景區",
     "lat": 24.182,

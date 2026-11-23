@@ -7,6 +7,7 @@ on:
     paths:
       - "games/shape-counting-adventure/**"
       - "giant-webgpu-3d/**"
+      - "taiwan-event-atlas/**"
       - ".github/workflows/publish-shape-counting-adventure.yml"
 
 permissions:
