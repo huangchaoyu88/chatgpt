@@ -27,3 +27,5 @@ const appendedIds = ["ci611-penghu-2002","alishan-train-2011","n3-landslide-2010
 for(const id of appendedIds){const r=records.find(x=>x.id===id);assert(r,"Missing appended entry "+id);assert([...r.body].length>=140&&[...r.body].length<=160,id+" not 140-160 characters");assert(r.sources.length>0,id+" missing sources");}
 
 for(const e of records){assert([...e.body].length>=140&&[...e.body].length<=174,e.id+' narrative length must be 140–174 chars');}
+
+for(const id of ["healthy-kindergarten-bus-1992","changhua-qiaoyou-fire-2021","weierkang-fire-1995"]){const e=records.find(x=>x.id===id);assert(e,id+" exists");assert([...e.body].length>=140&&[...e.body].length<=160,id+" narrative length");assert(e.sources.length>=2,id+" sources");}
