@@ -570,5 +570,165 @@ window.ATLAS_EVENTS = [
         "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
       }
     ]
+  },
+  {
+    "id": "tale-zhougong-taohuanu",
+    "title": "周公鬥桃花女・法術鬥智",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "周公與桃花女相互鬥法的傳說題材，反映民間對術數、命運與機智的想像。",
+    "body": "周公與桃花女相互鬥法的傳說題材，反映民間對術數、命運與機智的想像。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
+  },
+  {
+    "id": "tale-snake-groom",
+    "title": "蛇仔郎君・異類婚姻故事",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "蛇化為郎君的婚姻故事，將人與異類的界線、婚配承諾及家庭考驗寫進民間敘事。",
+    "body": "蛇化為郎君的婚姻故事，將人與異類的界線、婚配承諾及家庭考驗寫進民間敘事。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
+  },
+  {
+    "id": "tale-toad-child",
+    "title": "蟾蜍子・異形孩童傳說",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "以蟾蜍與孩童形象交織的奇異故事，屬於民間文學常見的變形與身世題材。",
+    "body": "以蟾蜍與孩童形象交織的奇異故事，屬於民間文學常見的變形與身世題材。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
+  },
+  {
+    "id": "tale-white-lie-seven",
+    "title": "白賊七仔・機智與謊言",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "以擅長說謊的白賊七為主角，透過誇張機智與欺瞞橋段諷刺人情世故。",
+    "body": "以擅長說謊的白賊七為主角，透過誇張機智與欺瞞橋段諷刺人情世故。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
+  },
+  {
+    "id": "tale-three-monks",
+    "title": "三个和尚・民間寓言",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "三個和尚的寓言以人物互動呈現合作、分工與推諉的張力，具有勸世意味。",
+    "body": "三個和尚的寓言以人物互動呈現合作、分工與推諉的張力，具有勸世意味。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
+  },
+  {
+    "id": "tale-tiger-aunt",
+    "title": "虎姑婆仔・變身虎妖",
+    "category": "paranormal",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "虎妖假扮親戚騙取孩童信任，孩子靠警覺與機智脫身，常被用來提醒勿隨意開門。",
+    "body": "虎妖假扮親戚騙取孩童信任，孩子靠警覺與機智脫身，常被用來提醒勿隨意開門。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
+  },
+  {
+    "id": "tale-water-frog-spirit",
+    "title": "水雞精・水邊精怪",
+    "category": "paranormal",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "以水雞精為題的精怪故事，反映民間將不熟悉的水邊生物與奇異想像相連。",
+    "body": "以水雞精為題的精怪故事，反映民間將不熟悉的水邊生物與奇異想像相連。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
+  },
+  {
+    "id": "tale-foolish-son-inlaw",
+    "title": "戇子婿・愚婿笑話",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・民間故事採錄地區",
+    "lat": 23.048,
+    "lng": 120.19,
+    "precision": "安南區區域示意；非故事實際發生地",
+    "summary": "以反應遲鈍的女婿為主角，透過誤解與失禮的笑話表現生活中的人情觀察。",
+    "body": "以反應遲鈍的女婿為主角，透過誤解與失禮的笑話表現生活中的人情觀察。本條目對應臺南市政府文化局出版《臺南市故事集（一）》目錄，屬安南區採錄的口傳民間文學，並非已核實的超自然事件。出版資訊未提供故事發生的確切位置，地圖因此採用安南區示意點，不指向私人住宅。不同講述版本可能有情節差異，應將故事視為地方文化與民間想像，而非歷史實錄。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局《臺南市故事集（一）》目錄",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=103&inter=publication&page=3"
+      }
+    ]
   }
 ];
