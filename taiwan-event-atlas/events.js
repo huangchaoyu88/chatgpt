@@ -210,5 +210,205 @@ window.ATLAS_EVENTS = [
         "url": "https://taiwangods.moi.gov.tw/religious_culture/html/landscape/1_0011.aspx?i=35"
       }
     ]
+  },
+  {
+    "id": "taipei-longshan-guanyin",
+    "title": "艋舺龍山寺・觀音信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "萬華區・艋舺龍山寺",
+    "lat": 25.037,
+    "lng": 121.5,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "觀音慈悲與祈福，呈現臺北地方信仰與生活文化。",
+    "body": "艋舺龍山寺・觀音信仰位於臺北市萬華區・艋舺龍山寺一帶，是宗教地景的一部分。信眾透過參拜觀音菩薩，寄託觀音慈悲與祈福的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-qingshan-ling-an",
+    "title": "艋舺青山宮・靈安尊王信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "萬華區・艋舺青山宮",
+    "lat": 25.042,
+    "lng": 121.499,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "青山王守護地方，呈現臺北地方信仰與生活文化。",
+    "body": "艋舺青山宮・靈安尊王信仰位於臺北市萬華區・艋舺青山宮一帶，是宗教地景的一部分。信眾透過參拜靈安尊王，寄託青山王守護地方的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-qingshui-zushi",
+    "title": "艋舺清水巖・清水祖師信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "萬華區・艋舺清水巖",
+    "lat": 25.041,
+    "lng": 121.502,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "祖師信仰與街區記憶，呈現臺北地方信仰與生活文化。",
+    "body": "艋舺清水巖・清水祖師信仰是臺北重要宗教地景之一。信眾透過參拜清水祖師，寄託祖師信仰與街區記憶的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-xiahai-yuelao",
+    "title": "霞海城隍廟・月下老人姻緣信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "大同區・霞海城隍廟",
+    "lat": 25.056,
+    "lng": 121.51,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "姻緣祈願，呈現臺北地方信仰與生活文化。",
+    "body": "霞海城隍廟・月下老人姻緣信仰是臺北重要宗教地景之一。信眾透過參拜城隍與月下老人，寄託姻緣祈願的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-baoan-baosheng",
+    "title": "大龍峒保安宮・保生大帝信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "大同區・大龍峒保安宮",
+    "lat": 25.073,
+    "lng": 121.516,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "保生大帝護佑健康，呈現臺北地方信仰與生活文化。",
+    "body": "大龍峒保安宮・保生大帝信仰是臺北重要宗教地景之一。信眾透過參拜保生大帝，寄託保生大帝護佑健康的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-xingtian-guan",
+    "title": "行天宮・關聖帝君信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "中山區・行天宮",
+    "lat": 25.063,
+    "lng": 121.533,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "忠義與收驚民俗，呈現臺北地方信仰與生活文化。",
+    "body": "行天宮・關聖帝君信仰位於臺北市中山區・行天宮一帶，是宗教地景的一部分。信眾透過參拜關聖帝君，寄託忠義與收驚民俗的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-tianhou-mazu",
+    "title": "臺北天后宮・媽祖信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "萬華區・臺北天后宮",
+    "lat": 25.042,
+    "lng": 121.506,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "航海守護與祈安，呈現臺北地方信仰與生活文化。",
+    "body": "臺北天后宮・媽祖信仰位於臺北市萬華區・臺北天后宮一帶，是宗教地景的一部分。信眾透過參拜媽祖，寄託航海守護與祈安的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-dizang-an",
+    "title": "艋舺地藏庵・地藏王信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "萬華區・艋舺地藏庵",
+    "lat": 25.037,
+    "lng": 121.502,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "地藏王慈悲與超薦，呈現臺北地方信仰與生活文化。",
+    "body": "艋舺地藏庵・地藏王信仰是臺北重要宗教地景之一。信眾透過參拜地藏王菩薩，寄託地藏王慈悲與超薦的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-wenchang",
+    "title": "臺北文昌宮・文昌帝君信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "中山區・臺北文昌宮",
+    "lat": 25.056,
+    "lng": 121.524,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "學業與考試祈願，呈現臺北地方信仰與生活文化。",
+    "body": "臺北文昌宮・文昌帝君信仰位於臺北市中山區・臺北文昌宮一帶，是宗教地景的一部分。信眾透過參拜文昌帝君，寄託學業與考試祈願的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
+  },
+  {
+    "id": "taipei-jimei",
+    "title": "景美集應廟・保儀尊王信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "文山區・景美集應廟",
+    "lat": 24.992,
+    "lng": 121.542,
+    "precision": "公開宗教場所周邊概略標記",
+    "summary": "地方守護與祭祀，呈現臺北地方信仰與生活文化。",
+    "body": "景美集應廟・保儀尊王信仰位於臺北市文山區・景美集應廟一帶，是宗教地景的一部分。信眾透過參拜保儀尊王，寄託地方守護與祭祀的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "sources": [
+      {
+        "name": "臺北市政府觀光傳播局・宗教景點索引",
+        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+      }
+    ]
   }
 ];
