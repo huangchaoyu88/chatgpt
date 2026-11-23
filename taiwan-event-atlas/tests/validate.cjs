@@ -22,3 +22,6 @@ console.log("✓ "+records.length+" entries; "+new Set(records.map(x=>x.city)).s
 // Detailed event narrative rollout: each revised record must be approximately 150 characters.
 const detailedIds=records.map(r=>r.id);
 for(const id of detailedIds){const r=records.find(e=>e.id===id);assert(r,"Missing detailed event "+id);assert([...r.body].length>=133&&[...r.body].length<=174,"Narrative length outside review window "+id);}
+
+const appendedIds = ["ci611-penghu-2002","alishan-train-2011","n3-landslide-2010","bazhang-river-2000","chen-wen-chen-1981"];
+for(const id of appendedIds){const r=records.find(x=>x.id===id);assert(r,"Missing appended entry "+id);assert([...r.body].length>=140&&[...r.body].length<=160,id+" not 140-160 characters");assert(r.sources.length>0,id+" missing sources");}
