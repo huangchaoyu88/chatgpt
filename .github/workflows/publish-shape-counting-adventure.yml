@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - "gray-area-lab/**"
       - "games/shape-counting-adventure/**"
       - "giant-webgpu-3d/**"
       - "taiwan-event-atlas/**"
@@ -47,6 +48,10 @@ jobs:
           node --test taiwan-event-atlas/tests/validate.cjs
           mkdir -p _site/taiwan-event-atlas
           cp taiwan-event-atlas/index.html taiwan-event-atlas/style.css taiwan-event-atlas/app.js taiwan-event-atlas/events.js _site/taiwan-event-atlas/
+      - name: Include interactive gray area lab
+        run: |
+          mkdir -p _site/gray-area-lab
+          cp gray-area-lab/index.html _site/gray-area-lab/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

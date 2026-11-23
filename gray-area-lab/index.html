@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f7fb"><meta name="description" content="國小數學互動教材，精確計算斜線分割後四角灰色面積。"><title>斜線與面積｜互動數學實驗室</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#1c293d;font:16px/1.65 system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif}main{max-width:1130px;margin:auto;padding:26px 15px 50px}header{margin-bottom:21px}h1{font-size:clamp(1.7rem,4vw,2.6rem);margin:.2em 0}.eyebrow{color:#2563eb;font-weight:800;letter-spacing:.12em;font-size:.85em}header p{margin:0;color:#526279}h2{font-size:1.18rem;margin:0 0 12px}.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.86fr);gap:16px}.panel{background:#fff;border:1px solid #dfe5ee;border-radius:18px;padding:19px;box-shadow:0 8px 22px #13294b09}.svg{display:block;width:100%;background:#fbfcff;border:1px solid #e1e6ed;border-radius:12px;touch-action:none}.hint{font-size:.85em;color:#627087;margin:0 0 13px}.legend{display:flex;flex-wrap:wrap;gap:15px;margin:12px 0;color:#58667c;font-size:.82em}.swatch{display:inline-block;width:13px;height:13px;border-radius:3px;vertical-align:-2px;margin-right:5px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{border-radius:12px;padding:13px 14px;background:#f3f6fb}.stat b{display:block;font-size:clamp(1.2rem,2.6vw,1.68rem);font-variant-numeric:tabular-nums;line-height:1.3}.stat small{color:#67768d}.real{background:#e9f8f1;color:#047857}.est{background:#fff0ed;color:#b91c1c}.diff{font-weight:750;margin:13px 0 5px}.areas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.areas div{border:1px solid #dfe5ee;padding:8px 10px;border-radius:10px;font-size:.87em}.areas b{float:right}.actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 17px}button{border:1px solid #cbd5e1;background:white;border-radius:10px;padding:9px 12px;color:#22314c;cursor:pointer;font:inherit;font-weight:750}button.primary{background:#2563eb;border-color:#2563eb;color:white}button:hover{filter:brightness(.95)}.ctrl{margin:0 0 17px}.ctrl div{display:flex;justify-content:space-between;gap:5px;font-weight:750;font-size:.9rem}.ctrl output{color:#2563eb;font-variant-numeric:tabular-nums}.ctrl p{font-size:.79rem;color:#64748b;margin:3px 0 4px}.ctrl input{width:100%;accent-color:#2563eb;cursor:pointer}.toggle{font-size:.9rem}.toggle input{accent-color:#2563eb}.note{background:#fff8e8;border:1px solid #fae3ad;padding:11px 13px;border-radius:12px;margin-top:14px;font-size:.86rem}.lower{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:17px}.lower p{margin:.5em 0}.blue{color:#1d4ed8;font-weight:750}.footer{color:#64748b;font-size:.8rem;margin-top:20px}@media(max-width:790px){main{padding:16px 11px 33px}.layout,.lower{grid-template-columns:1fr}.panel{padding:14px}.stats{gap:8px}.stat{padding:11px 10px}}
+</style></head><body><main>
+<header><div class="eyebrow">國小數學 · 互動探究</div><h1>斜線會改變灰色面積嗎？</h1><p>長分成 8 等分、寬分成 5 等分。如果線是斜的，四角灰色面積還能直接用 <b>5/8 × 3/5 = 3/8</b> 嗎？</p></header>
+<div class="layout"><section class="panel"><h2>① 觀察灰色面積</h2><p class="hint">移動右邊滑桿，灰色形狀與面積會立即變化。</p><svg class="svg" id="fig" viewBox="0 0 800 545" role="img" aria-label="八乘五長方形；兩組平行斜線，四角灰色區域的面積隨滑桿改變"></svg>
+<div class="legend"><span><i class="swatch" style="background:#a7b4ca"></i>四角灰色面積</span><span><i class="swatch" style="background:#2563eb"></i>上下斜線</span><span><i class="swatch" style="background:#172437"></i>左右斜線</span></div>
+<div class="stats" aria-live="polite"><div class="stat real"><small>真正的灰色面積</small><b id="actual">—</b></div><div class="stat est"><small>直接相乘的數字</small><b id="estimate">—</b></div></div><div class="diff" id="difference">—</div><p class="hint" id="formula">—</p><div class="areas"><div>左上 <b id="tl">—</b></div><div>右上 <b id="tr">—</b></div><div>左下 <b id="bl">—</b></div><div>右下 <b id="br">—</b></div></div></section>
+<aside class="panel"><h2>② 自己動手改變斜線</h2><div class="actions"><button class="primary" id="original">還原題目</button><button id="straight">線條畫直</button><button id="reverse">反向傾斜</button></div>
+<div class="ctrl"><div><label for="tilt">藍色橫線傾斜</label><output id="tiltV"></output></div><p>把橫線往右上、右下移</p><input id="tilt" type="range" min="-1.5" max="0.75" step="0.05" value="-1"></div>
+<div class="ctrl"><div><label for="lean">黑色直線傾斜</label><output id="leanV"></output></div><p>直線頂端往右移幾格</p><input id="lean" type="range" min="0" max="2" step="0.05" value="1"></div>
+<div class="ctrl"><div><label for="lane">白色中間帶寬度</label><output id="laneV"></output></div><p>原題 3 格；移動後左右比例也會改變</p><input id="lane" type="range" min="2" max="4" step="0.1" value="3"></div>
+<div class="ctrl"><div><label for="band">白色中間帶高度</label><output id="bandV"></output></div><p>原題 2 格；移動後上下比例也會改變</p><input id="band" type="range" min="1" max="2.5" step="0.1" value="2"></div>
+<label class="toggle"><input id="grid" type="checkbox" checked> 顯示輔助格線</label><div class="note" id="notice">按「線條畫直」和「還原題目」，比較結果。</div></aside></div>
+<div class="lower"><section class="panel"><h2>③ 小學生版：為什麼不能直接乘？</h2><p>如果蛋糕切成 40 塊，而且每塊都一樣大，拿走 15 塊，才可以說拿了 15/40。</p><p>可是斜線切出來的四個角落，有些比較大、有些比較小。<b>只看長和寬的等分數，不能保證灰色面積等於兩個分數的乘積。</b></p><p class="blue">先證明可以相乘，才能相乘！</p></section>
+<section class="panel"><h2>④ 網頁怎麼算？</h2><p>依照每條斜線真正交會的位置，畫出四個灰色多邊形；把它們的面積算出來，再全部加在一起。</p><p>原題四個角落合計約 <b>14.8537 格²</b>，整個長方形是 <b>40 格²</b>，因此灰色面積約 <b>37.134%</b>，並非剛好 <b>37.5%</b>。</p><p class="hint">可按「反向傾斜」，比較實際面積變大時的情況。</p></section></div>
+<p class="footer">純 HTML／JavaScript。計算使用多邊形裁切與鞋帶公式，不依賴網路或第三方套件。</p></main>
+<script>
+(function(){
+"use strict";
+var ids=["tilt","lean","lane","band"],ctl={};function E(id){return document.getElementById(id)}
+ids.forEach(function(k){ctl[k]=E(k);ctl[k].addEventListener("input",render)});
+E("grid").addEventListener("change",render);
+var presets={original:[-1,1,3,2],straight:[0,0,3,2],reverse:[.75,1.8,3,2]};
+Object.keys(presets).forEach(function(k){E(k).addEventListener("click",function(){ids.forEach(function(id,i){ctl[id].value=presets[k][i]});render()})});
+function clip(poly,side){var out=[];for(var i=0;i<poly.length;i++){var a=poly[i],b=poly[(i+1)%poly.length],fa=side(a),fb=side(b),ain=fa>=-1e-10,bin=fb>=-1e-10;if(ain)out.push(a);if(ain!==bin){var t=fa/(fa-fb);out.push({x:a.x+t*(b.x-a.x),y:a.y+t*(b.y-a.y)})}}return out}
+function area(p){var s=0;for(var i=0;i<p.length;i++){var a=p[i],b=p[(i+1)%p.length];s+=a.x*b.y-a.y*b.x}return Math.abs(s)/2}
+var svg=E("fig"),ns="http://www.w3.org/2000/svg";
+function add(tag,attrs,txt){var n=document.createElementNS(ns,tag);Object.keys(attrs).forEach(function(k){n.setAttribute(k,attrs[k])});if(txt!=null)n.textContent=txt;svg.appendChild(n)}
+function x(px){return 75+80*px}function y(py){return 450-80*py}
+function line(x1,y1,x2,y2,color,width){add("line",{x1:x(x1),y1:y(y1),x2:x(x2),y2:y(y2),stroke:color,"stroke-width":width,"stroke-linecap":"round"})}
+function txt(a,b,s,col,sz){add("text",{x:x(a),y:y(b),"text-anchor":"middle","dominant-baseline":"middle",fill:col||"#3b475d","font-size":sz||15,"font-weight":700},s)}
+function render(){
+var tilt=+ctl.tilt.value,lean=+ctl.lean.value,lane=+ctl.lane.value,band=+ctl.band.value;
+var rect=[{x:0,y:0},{x:8,y:0},{x:8,y:5},{x:0,y:5}];
+var left=function(p){return 1+lean*p.y/5-p.x},right=function(p){return p.x-(1+lane+lean*p.y/5)};
+var top=function(p){return p.y-(4+tilt*p.x/8)},bottom=function(p){return 4-band+tilt*p.x/8-p.y};
+var parts={tl:clip(clip(rect,left),top),tr:clip(clip(rect,right),top),bl:clip(clip(rect,left),bottom),br:clip(clip(rect,right),bottom)};
+var areas={};var sum=0;Object.keys(parts).forEach(function(k){areas[k]=area(parts[k]);sum+=areas[k]});
+var actual=100*sum/40,estimate=100*(8-lane)/8*(5-band)/5,diff=actual-estimate;
+svg.replaceChildren();add("rect",{x:75,y:50,width:640,height:400,fill:"white",stroke:"#172437","stroke-width":3});
+if(E("grid").checked){for(var i=1;i<8;i++)line(i,0,i,5,"#e2e8f0",1);for(i=1;i<5;i++)line(0,i,8,i,"#e2e8f0",1)}
+Object.keys(parts).forEach(function(k){var points=parts[k].map(function(p){return x(p.x).toFixed(3)+","+y(p.y).toFixed(3)}).join(" ");add("polygon",{points:points,fill:"#a7b4ca","fill-opacity":.95})});
+line(0,4,8,4+tilt,"#2563eb",3.5);line(0,4-band,8,4-band+tilt,"#2563eb",3.5);
+line(1,0,1+lean,5,"#172437",3.5);line(1+lane,0,1+lane+lean,5,"#172437",3.5);
+add("rect",{x:75,y:50,width:640,height:400,fill:"none",stroke:"#172437","stroke-width":3});
+for(i=0;i<=8;i++){add("circle",{cx:x(i),cy:y(0),r:3.5,fill:"#172437"});add("circle",{cx:x(i),cy:y(5),r:3.5,fill:"#172437"})}
+for(i=1;i<5;i++){add("circle",{cx:x(0),cy:y(i),r:3.5,fill:"#172437"});add("circle",{cx:x(8),cy:y(i),r:3.5,fill:"#172437"})}
+txt(4,5.4,"長 8 等分");txt(4,-.5,"拖動滑桿，看面積怎麼變","#2563eb",18);
+txt(.55,4.63,"左上");txt(7.25,4.63,"右上");txt(.52,.4,"左下");txt(7.25,.4,"右下");
+E("actual").textContent=actual.toFixed(3)+"%";E("estimate").textContent=estimate.toFixed(3)+"%";
+E("difference").textContent="實際比直接相乘"+(Math.abs(diff)<1e-7?"剛好相同":diff>0?"多":"少")+" "+Math.abs(diff).toFixed(3)+" 個百分點";
+E("formula").textContent="真正灰色面積 "+sum.toFixed(4)+" ÷ 40；直接相乘 ("+(8-lane).toFixed(1)+" ÷ 8) × ("+(5-band).toFixed(1)+" ÷ 5)";
+Object.keys(areas).forEach(function(k){E(k).textContent=areas[k].toFixed(3)+" 格²"});
+E("tiltV").textContent=tilt===0?"不傾斜":(tilt>0?"↗ ":"↘ ")+Math.abs(tilt).toFixed(2)+" 格";
+E("leanV").textContent=lean===0?"不傾斜":lean.toFixed(2)+" 格";
+E("laneV").textContent=lane.toFixed(1)+" 格";E("bandV").textContent=band.toFixed(1)+" 格";
+E("notice").textContent=Math.abs(diff)<1e-7?"這次剛好相等！現在試著把兩組線都調成斜的。":"兩個算出的數字不一樣！真正的灰色面積是 "+actual.toFixed(3)+"%，直接相乘是 "+estimate.toFixed(3)+"%。";
+}
+render();
+})();
+</script></body></html>
