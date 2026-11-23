@@ -410,5 +410,165 @@ window.ATLAS_EVENTS = [
         "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
       }
     ]
+  },
+  {
+    "id": "tainan-lintoujie",
+    "title": "林投姐・府城復仇女鬼傳說",
+    "category": "paranormal",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "中西區・府城歷史街區",
+    "lat": 22.995,
+    "lng": 120.203,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "民間歌仔冊記載李昭娘受騙、含冤與復仇的故事",
+    "body": "林投姐・府城復仇女鬼傳說見於臺南民間故事資料。民間歌仔冊記載李昭娘受騙、含冤與復仇的故事，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "國立臺灣歷史博物館・林投姐歌仔冊藏品",
+        "url": "https://collections.nmth.gov.tw/CollectionContent.aspx?a=132&rno=2003.009.0127.0004"
+      }
+    ]
+  },
+  {
+    "id": "tainan-chen-shouniang",
+    "title": "陳守娘・府城女鬼傳說",
+    "category": "paranormal",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "中西區・臺南孔廟周邊",
+    "lat": 22.991,
+    "lng": 120.205,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "節烈婦女故事演變為府城靈異傳說",
+    "body": "陳守娘・府城女鬼傳說見於臺南民間故事資料。節烈婦女故事演變為府城靈異傳說，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局・臺南民間故事讀本",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+      }
+    ]
+  },
+  {
+    "id": "tainan-baosheng-lung",
+    "title": "保生大帝治肺癰傳說",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "中西區・府城宗教文化區",
+    "lat": 22.998,
+    "lng": 120.204,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "神明以特殊方式療病的傳說",
+    "body": "保生大帝治肺癰傳說見於臺南民間故事資料。神明以特殊方式療病的傳說，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局・臺南民間故事讀本",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+      }
+    ]
+  },
+  {
+    "id": "tainan-caichuan",
+    "title": "安平採船・王爺救人傳說",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安平區・安平歷史街區",
+    "lat": 23,
+    "lng": 120.164,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "民間以王爺信仰解釋急病的故事",
+    "body": "安平採船・王爺救人傳說見於臺南民間故事資料。民間以王爺信仰解釋急病的故事，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局・臺南民間故事讀本",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+      }
+    ]
+  },
+  {
+    "id": "tainan-wufu-dengue",
+    "title": "五福大帝收登革熱傳說",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "中西區・府城廟宇文化區",
+    "lat": 22.995,
+    "lng": 120.201,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "以神明除瘟回應疫情焦慮的現代傳說",
+    "body": "五福大帝收登革熱傳說見於臺南民間故事資料。以神明除瘟回應疫情焦慮的現代傳說，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局・臺南民間故事讀本",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+      }
+    ]
+  },
+  {
+    "id": "tainan-madou-dragon",
+    "title": "麻豆龍喉・龍脈地理傳說",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "麻豆區・麻豆市區",
+    "lat": 23.183,
+    "lng": 120.249,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "麻豆地方流傳的龍脈風水故事",
+    "body": "麻豆龍喉・龍脈地理傳說見於臺南民間故事資料。麻豆地方流傳的龍脈風水故事，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局・臺南民間故事讀本",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+      }
+    ]
+  },
+  {
+    "id": "tainan-chishan-longhuyan",
+    "title": "赤山龍湖巖・風水傳說",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "六甲區・赤山龍湖巖周邊",
+    "lat": 23.227,
+    "lng": 120.344,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "龍湖巖與地方地理信仰的故事",
+    "body": "赤山龍湖巖・風水傳說見於臺南民間故事資料。龍湖巖與地方地理信仰的故事，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局・臺南民間故事讀本",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+      }
+    ]
+  },
+  {
+    "id": "tainan-feihu-general",
+    "title": "飛虎將軍・異鄉守護神傳說",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "臺南市",
+    "place": "安南區・海尾朝皇宮周邊",
+    "lat": 23.052,
+    "lng": 120.182,
+    "precision": "地方文化區域示意；非確定事件地點",
+    "summary": "異鄉軍人受地方祭祀的信仰故事",
+    "body": "飛虎將軍・異鄉守護神傳說見於臺南民間故事資料。異鄉軍人受地方祭祀的信仰故事，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "sources": [
+      {
+        "name": "臺南市政府文化局・臺南民間故事讀本",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+      }
+    ]
   }
 ];
