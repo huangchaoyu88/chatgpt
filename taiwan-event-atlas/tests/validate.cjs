@@ -29,3 +29,6 @@ for(const id of appendedIds){const r=records.find(x=>x.id===id);assert(r,"Missin
 for(const e of records){assert([...e.body].length>=140&&[...e.body].length<=174,e.id+' narrative length must be 140–174 chars');}
 
 for(const id of ["healthy-kindergarten-bus-1992","changhua-qiaoyou-fire-2021","weierkang-fire-1995"]){const e=records.find(x=>x.id===id);assert(e,id+" exists");assert([...e.body].length>=140&&[...e.body].length<=160,id+" narrative length");assert(e.sources.length>=2,id+" sources");}
+
+// This run: verify new source-backed event narratives and prevent duplicate IDs.
+for(const id of ["meiling-tourbus-2006","smangus-bus-2012","aloha-okayama-2017"]){const e=records.find(x=>x.id===id);assert(e,"Missing new entry "+id);assert([...e.body].length>=140&&[...e.body].length<=160,id+" narrative must be 140–160 chars");assert(e.sources.length>=2,id+" requires corroborating sources");}
