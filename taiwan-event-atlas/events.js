@@ -1074,5 +1074,49 @@ window.ATLAS_EVENTS = [
         "url": "https://oldisthenewnew.yunlin.gov.tw/node/338"
       }
     ]
+  },
+  {
+    "id": "keelung-xiandong-lu-dongbin",
+    "title": "基隆仙洞巖・白髮仙人與觀音像",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "基隆市",
+    "place": "中山區・仙洞巖",
+    "lat": 25.145,
+    "lng": 121.747,
+    "precision": "公開文化景觀概略座標，非傳說事件精確發生地",
+    "summary": "白髮老翁挑桃李與觀音像入洞後消失，居民相信是呂洞賓",
+    "body": "基隆港西岸的仙洞巖原是海蝕洞，地方流傳三百多年前有位白髮老翁，挑著桃、李與一籃觀音像走進洞中。老人隨後不見蹤影，居民猜想他就是仙人呂洞賓，於是稱此處為「仙洞」或「仙人洞」。寺方曾表示，老翁留下的觀音像仍保存在洞內，但無法考證。清代洞中設寺供奉觀音，仙人故事也隨漁村祭祀流傳。這是地名起源的民間傳說，不能當作仙人現身證據。",
+    "sources": [
+      {
+        "name": "文化部文化資產資料・仙洞巖文化景觀調查研究",
+        "url": "https://data.boch.gov.tw/old_upload/_upload/Assets_advanced/case_research_file/40006/file/bf1dd5c4-e79f-4a64-b090-8f41b2f6eb7e.pdf"
+      }
+    ]
+  },
+  {
+    "id": "hsinchu-chenghuang-ghost-gate",
+    "title": "竹塹城隍・開鬼門與夯枷解厄",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "新竹市",
+    "place": "北區・新竹都城隍廟",
+    "lat": 24.804,
+    "lng": 120.965,
+    "precision": "公開廟宇概略座標，非神話事件精確發生地",
+    "summary": "城隍開福門、查夜暗訪、夯枷解厄與遶境賑孤的中元信仰",
+    "body": "新竹民間流傳「都城隍放，地藏王收」的說法：農曆七月初一由都城隍廟開鬼門，讓孤魂來到人間；八月初一再由地藏王信仰象徵性地關閉鬼門。中元祭期間，信眾參加夯枷儀式，背負象徵罪業的木枷，祈求城隍爺赦罪解厄。到了遶境賑孤，城隍出巡地方，民間相信無主孤魂也可趁機申訴冤情。這些儀式屬宗教文化，不代表鬼門實際存在。",
+    "sources": [
+      {
+        "name": "國史館臺灣文獻館・新竹城隍廟與中元祭",
+        "url": "https://www.th.gov.tw/EpaperSend/113/167/"
+      },
+      {
+        "name": "文化部國家文化資產網・竹塹中元城隍祭典",
+        "url": "https://nchdb.boch.gov.tw/assets/overview/folklore/20091106000008"
+      }
+    ]
   }
 ];
