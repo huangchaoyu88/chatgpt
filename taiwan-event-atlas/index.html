@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#111a21">
-  <meta name="description" content="臺灣事件地圖：在地圖上探索已查證社會案件、重大交通事故、公共災害，以及明確標示為傳說的民間故事。">
-  <title>臺灣事件地圖｜TAIWAN ATLAS</title>
+  <meta name="description" content="臺灣神秘傳說地圖：在地圖上探索已查證社會案件、重大交通事故、公共災害，以及明確標示為傳說的民間故事。">
+  <title>臺灣神秘傳說地圖｜TAIWAN ATLAS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,34 +20,31 @@
     <header class="topbar">
       <div class="identity">
         <div class="brandmark" aria-hidden="true"><span></span><span></span></div>
-        <div><p class="eyebrow">AN ARCHIVE OF PLACES & STORIES</p><h1>臺灣事件地圖 <span>/ ATLAS</span></h1></div>
+        <div><p class="eyebrow">AN ARCHIVE OF PLACES & STORIES</p><h1>臺灣神秘傳說地圖 <span>/ ATLAS</span></h1></div>
       </div>
       <div class="top-actions"><span class="edition"><i></i> TAIWAN · BETA 01</span><a class="about-link" href="#about" id="aboutLink">關於本站 <span aria-hidden="true">↗</span></a></div>
     </header>
     <main class="workspace">
       <section class="sidebar" aria-label="事件瀏覽與篩選">
-        <div class="intro"><div class="section-index">01 / DISCOVER</div><h2>每個地點，<br>都有一段故事<span>。</span></h2><p>從重大事故、社會事件到都市傳說，以資料來源重新認識臺灣地景。</p></div>
+        <div class="intro"><div class="section-index">01 / DISCOVER</div><h2>每個地點，<br>都有一段故事<span>。</span></h2><p>從廟宇神蹟、靈異傳聞到地方志怪，探索臺灣各地流傳的故事；不將傳聞視為已證實事實。</p></div>
         <div class="search-wrap"><span aria-hidden="true" class="search-icon">⌕</span><label class="sr-only" for="search">搜尋事件、地名或關鍵字</label><input id="search" type="search" placeholder="搜尋事件、地名或關鍵字…" autocomplete="off"><kbd>/</kbd></div>
         <div class="filters-heading"><span>事件類型</span><button id="reset" type="button">重設篩選 ↺</button></div>
         <div class="chips" role="group" aria-label="事件類型" id="categories">
           <button type="button" data-category="all" class="active" aria-pressed="true">全部 <span id="count-all">0</span></button>
-          <button type="button" data-category="traffic" aria-pressed="false"><i class="dot traffic"></i>交通事故</button>
-          <button type="button" data-category="crime" aria-pressed="false"><i class="dot crime"></i>社會案件</button>
-          <button type="button" data-category="disaster" aria-pressed="false"><i class="dot disaster"></i>公共災害</button>
-          <button type="button" data-category="legend" aria-pressed="false"><i class="dot legend"></i>都市傳說</button>
+          <button type="button" data-category="religion" aria-pressed="false"><i class="dot religion"></i>宗教信仰</button><button type="button" data-category="paranormal" aria-pressed="false"><i class="dot paranormal"></i>靈異傳聞</button><button type="button" data-category="mystery" aria-pressed="false"><i class="dot mystery"></i>神秘事件</button><button type="button" data-category="folklore" aria-pressed="false"><i class="dot folklore"></i>鄉野傳奇</button><button type="button" data-category="myth" aria-pressed="false"><i class="dot myth"></i>神仙志怪</button>
         </div>
         <div class="filter-row"><div><label for="region">地區</label><select id="region"><option value="all">全臺灣</option></select></div><div><label for="sort">排序</label><select id="sort"><option value="newest">時間：新到舊</option><option value="oldest">時間：舊到新</option><option value="name">名稱：筆畫順序</option></select></div></div>
         <div class="year-bar"><label for="year">顯示年份早於 <strong id="yearText">2026</strong> 的事件</label><input id="year" aria-label="事件最晚年份" type="range" min="1980" max="2026" step="1" value="2026"><div><span>1980</span><span>2026</span></div></div>
         <div class="results-heading"><span><strong id="resultCount">0</strong> 筆事件紀錄</span><span class="results-note">位置多為地標示意</span></div>
         <div id="eventList" class="event-list" aria-live="polite"></div>
-        <footer class="sidebar-footer"><span class="foot-symbol">✳</span><p>資料採人工策展，非即時新聞或完整案件資料庫。<br>事故與傳說均以尊重當事人為原則。</p></footer>
+        <footer class="sidebar-footer"><span class="foot-symbol">✳</span><p>資料採人工策展；民間傳說與超自然情節未獲客觀證實。<br>請尊重地方信仰及私人空間。</p></footer>
       </section>
       <section class="map-panel" aria-label="臺灣事件互動地圖">
         <div id="map" aria-label="地圖：事件標記可點擊開啟摘要" role="application"></div>
         <div id="mapFallback" class="map-fallback" hidden>地圖模組無法載入；仍可使用左側事件清單閱讀資料與來源。</div>
         <div class="map-heading"><span class="map-kicker">FIELD NOTES / TAIWAN</span><div><strong>事件分布</strong><span>選取地標探索資料</span></div></div>
         <div class="map-controls"><button id="home" type="button" aria-label="重設臺灣地圖範圍" title="重設地圖">⌗</button><button id="random" type="button" aria-label="隨機探索一筆事件" title="隨機探索">↝</button></div>
-        <div class="map-legend"><div><i class="dot traffic"></i>交通</div><div><i class="dot crime"></i>社會</div><div><i class="dot disaster"></i>災害</div><div><i class="dot legend"></i>傳說</div></div>
+        <div class="map-legend"><div><i class="dot religion"></i>宗教</div><div><i class="dot paranormal"></i>靈異</div><div><i class="dot mystery"></i>神秘</div><div><i class="dot folklore"></i>鄉野</div><div><i class="dot myth"></i>志怪</div></div>
         <div class="map-counter"><span class="pulse"></span><strong id="pinCount">0</strong> LOCATIONS</div>
         <aside class="detail" id="detail" aria-labelledby="detailTitle" aria-hidden="true">
           <button type="button" class="close-detail" id="closeDetail" aria-label="關閉事件詳情">×</button>
@@ -57,14 +54,14 @@
             <h2 id="detailTitle"></h2><div class="detail-date" id="detailMeta"></div>
             <p id="detailSummary" class="detail-summary"></p><div class="fine-rule"></div>
             <div class="detail-subhead">事件背景</div><p id="detailBody" class="detail-body"></p>
-            <div class="precision-note">◎ <span id="precisionText"></span>。標記僅供地理理解，非精確事故座標或現況安全評估。</div>
+            <div class="precision-note">◎ <span id="precisionText"></span>。標記僅供地理理解，非精確靈異發生地點或安全評估。</div>
             <div class="detail-subhead">來源與延伸閱讀</div><div class="source-links" id="sourceLinks"></div>
             <button type="button" class="share-btn" id="shareBtn">複製此事件連結 ↗</button>
           </div>
         </aside>
       </section>
     </main>
-    <div class="about-modal" id="aboutModal" hidden><div class="about-backdrop" id="aboutBackdrop"></div><div class="about-box" role="dialog" aria-modal="true" aria-labelledby="aboutTitle"><button class="close-detail" id="closeAbout" aria-label="關閉">×</button><div class="section-index">ABOUT THE ARCHIVE</div><h2 id="aboutTitle">關於臺灣事件地圖</h2><p>這是一個以地點為入口的公共事件與民間故事索引。第一版為人工挑選的少量範例，未涵蓋臺灣所有重大案件。</p><p><b>已查證事件</b>以公部門報告、法院／檢方資料或可信媒體報導為依據；<b>都市傳說</b>僅代表「此傳聞確實流傳」，不表示超自然情節屬實。</p><p>地圖標記採地標或區域近似位置，請勿將它視為事故精確座標。避免獵奇、騷擾當事人、造訪非公開場所或模仿危險行為。</p><p>資料日期不等同來源最後更新時間；如有錯誤，請至 GitHub 儲存庫提出修正建議。</p><a href="https://github.com/huangchaoyu88/chatgpt/tree/main/taiwan-event-atlas" target="_blank" rel="noopener noreferrer">查看專案原始碼 ↗</a></div></div>
+    <div class="about-modal" id="aboutModal" hidden><div class="about-backdrop" id="aboutBackdrop"></div><div class="about-box" role="dialog" aria-modal="true" aria-labelledby="aboutTitle"><button class="close-detail" id="closeAbout" aria-label="關閉">×</button><div class="section-index">ABOUT THE ARCHIVE</div><h2 id="aboutTitle">關於臺灣神秘傳說地圖</h2><p>這是一個以地點為入口的臺灣宗教與神秘傳說索引，收錄有公開來源的地方故事，並非完整的民俗資料庫。</p><p><b>來源可查</b>僅代表傳說或信仰的記載、流傳有資料可參考，不代表神蹟、靈異或超自然情節已被客觀證實。</p><p>地圖標記採公共地標或區域近似位置，請勿據此闖入私人土地、禁區或危險場所。</p><p>資料日期不等同來源最後更新時間；如有錯誤，請至 GitHub 儲存庫提出修正建議。</p><a href="https://github.com/huangchaoyu88/chatgpt/tree/main/taiwan-event-atlas" target="_blank" rel="noopener noreferrer">查看專案原始碼 ↗</a></div></div>
   </div>
 </body>
 </html>
