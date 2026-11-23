@@ -52,3 +52,5 @@ for (const id of ["cashbox-linsen-fire-2020","neihu-child-homicide-2016"]) {
  assert(e.sources.length>=2,id+" requires at least two source links");
  assert(/概略|示意/.test(e.precision),id+" location precision required");
 }
+
+for(const id of ["hsinchu-skyview-fire-2024","nantou-khanun-rain-2023"]){const x=records.find(e=>e.id===id);assert(x&&[...x.body].length>=140&&[...x.body].length<=160&&x.sources.length>=2,id+" narrative and sources");}
