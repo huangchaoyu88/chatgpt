@@ -1014,5 +1014,65 @@ window.ATLAS_EVENTS = [
         "url": "https://publications.culture.tainan.gov.tw/index.php?did=149&inter=publication&page=7"
       }
     ]
+  },
+  {
+    "id": "donggang-wangye-boat",
+    "title": "東港迎王・代天巡狩與送王船",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "屏東縣",
+    "place": "東港鎮・東隆宮周邊",
+    "lat": 22.464,
+    "lng": 120.45,
+    "precision": "公開宗教場域概略座標，非神話事件發生位置",
+    "summary": "王爺巡境與送王船帶走瘟煞的信仰",
+    "body": "東港民間相信，玉皇大帝派遣代天巡狩的千歲爺來到人間，查察善惡並掃蕩瘟煞。每逢三年一科，居民迎請王爺駐駕，依序舉行請王、遶境、祀王與送王等儀式。祭典最後，信眾將象徵王爺座駕的木造王船裝載物資，於海邊焚燒，稱為「遊天河」，寓意王爺帶走地方災厄，返回天庭繳旨。這些神蹟敘述屬民俗信仰，並非已獲證實的歷史事件。",
+    "sources": [
+      {
+        "name": "政府文化資產資料",
+        "url": "https://nchdb.boch.gov.tw/assets/overview/folklore/20100618000011"
+      }
+    ]
+  },
+  {
+    "id": "liuqiu-sanlong-wangye",
+    "title": "小琉球三隆宮・代天巡狩迎王",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "屏東縣",
+    "place": "琉球鄉・三隆宮周邊",
+    "lat": 22.338,
+    "lng": 120.374,
+    "precision": "公開宗教場域概略座標，非神話事件發生位置",
+    "summary": "小琉球迎請王爺巡境解瘟送煞",
+    "body": "小琉球三隆宮迎王的信仰裡，王爺被視為玉皇大帝派往人間的「代天巡狩」，要巡查地方、解除瘟厄並送走不祥。島民每逢丑、辰、未、戌年舉行一科祭典，日期由神明指示，多在農曆十月。早年小琉球曾以東港七角頭之一的身分參與迎王，後來自行赴南鯤鯓進香並在島上遶境，逐漸發展為地方獨立祭典。這些神蹟敘述屬民俗信仰，並非已獲證實的歷史事件。",
+    "sources": [
+      {
+        "name": "政府文化資產資料",
+        "url": "https://nchdb.boch.gov.tw/assets/overview/folklore/20100506000001"
+      }
+    ]
+  },
+  {
+    "id": "beigang-mazu-welcome",
+    "title": "北港朝天宮・迎媽祖與護航信仰",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "雲林縣",
+    "place": "北港鎮・朝天宮周邊",
+    "lat": 23.568,
+    "lng": 120.304,
+    "precision": "公開宗教場域概略座標，非神話事件發生位置",
+    "summary": "北港迎媽祖的海上護佑信仰",
+    "body": "北港朝天宮迎媽祖承續沿海移民的海神信仰。民間相傳媽祖能在風浪中救助船民，信眾因而將神像供奉於船上，抵達新聚落後再建廟祭拜。關於媽祖的身世與誕辰，歷代方志及碑文記載不盡一致；後來《天妃顯聖錄》中的故事逐漸成為常見說法。北港信眾以迎神、遶境及祭典表達謝恩與祈安，將航海守護的傳說延續到今日。",
+    "sources": [
+      {
+        "name": "政府文化資產資料",
+        "url": "https://oldisthenewnew.yunlin.gov.tw/node/338"
+      }
+    ]
   }
 ];
