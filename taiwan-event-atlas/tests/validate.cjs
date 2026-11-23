@@ -43,3 +43,12 @@ for(const id of ["orv5-sinking-2014","tongxiao-furnace-2023"]){const e=records.f
 
 // New 2026-11-23 verified additions
 for(const id of ["hsinta-blackout-2022","chaojing-landslide-2024"]){const r=records.find(e=>e.id===id);assert(r,id+" missing");assert([...r.body].length>=140&&[...r.body].length<=160,id+" body length");assert(r.sources.length>=2,id+" needs two sources");}
+
+// 2026-11-23: validate the two independently sourced additions.
+for (const id of ["cashbox-linsen-fire-2020","neihu-child-homicide-2016"]) {
+ const e=records.find(x=>x.id===id);
+ assert(e,"Missing added event "+id);
+ assert([...e.body].length>=140&&[...e.body].length<=160,id+" body must be 140–160 characters");
+ assert(e.sources.length>=2,id+" requires at least two source links");
+ assert(/概略|示意/.test(e.precision),id+" location precision required");
+}
