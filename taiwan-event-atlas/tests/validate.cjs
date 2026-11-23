@@ -25,3 +25,5 @@ for(const id of detailedIds){const r=records.find(e=>e.id===id);assert(r,"Missin
 
 const appendedIds = ["ci611-penghu-2002","alishan-train-2011","n3-landslide-2010","bazhang-river-2000","chen-wen-chen-1981"];
 for(const id of appendedIds){const r=records.find(x=>x.id===id);assert(r,"Missing appended entry "+id);assert([...r.body].length>=140&&[...r.body].length<=160,id+" not 140-160 characters");assert(r.sources.length>0,id+" missing sources");}
+
+for(const e of records){assert([...e.body].length>=140&&[...e.body].length<=174,e.id+' narrative length must be 140–174 chars');}
