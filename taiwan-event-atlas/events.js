@@ -171,15 +171,15 @@ window.ATLAS_EVENTS = [
     "id": "red-girl-1998",
     "title": "紅衣小女孩・大坑傳聞",
     "category": "legend",
-    "date": "1998-03-01",
+    "date": null,
     "year": 1998,
     "city": "臺中市",
     "place": "北屯區・大坑風景區",
     "lat": 24.182,
     "lng": 120.748,
-    "precision": "大坑風景區區域示意",
+    "precision": "大坑風景區區域示意（傳說無精確事件日期）",
     "summary": "一段登山錄影引發廣泛討論，逐漸演變為臺灣知名的「紅衣小女孩」都市傳說。",
-    "body": "傳聞起源與1998年間的大坑登山錄影及靈異節目傳播有關。影像及故事存在多種詮釋，沒有足以證實超自然情節的可靠證據；地點僅標示大坑區域。",
+    "body": "常見資料將傳聞與1990年代末期的大坑登山錄影及靈異節目傳播連結。影像及故事存在多種詮釋，沒有足以證實超自然情節的可靠證據；地點僅標示大坑區域。",
     "sources": [
       {
         "name": "成功大學文史脈流・傳說介紹",
@@ -204,6 +204,634 @@ window.ATLAS_EVENTS = [
       {
         "name": "民雄劉氏古厝・在地文化介紹",
         "url": "https://www.chiayi-cultureconnects.com/"
+      }
+    ]
+  },
+  {
+    "id": "touqianxi-1981",
+    "title": "臺鐵頭前溪橋列車事故",
+    "category": "traffic",
+    "date": "1981-03-08",
+    "year": 1981,
+    "city": "新竹縣",
+    "place": "竹北市・頭前溪橋南側路段",
+    "lat": 24.837,
+    "lng": 121.01,
+    "precision": "河橋附近概略標記",
+    "summary": "自強號列車與闖越平交道的砂石車碰撞，列車出軌墜入頭前溪河床。",
+    "body": "這起1981年的重大鐵路事故發生在新竹與竹北之間。中央社回顧臺鐵重大事故時列有此案；地圖使用河橋附近示意位置，不代表當年平交道的精確座標。",
+    "sources": [
+      {
+        "name": "中央社・臺鐵重大事故回顧",
+        "url": "https://www.cna.com.tw/news/firstnews/202104020110.aspx"
+      }
+    ]
+  },
+  {
+    "id": "ge222-penghu-2014",
+    "title": "復興航空 GE222 澎湖空難",
+    "category": "traffic",
+    "date": "2014-07-23",
+    "year": 2014,
+    "city": "澎湖縣",
+    "place": "湖西鄉・西溪村附近",
+    "lat": 23.573,
+    "lng": 119.646,
+    "precision": "湖西鄉西溪地區示意",
+    "summary": "復興航空 GE222 航班在馬公機場附近重飛過程中失事，墜落澎湖湖西鄉。",
+    "body": "2014年7月23日，復興航空由高雄飛往馬公的GE222航班，在澎湖湖西鄉西溪村一帶墜毀。這個地標僅供地理理解，不代表墜落點的精確座標。",
+    "sources": [
+      {
+        "name": "中央社・澎湖空難後續",
+        "url": "https://www.cna.com.tw/news/firstnews/201611225009.aspx"
+      }
+    ]
+  },
+  {
+    "id": "ge235-taipei-2015",
+    "title": "復興航空 GE235 基隆河空難",
+    "category": "traffic",
+    "date": "2015-02-04",
+    "year": 2015,
+    "city": "臺北市",
+    "place": "南港區・基隆河與南湖大橋周邊",
+    "lat": 25.062,
+    "lng": 121.616,
+    "precision": "基隆河河段概略標記",
+    "summary": "復興航空 GE235 班機自松山機場起飛不久後墜入基隆河，造成重大傷亡。",
+    "body": "2015年2月4日，GE235航班在臺北市南港與新北市汐止交界附近的基隆河失事。行政院飛航安全調查資料記載了飛航過程與事故因素；地圖採河段概略位置。",
+    "sources": [
+      {
+        "name": "國家運輸安全調查委員會・GE235事故報告",
+        "url": "https://www.ttsb.gov.tw/1243/16869/18828/post"
+      },
+      {
+        "name": "中央社・事件整理",
+        "url": "https://www.cna.com.tw/news/firstnews/201502045005.aspx"
+      }
+    ]
+  },
+  {
+    "id": "taoyuan-tourbus-2016",
+    "title": "國道二號遊覽車火燒車",
+    "category": "traffic",
+    "date": "2016-07-19",
+    "year": 2016,
+    "city": "桃園市",
+    "place": "大園區・國道二號機場周邊",
+    "lat": 25.069,
+    "lng": 121.249,
+    "precision": "國道二號機場方向概略標記",
+    "summary": "載運旅客的遊覽車在國道二號西向路段起火，車上人員全數罹難。",
+    "body": "2016年7月19日發生事故；桃園地檢署後續偵結認定此案涉及駕駛蓄意縱火，並非一般機械故障事故。歸入交通事故是依發生場域分類，保留司法調查結論以避免誤讀。",
+    "sources": [
+      {
+        "name": "中央社・桃檢偵結結果",
+        "url": "https://www.cna.com.tw/news/asoc/201609100246.aspx"
+      }
+    ]
+  },
+  {
+    "id": "butterfly-bus-2017",
+    "title": "蝶戀花遊覽車翻覆事故",
+    "category": "traffic",
+    "date": "2017-02-13",
+    "year": 2017,
+    "city": "臺北市",
+    "place": "南港系統交流道・國五銜接國三匝道",
+    "lat": 25.046,
+    "lng": 121.63,
+    "precision": "交流道近似位置",
+    "summary": "遊覽車在國道五號接國道三號的匝道路段翻覆，造成重大傷亡。",
+    "body": "2017年2月13日晚間，賞櫻團遊覽車在南港系統交流道接國道三號南下的匝道翻覆。後續調查涉及車速與長途旅遊安全。座標僅為交流道概略示意。",
+    "sources": [
+      {
+        "name": "內政部消防署・事故速報",
+        "url": "https://www.nfa.gov.tw/pro/index.php?article_id=819&code=list&flag=detail&ids=113"
+      },
+      {
+        "name": "中央社・事後調查",
+        "url": "https://www.cna.com.tw/news/asoc/201703100299.aspx"
+      }
+    ]
+  },
+  {
+    "id": "nanfangao-bridge-2019",
+    "title": "南方澳跨港大橋坍塌",
+    "category": "traffic",
+    "date": "2019-10-01",
+    "year": 2019,
+    "city": "宜蘭縣",
+    "place": "蘇澳鎮・南方澳漁港",
+    "lat": 24.58,
+    "lng": 121.87,
+    "precision": "南方澳漁港區域標記",
+    "summary": "南方澳跨港大橋突然坍塌，橋上車輛與橋下漁船受到波及。",
+    "body": "2019年10月1日，南方澳跨港大橋在使用期間斷裂，造成船員死傷及港口交通中斷。此案兼具交通與公共設施安全議題，依橋梁運輸場域列於交通類。",
+    "sources": [
+      {
+        "name": "中央社・南方澳斷橋事件專題",
+        "url": "https://www.cna.com.tw/topic/newstopic/1887.aspx"
+      }
+    ]
+  },
+  {
+    "id": "suhua-bus-2021",
+    "title": "蘇花公路遊覽車撞山壁",
+    "category": "traffic",
+    "date": "2021-03-16",
+    "year": 2021,
+    "city": "宜蘭縣",
+    "place": "蘇澳鎮・台九線東澳段",
+    "lat": 24.507,
+    "lng": 121.82,
+    "precision": "蘇花公路東澳路段示意",
+    "summary": "遊覽車在蘇花公路東澳段撞上山壁，造成多名乘客傷亡。",
+    "body": "2021年3月16日下午，一輛遊覽車行經蘇花公路約114至115公里處撞擊山壁。後續司法調查與判決就駕駛操作與車速提出認定。",
+    "sources": [
+      {
+        "name": "中央社・案件判決報導",
+        "url": "https://www.cna.com.tw/news/asoc/202112030145.aspx"
+      }
+    ]
+  },
+  {
+    "id": "sanxia-2025",
+    "title": "三峽重大汽車衝撞事故",
+    "category": "traffic",
+    "date": "2025-05-19",
+    "year": 2025,
+    "city": "新北市",
+    "place": "三峽區・國光街與國成街口周邊",
+    "lat": 24.94,
+    "lng": 121.369,
+    "precision": "事故街區近似標記",
+    "summary": "新北市三峽區發生汽車衝撞行人重大事故，造成多人傷亡，社會高度關注交通安全。",
+    "body": "2025年5月19日，三峽區國光街、國成街一帶發生嚴重交通事故。本資料僅敘述已見於公開報導的事實，不涉及未成年傷者身分資訊與非公開細節。",
+    "sources": [
+      {
+        "name": "中央社・三峽重大車禍彙整",
+        "url": "https://www.cna.com.tw/news/asoc/202505190345.aspx"
+      }
+    ]
+  },
+  {
+    "id": "liubangyou-1996",
+    "title": "劉邦友官邸槍擊案",
+    "category": "crime",
+    "date": "1996-11-21",
+    "year": 1996,
+    "city": "桃園市",
+    "place": "桃園區・舊縣政府周邊",
+    "lat": 24.989,
+    "lng": 121.307,
+    "precision": "公共行政區域示意",
+    "summary": "1996年桃園縣長劉邦友與多名人員在縣長官邸遭槍擊，是臺灣重大未解刑案之一。",
+    "body": "1996年11月21日，桃園縣長官邸發生多人死傷的槍擊案件。這裡刻意採公共行政區域作地標，不指向歷史官邸的私人出入口或精確位置；案件後續調查結論以正式資料為準。",
+    "sources": [
+      {
+        "name": "中央社・劉邦友血案20年回顧",
+        "url": "https://www.cna.com.tw/news/firstnews/201611200171.aspx"
+      }
+    ]
+  },
+  {
+    "id": "pengwanru-1996",
+    "title": "彭婉如命案",
+    "category": "crime",
+    "date": "1996-11-30",
+    "year": 1996,
+    "city": "高雄市",
+    "place": "三民區・當年活動場地周邊",
+    "lat": 22.649,
+    "lng": 120.306,
+    "precision": "三民區行政區域概略標記",
+    "summary": "婦女運動者彭婉如於高雄搭計程車後失蹤遇害，案件推動社會關注女性人身安全。",
+    "body": "1996年11月30日彭婉如參與活動後失蹤，後續在高雄地區發現遺體。此案對臺灣婦女安全議題及相關立法討論具有長遠影響；地圖採行政區域示意位置。",
+    "sources": [
+      {
+        "name": "中央社・案件與婦女保障立法",
+        "url": "https://www.cna.com.tw/news/ahel/201612020032.aspx"
+      }
+    ]
+  },
+  {
+    "id": "songshan-blast-2016",
+    "title": "臺鐵松山車站列車爆炸案",
+    "category": "crime",
+    "date": "2016-07-07",
+    "year": 2016,
+    "city": "臺北市",
+    "place": "信義區・松山車站周邊",
+    "lat": 25.05,
+    "lng": 121.578,
+    "precision": "車站公共地標標記",
+    "summary": "臺鐵區間車停靠松山站時發生爆炸起火，造成乘客受傷。",
+    "body": "2016年7月7日晚間，臺鐵1258次區間車在松山站發生人為爆裂物事件。警方與檢方後續調查確認並非單純列車設備事故；事件以車站地標近似標記。",
+    "sources": [
+      {
+        "name": "中央社・事故初步報導",
+        "url": "https://www.cna.com.tw/news/aloc/201607070595.aspx"
+      },
+      {
+        "name": "中央社・鐵路重大事故回顧",
+        "url": "https://www.cna.com.tw/news/firstnews/201810210202.aspx"
+      }
+    ]
+  },
+  {
+    "id": "chi-chi-1999",
+    "title": "九二一集集大地震",
+    "category": "disaster",
+    "date": "1999-09-21",
+    "year": 1999,
+    "city": "南投縣",
+    "place": "集集鎮・震央附近地區",
+    "lat": 23.832,
+    "lng": 120.781,
+    "precision": "集集鎮震央地區示意",
+    "summary": "1999年九二一大地震重創臺灣中部，造成廣泛建築倒塌、道路受損與人員傷亡。",
+    "body": "1999年9月21日凌晨強震，震害範圍遠及多縣市。地圖以南投集集區域作為代表點，並非將整場震災限定在集集鎮；詳細災損與重建歷史可參考中央社紀念專題。",
+    "sources": [
+      {
+        "name": "中央社・九二一20年特別報導",
+        "url": "https://www.cna.com.tw/project/20190916-921earthquake/index.html"
+      }
+    ]
+  },
+  {
+    "id": "sars-heping-2003",
+    "title": "和平醫院 SARS 封院事件",
+    "category": "disaster",
+    "date": "2003-04-24",
+    "year": 2003,
+    "city": "臺北市",
+    "place": "中正區・臺北市立聯合醫院和平院區",
+    "lat": 25.035,
+    "lng": 121.506,
+    "precision": "醫院公共地標位置",
+    "summary": "2003年SARS疫情期間，臺北市和平醫院因院內感染事件封院。",
+    "body": "2003年4月24日，和平醫院因SARS院內感染封院，醫護與病患處於嚴峻防疫情境。此筆為公共衛生事件，不是將現今醫院環境視作高風險場所。",
+    "sources": [
+      {
+        "name": "中央社・SARS殉職醫護回顧",
+        "url": "https://www.cna.com.tw/news/ahel/201705175003.aspx"
+      }
+    ]
+  },
+  {
+    "id": "morakot-xiaolin-2009",
+    "title": "八八風災・小林村土石流",
+    "category": "disaster",
+    "date": "2009-08-09",
+    "year": 2009,
+    "city": "高雄市",
+    "place": "甲仙區・小林聚落舊址周邊",
+    "lat": 23.163,
+    "lng": 120.655,
+    "precision": "災區行政區域示意",
+    "summary": "2009年莫拉克颱風帶來破紀錄雨量，高雄甲仙小林村發生大規模崩塌，造成重大傷亡。",
+    "body": "2009年八八風災重創臺灣南部，小林村災難成為防災、安置及社區重建的重要記憶。此處以甲仙區災區代表點標示，不鼓勵前往災害敏感區域探訪。",
+    "sources": [
+      {
+        "name": "中央社・小林村重建回顧",
+        "url": "https://www.cna.com.tw/news/ahel/201906270317.aspx"
+      }
+    ]
+  },
+  {
+    "id": "ala-pub-2011",
+    "title": "臺中 ALA PUB 火災",
+    "category": "disaster",
+    "date": "2011-03-06",
+    "year": 2011,
+    "city": "臺中市",
+    "place": "西區・中興街周邊",
+    "lat": 24.147,
+    "lng": 120.664,
+    "precision": "中興街街區概略標記",
+    "summary": "臺中市夜店發生火災，造成重大死傷，引發公共場所消防安全檢討。",
+    "body": "2011年3月6日凌晨，ALA PUB夜店發生火災。監察院後續針對場所違規營業及主管機關監督責任提出調查與彈劾。此標記僅使用中興街一帶作為區域示意。",
+    "sources": [
+      {
+        "name": "監察院・ALA火災調查與彈劾",
+        "url": "https://www.cy.gov.tw/News_Content.aspx?n=796&s=5560"
+      }
+    ]
+  },
+  {
+    "id": "yunmen-2018",
+    "title": "花蓮雲門翠堤大樓倒塌",
+    "category": "disaster",
+    "date": "2018-02-06",
+    "year": 2018,
+    "city": "花蓮縣",
+    "place": "花蓮市・國盛地區",
+    "lat": 23.99,
+    "lng": 121.606,
+    "precision": "花蓮市街區概略標記",
+    "summary": "2018年花蓮地震造成雲門翠堤大樓嚴重傾倒，導致住戶與旅客傷亡。",
+    "body": "2018年2月6日深夜發生地震，雲門翠堤大樓倒塌。檢方後續調查涉及建築設計與施工缺失，本地圖以花蓮市街區概略位置顯示。",
+    "sources": [
+      {
+        "name": "中央社・雲門翠堤起訴報導",
+        "url": "https://www.cna.com.tw/news/firstnews/201806150089.aspx"
+      }
+    ]
+  },
+  {
+    "id": "jingpeng-2018",
+    "title": "桃園敬鵬工廠火災",
+    "category": "disaster",
+    "date": "2018-04-28",
+    "year": 2018,
+    "city": "桃園市",
+    "place": "平鎮區・工業區周邊",
+    "lat": 24.9,
+    "lng": 121.215,
+    "precision": "平鎮工業地區概略標記",
+    "summary": "桃園平鎮敬鵬工廠大火造成消防人員及員工傷亡，凸顯工業火災風險。",
+    "body": "2018年4月28日晚間工廠失火，後續延燒並造成多名消防人員殉職。此案涉及工廠救災資訊、化學品風險與職安制度檢討。",
+    "sources": [
+      {
+        "name": "中央社・敬鵬工廠火災報導",
+        "url": "https://www.cna.com.tw/news/firstnews/201804290030.aspx"
+      }
+    ]
+  },
+  {
+    "id": "mailiao-2019",
+    "title": "麥寮六輕工業區爆炸",
+    "category": "disaster",
+    "date": "2019-04-07",
+    "year": 2019,
+    "city": "雲林縣",
+    "place": "麥寮鄉・六輕工業區",
+    "lat": 23.797,
+    "lng": 120.187,
+    "precision": "六輕工業區概略標記",
+    "summary": "雲林麥寮六輕工業區發生爆炸，社會再度關注石化工安及環境風險。",
+    "body": "2019年4月7日，麥寮六輕台化三廠發生爆炸，消防與環保單位進入調查。這一筆是工安事件的區域記錄，不代表工業區所有設施均曾受事故影響。",
+    "sources": [
+      {
+        "name": "中央社・六輕工安事故大事記",
+        "url": "https://www.cna.com.tw/news/afe/201904070178.aspx"
+      }
+    ]
+  },
+  {
+    "id": "chengzhongcheng-2021",
+    "title": "高雄城中城大樓火災",
+    "category": "disaster",
+    "date": "2021-10-14",
+    "year": 2021,
+    "city": "高雄市",
+    "place": "鹽埕區・府北路周邊",
+    "lat": 22.63,
+    "lng": 120.284,
+    "precision": "鹽埕區公共街區概略標記",
+    "summary": "高雄鹽埕區城中城住商混合大樓發生嚴重火災，造成重大傷亡。",
+    "body": "2021年10月14日凌晨，高雄城中城大樓發生火災，事件引發老舊複合用途建築防火與住戶安全的討論。地圖使用鹽埕區公共道路概略位置。",
+    "sources": [
+      {
+        "name": "中央社・城中城火警報導",
+        "url": "https://www.cna.com.tw/news/firstnews/202110140115.aspx"
+      }
+    ]
+  },
+  {
+    "id": "chishang-quake-2022",
+    "title": "臺東池上強震",
+    "category": "disaster",
+    "date": "2022-09-18",
+    "year": 2022,
+    "city": "臺東縣",
+    "place": "池上鄉・池上市區周邊",
+    "lat": 23.127,
+    "lng": 121.215,
+    "precision": "池上鄉行政區域示意",
+    "summary": "臺東池上發生規模6.8強震，花東地區橋梁、道路與鐵路設施受損。",
+    "body": "2022年9月18日下午，池上附近發生地震，東部多處建物與橋梁受創。標記為池上鄉市區示意位置，不是氣象觀測定義的精確震央。",
+    "sources": [
+      {
+        "name": "中央社・池上地震災情整理",
+        "url": "https://www.cna.com.tw/news/ahel/202209185005.aspx"
+      }
+    ]
+  },
+  {
+    "id": "mingyang-2023",
+    "title": "屏東明揚工廠爆炸火災",
+    "category": "disaster",
+    "date": "2023-09-22",
+    "year": 2023,
+    "city": "屏東縣",
+    "place": "屏東市・屏東科技產業園區",
+    "lat": 22.675,
+    "lng": 120.496,
+    "precision": "屏東科技產業園區概略標記",
+    "summary": "屏東科技產業園區明揚工廠爆炸火災，造成消防人員及員工傷亡。",
+    "body": "2023年9月22日傍晚發生大規模工廠火警及爆炸。監察委員後續調查涵蓋防火設備、消防與工廠安全管理。座標僅指工業園區概略位置。",
+    "sources": [
+      {
+        "name": "中央社・監察院啟動調查",
+        "url": "https://www.cna.com.tw/news/aipl/202310050034.aspx"
+      }
+    ]
+  },
+  {
+    "id": "hualien-0403-2024",
+    "title": "0403花蓮強震・天王星大樓傾倒",
+    "category": "disaster",
+    "date": "2024-04-03",
+    "year": 2024,
+    "city": "花蓮縣",
+    "place": "花蓮市・軒轅路周邊",
+    "lat": 23.974,
+    "lng": 121.613,
+    "precision": "花蓮市區道路概略標記",
+    "summary": "2024年4月3日花蓮近海強震，花蓮市天王星大樓傾倒，造成傷亡。",
+    "body": "2024年4月3日上午花蓮地區發生強震，天王星大樓嚴重傾倒並列為拆除對象。這筆以花蓮市區代表一處震災紀錄，並不代表震害只集中在此。",
+    "sources": [
+      {
+        "name": "中央社・0403花蓮地震專題",
+        "url": "https://www.cna.com.tw/topic/newstopic/4463.aspx"
+      },
+      {
+        "name": "中央社・天王星大樓後續",
+        "url": "https://www.cna.com.tw/news/asoc/202512090075.aspx"
+      }
+    ]
+  },
+  {
+    "id": "xinpu-explosion-2025",
+    "title": "新埔遠東化纖廠氣爆",
+    "category": "disaster",
+    "date": "2025-02-06",
+    "year": 2025,
+    "city": "新竹縣",
+    "place": "新埔鎮・化纖廠周邊",
+    "lat": 24.835,
+    "lng": 121.073,
+    "precision": "新埔鎮廠區周邊概略標記",
+    "summary": "新竹縣新埔鎮遠東新世紀化學纖維總廠氣爆，造成員工傷亡。",
+    "body": "2025年2月6日凌晨發生工業火災與爆炸，職安署後續要求事故區域停工改善。此標記代表新埔鎮工業廠區周邊，非廠內出入口。",
+    "sources": [
+      {
+        "name": "中央社・新埔廠氣爆與停工",
+        "url": "https://www.cna.com.tw/news/asoc/202502060141.aspx"
+      }
+    ]
+  },
+  {
+    "id": "shin-kong-2025",
+    "title": "臺中新光三越中港店氣爆",
+    "category": "disaster",
+    "date": "2025-02-13",
+    "year": 2025,
+    "city": "臺中市",
+    "place": "西屯區・臺灣大道百貨商圈",
+    "lat": 24.165,
+    "lng": 120.644,
+    "precision": "百貨商圈公共區域標記",
+    "summary": "臺中市西屯區百貨公司發生氣爆，造成民眾與員工傷亡。",
+    "body": "2025年2月13日，新光三越臺中中港店發生爆炸，檢警與主管機關展開調查。記錄聚焦商業建築安全與公共救災，不包含未經確認的事故原因推測。",
+    "sources": [
+      {
+        "name": "中央社・氣爆事件彙整",
+        "url": "https://www.cna.com.tw/news/asoc/202502130385.aspx"
+      }
+    ]
+  },
+  {
+    "id": "mataian-2025",
+    "title": "馬太鞍溪堰塞湖溢流災害",
+    "category": "disaster",
+    "date": "2025-09-23",
+    "year": 2025,
+    "city": "花蓮縣",
+    "place": "光復鄉・光復車站周邊",
+    "lat": 23.665,
+    "lng": 121.423,
+    "precision": "光復鄉下游災區概略標記",
+    "summary": "馬太鞍溪上游堰塞湖溢流，洪水與土砂沖入花蓮光復鄉等地。",
+    "body": "2025年9月23日下午，馬太鞍溪堰塞湖壩頂溢流，洪水流入下游造成嚴重淹水並沖毀橋梁。本圖使用光復鄉公共地標代表下游災區，非堰塞湖本體位置。",
+    "sources": [
+      {
+        "name": "中央社・馬太鞍溪堰塞湖溢流報導",
+        "url": "https://www.cna.com.tw/news/ahel/202509230297.aspx"
+      }
+    ]
+  },
+  {
+    "id": "xinhai-tunnel-legend",
+    "title": "辛亥隧道・消失的搭車客",
+    "category": "legend",
+    "date": null,
+    "year": null,
+    "city": "臺北市",
+    "place": "文山區・辛亥隧道周邊",
+    "lat": 25.014,
+    "lng": 121.561,
+    "precision": "隧道公共道路概略標記",
+    "summary": "與計程車乘客、冥紙車資有關的故事，是臺北知名都市傳說之一。",
+    "body": "隨著辛亥隧道啟用，流傳多種司機載到神祕乘客的故事；部分敘事與跨文化『消失的搭車客』故事類型相近。這是傳聞研究，而非已證實的靈異事件，請勿因此從事危險駕駛或探險。",
+    "sources": [
+      {
+        "name": "臺灣事實查核中心・都市傳說訪談",
+        "url": "https://tfc-taiwan.org.tw/migration_article_105468_6080/"
+      },
+      {
+        "name": "迷誠品・臺灣都市傳說",
+        "url": "https://meet.eslite.com/tw/tc/article/202307060002"
+      }
+    ]
+  },
+  {
+    "id": "guishan-legend",
+    "title": "龜山島與蘭陽公主傳說",
+    "category": "legend",
+    "date": null,
+    "year": null,
+    "city": "宜蘭縣",
+    "place": "頭城鎮外海・龜山島",
+    "lat": 24.847,
+    "lng": 121.953,
+    "precision": "龜山島區域概略標記",
+    "summary": "宜蘭地方故事將龜山島的形貌與龜將軍、蘭陽公主的愛情傳說連結。",
+    "body": "此為宜蘭民間敘事，描述龜將軍與蘭陽公主化作島嶼景觀的故事。文化記憶庫以民間傳說收錄，屬文化資產與口述故事，不應當作地質形成的科學解釋。",
+    "sources": [
+      {
+        "name": "國家文化記憶庫・龜山島與蘭陽公主",
+        "url": "https://tcmb.culture.tw/zh-tw/detail?id=512803&indexCode=Culture_Object"
+      }
+    ]
+  },
+  {
+    "id": "kinmen-wind-lion",
+    "title": "金門風獅爺守護傳說",
+    "category": "legend",
+    "date": null,
+    "year": null,
+    "city": "金門縣",
+    "place": "金沙鎮・中蘭風獅爺周邊",
+    "lat": 24.473,
+    "lng": 118.403,
+    "precision": "中蘭聚落公開文化地標",
+    "summary": "金門各村落以風獅爺作為鎮風、守護聚落的民俗象徵，衍生許多地方故事。",
+    "body": "風獅爺是具地方文化價值的民間信仰，不是已驗證的超自然能力。這筆以金沙鎮一處公開可參訪的風獅爺地標作為代表；全縣分布數量眾多，並非只有此處。",
+    "sources": [
+      {
+        "name": "金門官方觀光・中蘭風獅爺",
+        "url": "https://kinmen.travel/zh-tw/travel/attraction/577"
+      },
+      {
+        "name": "國家文化記憶庫・金門風獅爺民俗",
+        "url": "https://tcmb.culture.tw/zh-tw/detail?id=20111215000001&indexCode=BOCH_CountryCulture_51"
+      }
+    ]
+  },
+  {
+    "id": "lantan-carp-legend",
+    "title": "蘭潭鯉魚精傳說",
+    "category": "legend",
+    "date": null,
+    "year": null,
+    "city": "嘉義市",
+    "place": "東區・蘭潭風景區",
+    "lat": 23.466,
+    "lng": 120.496,
+    "precision": "蘭潭湖畔景區概略標記",
+    "summary": "嘉義蘭潭流傳鯉魚精等民間故事，也提醒人們正視水域事故風險。",
+    "body": "『鯉魚精抓交替』是地方傳聞，沒有客觀證據支持。真正的水域風險涉及深水、落差及環境因素；地圖不以任何民間傳說解釋真實意外，也不鼓勵戲水或越界探訪。",
+    "sources": [
+      {
+        "name": "台視新聞・蘭潭民間傳說與防溺系統",
+        "url": "https://news.ttv.com.tw/news/11305060017200N/amp"
+      }
+    ]
+  },
+  {
+    "id": "sunmoonlake-white-deer",
+    "title": "邵族追逐白鹿的日月潭起源傳說",
+    "category": "legend",
+    "date": null,
+    "year": null,
+    "city": "南投縣",
+    "place": "魚池鄉・日月潭伊達邵周邊",
+    "lat": 23.852,
+    "lng": 120.932,
+    "precision": "伊達邵公共觀景區域示意",
+    "summary": "邵族口述傳統中，祖先追逐白鹿而發現日月潭，故事連結族群遷徙與地方文化。",
+    "body": "這是一則具有文化意義的邵族傳統敘事，應尊重其族群文化脈絡。拉魯島屬邵族祖靈聖地，並非一般可登島景點；地圖以公開可造訪的湖畔地區作示意。",
+    "sources": [
+      {
+        "name": "原民會・邵族文化介紹",
+        "url": "https://www.cip.gov.tw/zh-tw/tribe/grid-list/3343FD21497CA007D0636733C6861689/info.html?cumid=D0636733C6861689"
+      },
+      {
+        "name": "日月潭國家風景區・拉魯島",
+        "url": "https://www.sunmoonlake.gov.tw/attractions/Attractions?a=20&id=54"
       }
     ]
   }
