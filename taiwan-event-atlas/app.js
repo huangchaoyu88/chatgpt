@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 const records=Array.isArray(window.ATLAS_EVENTS)?window.ATLAS_EVENTS:[];
-const labels={traffic:"交通事故",crime:"社會案件",disaster:"公共災害",legend:"都市傳說"};
+const labels={religion:"宗教信仰",paranormal:"靈異傳聞",mystery:"神秘事件",folklore:"鄉野傳奇",myth:"神仙志怪"};
 const byId=(id)=>document.getElementById(id);
 const state={category:"all",region:"all",query:"",year:2026,sort:"newest",selected:null};
 const els={list:byId("eventList"),count:byId("resultCount"),pins:byId("pinCount"),search:byId("search"),region:byId("region"),sort:byId("sort"),year:byId("year"),yearText:byId("yearText"),detail:byId("detail")};
@@ -9,9 +9,9 @@ let map=null;
 const layers=new Map();
 const safe=(s)=>String(s??"").replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const pretty=(r)=>r.date?r.date.replace(/-/g," / "):"流傳年代不詳";
-const isLegend=(r)=>r.category==="legend";
-const status=(r)=>isLegend(r)?"民間傳說":"來源可查";
-const hue=(c)=>({traffic:"#4fb5ba",crime:"#e58080",disaster:"#e7b765",legend:"#af9cdb"})[c];
+const isLegend=()=>true;
+const status=()=>"傳說／未經客觀證實";
+const hue=(c)=>({religion:"#e7b765",paranormal:"#af9cdb",mystery:"#4fb5ba",folklore:"#79bb96",myth:"#e58080"})[c];
 function filtered(){
  let a=records.filter(r=>(state.category==="all"||r.category===state.category)&&(state.region==="all"||r.city===state.region)&&(!r.year||r.year<=state.year));
  if(state.query){const s=state.query.toLocaleLowerCase("zh-Hant");a=a.filter(r=>[r.title,r.place,r.city,r.summary,r.body].some(t=>t.toLocaleLowerCase("zh-Hant").includes(s)));}
