@@ -1286,5 +1286,49 @@ window.ATLAS_EVENTS = [
     "date": null,
     "year": null,
     "precision": "公共宗教地景概略座標，非傳說事件可考證發生地"
+  },
+  {
+    "id": "chiayi-alishan-sister-ponds",
+    "title": "阿里山姊妹潭・雙姊妹殉情傳說",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "嘉義縣",
+    "place": "阿里山鄉・阿里山國家森林遊樂區姊妹潭",
+    "lat": 23.515,
+    "lng": 120.806,
+    "precision": "姊妹潭景區概略座標",
+    "summary": "相傳兩姊妹愛上同一男子，為不傷姊妹情誼，分別投入兩座潭水。",
+    "body": "阿里山森林深處有兩座相鄰的高山湖泊，分別稱為姊潭與妹潭。地方流傳一則故事：從前山中一對姊妹同時愛上一名男子，兩人不願因愛情傷害彼此，最後相繼投入不同的潭水。後人便以姊妹潭稱呼這兩處湖泊，將山林景色與姊妹情誼連在一起。今日姊潭湖心建有涼亭，湖畔有步道供遊客欣賞檜木與山色。殉情情節屬地方傳說，並非經史料證實的真實事件。",
+    "sources": [
+      {
+        "name": "交通部觀光署・姊妹潭",
+        "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_a15010800h_000254"
+      },
+      {
+        "name": "林業及自然保育署・姊妹潭步道",
+        "url": "https://www.forest.gov.tw/calendar/news/0072887"
+      }
+    ]
+  },
+  {
+    "id": "miaoli-xianshan-healing-water",
+    "title": "苗栗仙山・仙水治病傳說",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "苗栗縣",
+    "place": "獅潭鄉・仙山靈洞宮與協靈宮周邊",
+    "lat": 24.54,
+    "lng": 120.96,
+    "precision": "仙山宗教景區概略座標",
+    "summary": "紅毛館山因泉水能治病的傳聞改稱仙山。",
+    "body": "苗栗獅潭與南庄交界的仙山，舊稱紅毛館山。地方相傳山腰有一處泉水，飲用後能解除病痛，求水者口耳相傳，將泉水稱為「仙水」，山名也逐漸改作「仙山」。人們上山，到靈洞宮與協靈宮參拜，再由協靈宮旁的石階走向接水的小亭。雲霧繚繞山腰，增添神祕氣氛。縣府觀光資料記錄了這段地名與仙水傳說；泉水治病的說法屬民俗信仰，不能取代醫療診治。",
+    "sources": [
+      {
+        "name": "交通部觀光署・仙山靈洞宮",
+        "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376450000a_000123"
+      }
+    ]
   }
 ];
