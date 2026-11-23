@@ -18,3 +18,7 @@ assert(new Set(records.map(x=>x.city)).size>=14,"geographic diversity");
 assert(Object.values(typeCounts).every(n=>n>=5),"all event categories represented");
 const page=fs.readFileSync(path.join(root,"index.html"),"utf8");for(const file of ["events.js","app.js","style.css"])assert(page.includes("./"+file));
 console.log("✓ "+records.length+" entries; "+new Set(records.map(x=>x.city)).size+" cities/counties; distribution: "+JSON.stringify(typeCounts));
+
+// Detailed event narrative rollout: each revised record must be approximately 150 characters.
+const detailedIds=["taroko-2021","puyuma-2018","taichung-metro-2023","metro-2014","ba-xian-2015","kaohsiung-2014","ge235-taipei-2015","sanxia-2025","chi-chi-1999","mingyang-2023","chengzhongcheng-2021","taoyuan-tourbus-2016"];
+for(const id of detailedIds){const r=records.find(e=>e.id===id);assert(r,"Missing detailed event "+id);assert([...r.body].length>=130&&[...r.body].length<=205,"Narrative length outside review window "+id);}
