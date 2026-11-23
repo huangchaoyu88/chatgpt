@@ -38,3 +38,5 @@ for(const id of ["eastern-science-park-fire-2001","nanya-chiayi-fire-2010","long
 for(const id of ["xinwu-bowling-fire-2015","yujing-arson-2019"]){const e=records.find(x=>x.id===id);assert(e,id+" missing");assert([...e.body].length>=140&&[...e.body].length<=160,id+" length");assert(e.sources.length>=2,id+" sources");}
 
 for(const id of ["houfeng-bridge-collapse-2008","tainan-police-attack-2022"]){const e=records.find(x=>x.id===id);assert(e,"missing event "+id);assert([...e.body].length>=140&&[...e.body].length<=160,id+" narrative length");assert(e.sources.length>=2,id+" sources");}
+
+for(const id of ["orv5-sinking-2014","tongxiao-furnace-2023"]){const e=records.find(x=>x.id===id);assert(e,id+" missing");assert([...e.body].length>=140&&[...e.body].length<=160,id+" narrative");assert(e.sources.length>=2,id+" sources");}
