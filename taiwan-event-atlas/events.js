@@ -307,11 +307,15 @@ window.ATLAS_EVENTS = [
     "lng": 121.516,
     "precision": "公開宗教場所周邊概略標記",
     "summary": "保生大帝護佑健康，呈現臺北地方信仰與生活文化。",
-    "body": "大龍峒保安宮・保生大帝信仰是臺北重要宗教地景之一。信眾透過參拜保生大帝，寄託保生大帝護佑健康的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "body": "清代福建同安移民來到大浪泵開墾，逐漸形成聚落。嘉慶年間，王、陳、張、鄭四姓地方仕紳發起捐資興建保安宮，奉祀原鄉的醫神保生大帝。據研究記載，建廟剩餘的木材又用來興建四十四坎市街，使廟宇與商業聚落相互發展。後來各姓氏輪流聘請戲班酬神，形成字姓戲傳統。農曆三月的保生大帝誕辰祭典，至今仍延續移民共同奉祀的歷史。",
     "sources": [
       {
-        "name": "臺北市政府觀光傳播局・宗教景點索引",
-        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+        "name": "劉振仁・保生大帝信仰文化的傳承與演變",
+        "url": "https://sida.org.tw/wp-content/uploads/2025/08/02%E4%BF%9D%E7%94%9F%E5%A4%A7%E5%B8%9D%E4%BF%A1%E4%BB%B0%E6%96%87%E5%8C%96%E7%9A%84%E5%82%B3%E6%89%BF%E8%88%87%E6%BC%94%E8%AE%8A-%E5%BE%9E%E5%A4%A7%E9%BE%8D%E5%B3%92%E4%BF%9D%E5%AE%89%E5%AE%AE%E8%AB%87%E8%B5%B7-%E5%8A%89%E6%8C%AF%E4%BB%81-.pdf"
+      },
+      {
+        "name": "行政院公報・保安宮古蹟指定",
+        "url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg024217/ch05/type3/gov46/num27/Eg.pdf"
       }
     ]
   },
@@ -327,11 +331,15 @@ window.ATLAS_EVENTS = [
     "lng": 121.533,
     "precision": "公開宗教場所周邊概略標記",
     "summary": "忠義與收驚民俗，呈現臺北地方信仰與生活文化。",
-    "body": "行天宮・關聖帝君信仰位於臺北市中山區・行天宮一帶，是宗教地景的一部分。信眾透過參拜關聖帝君，寄託忠義與收驚民俗的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "body": "一九四三年，礦業經營者黃欉經兄長引介，為父親祈求康復而與關聖帝君結緣，後取道號玄空。兩年後三峽白雞流行瘧疾，他在礦場辦公室設立行修堂奉祀關帝，信眾將疫情緩和視為神明庇佑。其後他捐資遷建廟宇，並於一九六四年在臺北中山區購地興建本宮，一九六八年舉行慶成典禮。廟方沿革記載了這段信仰歷程，但不能據此認定神力治病。",
     "sources": [
       {
-        "name": "臺北市政府觀光傳播局・宗教景點索引",
-        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+        "name": "行天宮官方沿革",
+        "url": "https://www.ht.org.tw/religion34.htm"
+      },
+      {
+        "name": "續修臺北市志・宗教與禮俗篇",
+        "url": "https://www-ws.gov.taipei/001/Upload/430/relfile/41653/7561488/2b740366-b0c6-4355-9afd-e19ca024a8da.pdf"
       }
     ]
   },
