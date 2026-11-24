@@ -1330,5 +1330,53 @@ window.ATLAS_EVENTS = [
         "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376450000a_000123"
       }
     ]
+  },
+  {
+    "id": "matsu-mazu-tomb",
+    "title": "馬祖境天后宮・媽祖靈穴傳說",
+    "category": "religion",
+    "city": "連江縣",
+    "place": "南竿鄉馬港村・馬祖境天后宮",
+    "lat": 26.16,
+    "lng": 119.92,
+    "summary": "林默娘救親遇難後漂至南竿，居民感念其孝心而安葬。",
+    "body": "相傳宋代林默娘為營救海上遇難的父兄而投海，遺體隨海流漂至南竿岸邊。當地漁民發現後，感念她救親的孝心，將她安葬並建廟奉祀。另一版本說湄洲鄉親後來迎回遺骸，南竿只留下衣冠塚。馬祖境天后宮內至今保有被稱為媽祖靈穴的石棺，地方亦將島名與這段故事相連。每逢農曆九月初九，信眾舉行昇天祭紀念媽祖。靈穴的身分屬信仰傳說。",
+    "sources": [
+      {
+        "name": "馬祖島嶼博物館・媽祖在馬祖",
+        "url": "https://www.matsucc.gov.tw/wp-content/uploads/2023/12/02-%E9%A6%AC%E7%A5%96%E5%A5%BD%E7%A5%9E-%E5%AA%BD%E7%A5%96%E5%9C%A8%E9%A6%AC%E7%A5%96__N%E5%AD%97%E6%91%BA1026.pdf"
+      },
+      {
+        "name": "馬祖國家風景區",
+        "url": "https://www.matsu-nsa.gov.tw/zh-TW/topics/1002"
+      },
+      {
+        "name": "蕃新聞・迷漾馬祖之美",
+        "url": "https://n.yam.com/Article/20121207036546"
+      }
+    ],
+    "date": null,
+    "year": null,
+    "precision": "景區概略座標"
+  },
+  {
+    "id": "kinmen-immortal-footprint",
+    "title": "太武山仙腳印・漢鍾離鬥龍王",
+    "category": "myth",
+    "city": "金門縣",
+    "place": "太武山景區",
+    "lat": 24.46,
+    "lng": 118.42,
+    "summary": "漢鍾離化身巨人，跨踩兩地與龍王鬥法，留下仙人腳印。",
+    "body": "金門地方傳說，八仙渡海時與東海龍王交戰，在海中受到蝦兵蟹將糾纏。漢鍾離於是施展法術，把自己變成巨人，一腳踏在金門太武山，另一腳踩在對岸同安香山，揮動手中的芭蕉扇，使龍宮不得安寧，龍王終於敗退。相傳兩地岩石上的足形痕跡，便是這場鬥法留下的印記。地方文人也將仙腳印視為山中勝景。這是金門民間神仙故事，並非岩石成因的科學解釋。",
+    "sources": [
+      {
+        "name": "金門日報・地方傳奇",
+        "url": "https://www.kmdn.gov.tw/1117/1271/1274/39252/"
+      }
+    ],
+    "date": null,
+    "year": null,
+    "precision": "景區概略座標"
   }
 ];
