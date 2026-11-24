@@ -535,11 +535,19 @@ window.ATLAS_EVENTS = [
     "lng": 120.249,
     "precision": "地方文化區域示意；非確定事件地點",
     "summary": "麻豆地方流傳的龍脈風水故事",
-    "body": "麻豆龍喉・龍脈地理傳說見於臺南民間故事資料。麻豆地方流傳的龍脈風水故事，透過口述、戲曲或文字記錄延續。這類敘事反映人們如何理解命運、疾病、冤屈或自然環境，也與地方記憶相連。不同講述者可能加入不同情節，不能把故事當成已證實的歷史事件。地圖位置僅供認識地方文化，不代表超自然現象確曾在此發生；閱讀時應區分史料、民俗信仰與後世改編。",
+    "body": "相傳清乾隆年間，地理師發現麻豆水堀頭有孕育帝王的龍喉寶穴，朝廷得知後派人以修橋為名，將製糖用的石車、木材與巨石埋入泉穴，企圖破壞風水。地方遂流傳龍脈受阻、聚落衰落的說法。一九五六年，信眾依五府千歲指示開挖水堀頭，掘出大量石車等物，視為龍喉重開。當年的挖掘確有文獻記錄，但朝廷破壞龍脈及神力復甦仍屬民間傳說。",
     "sources": [
       {
-        "name": "臺南市政府文化局・臺南民間故事讀本",
-        "url": "https://publications.culture.tainan.gov.tw/index.php?did=190&inter=publication&page=11"
+        "name": "臺南市政府文化局・麻豆五王廟",
+        "url": "https://tyart.tnc.gov.tw/mattauw2022/2022-mattauw-triennial/dragon/index.htm"
+      },
+      {
+        "name": "臺南市政府文化局・麻豆港街的歷史、族群與家族",
+        "url": "https://publications.culture.tainan.gov.tw/index.php?did=1212&inter=publication"
+      },
+      {
+        "name": "聯合影音・麻豆龍喉傳說",
+        "url": "https://video.udn.com/news/1184580"
       }
     ]
   },
