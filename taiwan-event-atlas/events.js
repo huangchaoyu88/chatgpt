@@ -371,11 +371,15 @@ window.ATLAS_EVENTS = [
     "lng": 121.502,
     "precision": "公開宗教場所周邊概略標記",
     "summary": "地藏王慈悲與超薦，呈現臺北地方信仰與生活文化。",
-    "body": "艋舺地藏庵・地藏王信仰是臺北重要宗教地景之一。信眾透過參拜地藏王菩薩，寄託地藏王慈悲與超薦的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "body": "清乾隆年間，艋舺居民建立地藏庵，供奉地藏王菩薩，旁邊另建大眾廟，祭祀早年渡海開墾而無人奉祀的亡魂。日治時期，為避免地藏庵被收歸官有，管理權轉交龍山寺。臺北城內的府城隍廟與西園路紫來宮先後被毀，原先奉祀的府城隍與田都元帥也遷入地藏庵。如今每逢農曆七月三十日地藏王誕辰，仍舉行普渡，延續祭祀亡魂的地方信仰。",
     "sources": [
       {
-        "name": "臺北市政府觀光傳播局・宗教景點索引",
-        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+        "name": "交通部觀光署・艋舺地藏庵",
+        "url": "https://media.taiwan.net.tw/zh-tw/portal/travel/details/attraction_379000000a_000357"
+      },
+      {
+        "name": "文化部國家文化資產網・艋舺地藏庵",
+        "url": "https://nchdb.boch.gov.tw/assets/overview/monument/19850819000018"
       }
     ]
   },
@@ -391,11 +395,19 @@ window.ATLAS_EVENTS = [
     "lng": 121.524,
     "precision": "公開宗教場所周邊概略標記",
     "summary": "學業與考試祈願，呈現臺北地方信仰與生活文化。",
-    "body": "臺北文昌宮・文昌帝君信仰位於臺北市中山區・臺北文昌宮一帶，是宗教地景的一部分。信眾透過參拜文昌帝君，寄託學業與考試祈願的心願；相關儀式與節慶反映世代生活經驗。廟宇承載街區往來、地方認同與民俗記憶。神明顯靈或獲得庇佑的敘述應理解為信仰與口述文化，不能當作經科學證實的超自然事件。地圖僅標示公開廟宇概略位置，參訪應尊重禮俗。",
+    "body": "相傳日治時期，一名商人攜文昌帝君神像渡海來臺，經商失利後將神像留在林中。某日黃昏，一位婦人偶然發現神像，邀集鄰人迎回，經老翁辨認才知道是掌管功名的文昌帝君。居民於是建小廟奉祀，求取功名的信眾逐漸增加。一九六〇年廟宇擴建，後因捷運工程遷移，一九九二年底於民享公園重建落成。神像來歷與祈願靈驗屬廟方傳述。",
     "sources": [
       {
-        "name": "臺北市政府觀光傳播局・宗教景點索引",
-        "url": "https://www.travel.taipei/zh-tw/attraction/all-regions/religious-venues?location=192&page=1&sortby=location"
+        "name": "臺北市文昌宮・特色簡介",
+        "url": "https://www.wenchang.org.tw/info.html"
+      },
+      {
+        "name": "交通部觀光署・文昌宮",
+        "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_379000000a_000385"
+      },
+      {
+        "name": "NOWnews・文昌保庇",
+        "url": "https://www.nownews.com/news/5623931"
       }
     ]
   },
