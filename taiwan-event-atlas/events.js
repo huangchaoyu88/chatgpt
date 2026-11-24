@@ -1494,5 +1494,53 @@ window.ATLAS_EVENTS = [
         "url": "https://nchdb.boch.gov.tw/assets/overview/historicalBuilding/20210701000001"
       }
     ]
+  },
+  {
+    "id": "lukang-chenghuang-return",
+    "title": "鹿港城隍・渡海尋回失物",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "彰化縣",
+    "place": "鹿港鎮城隍廟",
+    "lat": 24.056,
+    "lng": 120.434,
+    "precision": "公開廟宇周邊概略座標",
+    "summary": "相傳永寧城隍渡海協助商人尋回失物，從此留在鹿港受奉祀。",
+    "body": "清代鹿港商貿興盛，相傳來自福建永寧的高姓商人在當地經營日興商行，貨物失竊後遲遲無法尋回。有人建議他迎請故鄉城隍渡海相助，據說不久失物便由竊者交還，商民因而敬信城隍，將神像留在鹿港奉祀。廟宇沿用永寧祖廟的名稱，主神尊稱忠祐侯。文化資產資料與地方觀光資料對創廟年份記載不同，尋回失物的神蹟亦屬民間傳說。",
+    "sources": [
+      {
+        "name": "文化部國家文化資產網",
+        "url": "https://nchdb.boch.gov.tw/assets/overview/monument/19851127000024"
+      },
+      {
+        "name": "彰化縣政府觀光資料",
+        "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376470000a_000090"
+      }
+    ]
+  },
+  {
+    "id": "douliu-hushan-guanyin",
+    "title": "斗六湖山寺・觀音顯聖與石廟",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "雲林縣",
+    "place": "斗六市湖山寺",
+    "lat": 23.708,
+    "lng": 120.608,
+    "precision": "公開廟宇周邊概略座標",
+    "summary": "相傳林克明感念觀音庇佑，以三塊石頭建成小廟。",
+    "body": "斗六湖山寺又稱湖山巖。相傳清代地方居民曾到湖山一帶避難，信奉佛教的林克明認為自己受到觀音庇佑，並有目睹菩薩顯聖的說法。他與居民以三塊大石搭成小廟，供人敬拜。雍正三年，林克明與柴里社業戶等人參與興建，後來經過多次修整，形成今日寺院。嘉慶年間留下記述沿革的碑文。石廟與顯聖故事屬寺院傳承，並非神蹟已獲證實。",
+    "sources": [
+      {
+        "name": "寶蓮禪寺資料轉載",
+        "url": "https://www.fjdh.cn/ffzt/fjhy/jxhjsl2012/12/152323196356.html"
+      },
+      {
+        "name": "湖山寺沿革及碑文索引",
+        "url": "https://zh.wikipedia.org/wiki/%E6%B9%96%E5%B1%B1%E5%AF%BA"
+      }
+    ]
   }
 ];
