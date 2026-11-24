@@ -1378,5 +1378,53 @@ window.ATLAS_EVENTS = [
     "date": null,
     "year": null,
     "precision": "景區概略座標"
+  },
+  {
+    "id": "matsu-keti-warning-light",
+    "title": "科蹄澳文武大王・海上警示燈火",
+    "category": "religion",
+    "city": "連江縣",
+    "place": "南竿鄉科蹄澳",
+    "lat": 26.16,
+    "lng": 119.92,
+    "summary": "文武大王降乩建廟，相傳風雨前以燈火提醒漁民返航。",
+    "body": "相傳清光緒年間，南竿科蹄澳岸邊漂來兩具遺體，居民將其安葬。不久，文武大王透過潘太子的乩童傳達建廟意旨，村民遂在澳口奉祀兩位神明。據地方傳聞，廟宇建成後，每逢風暴將至，海灣便出現一點移動的光亮，漁民將它視為神明提醒船隻回港的訊號。科蹄澳原是附近漁船避南風的港灣，這段故事因此與漁村生活緊密相連。燈火顯靈屬信仰傳說。",
+    "sources": [
+      {
+        "name": "馬祖國家風景區・白馬文武大王廟",
+        "url": "https://www.matsu-nsa.gov.tw/zh-TW/attractions/1468"
+      },
+      {
+        "name": "連江縣政府文化處・廟宇",
+        "url": "https://matsucc.gov.tw/2-2-2%E5%BB%9F%E5%AE%87/"
+      }
+    ],
+    "date": null,
+    "year": null,
+    "precision": "聚落概略座標"
+  },
+  {
+    "id": "matsu-banli-white-horse-eel",
+    "title": "坂里白馬尊王・三郎除鱔妖",
+    "category": "myth",
+    "city": "連江縣",
+    "place": "北竿鄉坂里聚落",
+    "lat": 26.22,
+    "lng": 119.98,
+    "summary": "白馬三郎與鱔妖搏鬥，受鄉民奉祀，信仰隨移民傳至馬祖。",
+    "body": "馬祖流傳的白馬尊王身世之一，說他原是漢代閩越王郢的第三個兒子，因喜愛騎白馬而得名三郎。當時東冶附近溪流相傳有鱔妖作祟，百姓深受其害。三郎得知後挺身除妖，最終與妖怪同歸於盡。鄉民為感念他的犧牲而立廟奉祀。後來福建移民將信仰帶到馬祖，北竿坂里也形成尊王祭祀傳統，地方文化處曾將故事改編成社區戲劇。除妖情節屬神話。",
+    "sources": [
+      {
+        "name": "馬祖日報・白馬尊王傳奇",
+        "url": "https://www.matsu-news.gov.tw/news/article/10118"
+      },
+      {
+        "name": "臺灣宗教與民俗文化平臺・中澳口白馬尊王廟",
+        "url": "https://trfc.tw/temple/TWN014090"
+      }
+    ],
+    "date": null,
+    "year": null,
+    "precision": "聚落概略座標"
   }
 ];
