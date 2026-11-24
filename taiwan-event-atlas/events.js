@@ -1450,5 +1450,49 @@ window.ATLAS_EVENTS = [
         "url": "https://www.cna.com.tw/news/acul/202405160205.aspx"
       }
     ]
+  },
+  {
+    "id": "penghu-hujing-sunken-city",
+    "title": "虎井沉城・海底城牆之謎",
+    "category": "mystery",
+    "city": "澎湖縣",
+    "place": "馬公市虎井嶼周邊海域",
+    "lat": 23.49,
+    "lng": 119.52,
+    "precision": "島嶼及周邊海域概略標記",
+    "date": null,
+    "year": null,
+    "summary": "退潮時傳聞可見海底城牆，究竟是古代遺構或天然岩脈，仍有不同解釋。",
+    "body": "澎湖虎井嶼流傳海底藏有古城的故事。相傳海水清澈、潮位降低時，從海崖望去可見宛如殘破城牆的形影。清代呂成家曾以詩描寫水下城垣，後世有人猜測是古代建築遺跡，也有人聯想到荷蘭城堡。潛水人員曾下海探查，另有研究者認為所見形狀可能源於玄武岩岩脈延伸入海。古城是否確實存在尚無定論，不能將傳聞視為已證實的考古發現。",
+    "sources": [
+      {
+        "name": "交通部觀光署・虎井嶼遊憩區",
+        "url": "https://media.taiwan.net.tw/zh-tw/portal/travel/details/attraction_a15010200h_000099"
+      },
+      {
+        "name": "澎湖知識服務平台・虎井沈城",
+        "url": "https://penghu.info/OB3863F4C32975DDBED4"
+      }
+    ]
+  },
+  {
+    "id": "chiayi-ciji-five-kings",
+    "title": "嘉義慈濟宮・五王爺驅邪傳說",
+    "category": "religion",
+    "city": "嘉義市",
+    "place": "西區慈濟宮",
+    "lat": 23.48,
+    "lng": 120.45,
+    "precision": "市區廟宇概略標記",
+    "date": null,
+    "year": null,
+    "summary": "廟方沿革記載早期居民迎請五府千歲，因傳聞神蹟而移祀廟宇。",
+    "body": "嘉義慈濟宮的廟方沿革記載，早期開墾居民原先奉祀鄭國姓公與清水祖師，因地方相傳有邪祟侵擾，於清康熙二十六年迎請南鯤鯓五府千歲，最初安奉於民宅。據廟方傳說，五位王爺多次顯靈，使居民相信神明能保護聚落，於是逐漸將信仰中心移至天地河宮。今日慈濟宮主祀五府千歲，也是嘉義家將文化的重要起源地。驅邪顯靈屬廟方信仰敘事。",
+    "sources": [
+      {
+        "name": "文化部國家文化資產網・嘉義慈濟宮",
+        "url": "https://nchdb.boch.gov.tw/assets/overview/historicalBuilding/20210701000001"
+      }
+    ]
   }
 ];
