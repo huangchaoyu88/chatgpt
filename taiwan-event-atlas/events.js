@@ -1567,5 +1567,57 @@ window.ATLAS_EVENTS = [
         "url": "https://tlc.tyc.edu.tw/temples/pujitang/"
       }
     ]
+  },
+  {
+    "id": "hsinchu-zhulian-tree-guanyin",
+    "title": "新竹竹蓮寺・樹下觀音",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "新竹市",
+    "place": "東區竹蓮寺",
+    "lat": 24.798,
+    "lng": 120.972,
+    "precision": "公開廟宇周邊概略座標",
+    "summary": "相傳農民在樹下發現觀音像，迎入奉祀後逐漸形成地方信仰。",
+    "body": "清代康熙末年，相傳竹塹有農民在樹下發現一尊觀音像，便將神像迎入小祠供奉。附近居民陸續前往祈願，因傳聞靈驗而使香火漸盛，後來地方人士捐地興建寺院。當時城南護城河旁竹林茂密，寺名亦與此地景有關。今日寺中仍保存清代御賜匾額。另有寺廟調查記載神像由閩南移民渡海攜來，與拾得神像的傳說不同，故其起源不能視為定論。",
+    "sources": [
+      {
+        "name": "新竹市政府・竹蓮寺",
+        "url": "https://media.taiwan.net.tw/zh-tw/portal/travel/details/attraction_376580000a_000023"
+      },
+      {
+        "name": "中央社・竹市廟宇走春",
+        "url": "https://www.cna.com.tw/news/aloc/202301230028.aspx"
+      },
+      {
+        "name": "內政部寺廟調查",
+        "url": "https://ws.moi.gov.tw/001/Upload/OldFile/civil_download_file/05.%E6%96%B0%E7%AB%B9%E5%B8%82-99%E5%B9%B4%E8%AA%BF%E6%9F%A5%E5%AF%BA%E9%99%A2%E5%AE%AE%E5%BB%9F%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99.pdf"
+      }
+    ]
+  },
+  {
+    "id": "xinpu-yimin-ox-fengshui",
+    "title": "新埔褒忠亭・雄牛睏地穴",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "新竹縣",
+    "place": "新埔鎮褒忠亭義民廟",
+    "lat": 24.83,
+    "lng": 121.04,
+    "precision": "公開廟宇所在區域概略座標",
+    "summary": "義民塚所在地相傳為鳳山溪流域三大風水名穴之一。",
+    "body": "新埔枋寮褒忠亭後方的義民塚，相傳坐落於鳳山溪流域三大風水名穴之一，地方稱為雄牛睏地穴。廟宇背靠店仔湖台地，面向河谷平原，兩側地勢展開，民間將這樣的地形視為吉地。清代地方仕紳捐地籌建褒忠亭，祭祀義民，後來逐漸成為北臺灣客家信仰中心。廟後至今保存義民塚，風水名穴的說法反映地方對地景與祭祀的理解，並非經科學證實的地理效應。",
+    "sources": [
+      {
+        "name": "新竹縣政府・新埔褒忠亭義民廟",
+        "url": "https://media.taiwan.net.tw/en-us/portal/travel/details/attraction_376440000a_000116"
+      },
+      {
+        "name": "文化部國家文化資產網・新埔褒忠亭",
+        "url": "https://nchdb.boch.gov.tw/embed/assets/overview/monument/20060724000005"
+      }
+    ]
   }
 ];
