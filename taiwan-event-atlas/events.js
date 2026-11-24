@@ -1542,8 +1542,7 @@ window.ATLAS_EVENTS = [
         "url": "https://zh.wikipedia.org/wiki/%E6%B9%96%E5%B1%B1%E5%AF%BA"
       }
     ]
-  }
-,
+  },
   {
     "id": "daxi-puji-gold-vein",
     "title": "大溪普濟堂・帝君指點金脈",
@@ -1617,6 +1616,54 @@ window.ATLAS_EVENTS = [
       {
         "name": "文化部國家文化資產網・新埔褒忠亭",
         "url": "https://nchdb.boch.gov.tw/embed/assets/overview/monument/20060724000005"
+      }
+    ]
+  },
+  {
+    "id": "yingge-stone-bird-spirit",
+    "title": "鶯歌石・吐霧鳥精",
+    "category": "myth",
+    "date": null,
+    "year": null,
+    "city": "新北市",
+    "place": "鶯歌區鶯歌石",
+    "lat": 24.96,
+    "lng": 121.35,
+    "precision": "鶯歌石所在山區概略座標",
+    "summary": "相傳形似鳥的巨石吐出迷霧，鄭成功軍隊以炮擊退鳥精。",
+    "body": "鶯歌山間有一塊外形似鳥的巨岩，相傳昔日有鳥精盤踞此地，吐出濃霧，使經過山路的人迷失方向，甚至遭其吞食。民間故事稱鄭成功率軍經過時，部隊也被霧氣阻擋，於是命人以大炮轟擊鳥精的頸部，霧氣才逐漸散去，軍隊得以繼續前行。地方以這塊岩石解釋鶯歌地名的由來，後來鶯歌石被登錄為文化景觀。炮擊鳥精的情節屬傳說，並非已證實的史實。",
+    "sources": [
+      {
+        "name": "文化部國家文化資產網・鶯歌石",
+        "url": "https://nchdb.boch.gov.tw/assets/advanceSearch/culturalLandscape/20060828000002"
+      },
+      {
+        "name": "新北市立鶯歌陶瓷博物館・鶯歌傳說教案",
+        "url": "https://www.culture.ntpc.gov.tw/files/file_pool/2/0O148645332741653967/%E9%99%B6%E5%8D%9A%E9%A4%A8%E6%95%99%E5%85%B7%E7%B8%BD%E6%B8%85%E5%96%AE-%E5%90%AB%E6%95%99%E6%A1%88%E9%80%A3%E7%B5%902024.5%E7%89%88.pdf"
+      }
+    ]
+  },
+  {
+    "id": "xiji-shagou-tower-tiger",
+    "title": "西吉嶼沙溝塔・牽制虎頭山",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "澎湖縣",
+    "place": "望安鄉西吉嶼",
+    "lat": 23.25,
+    "lng": 119.58,
+    "precision": "西吉嶼島域示意，非石塔精確位置",
+    "summary": "西吉嶼沙溝塔面向東吉虎頭山，寄託居民制煞守護家園的願望。",
+    "body": "澎湖南方四島的居民過去面對強風與海上生活的不確定性，逐漸形成以石塔守護聚落的信仰。西吉嶼的沙溝塔正對東吉嶼虎頭山，地方風水觀念認為兩地的地形可能形成煞氣，藉由石塔相互牽制，便能維持島嶼平安。這類石塔也反映島民對海上方向辨識及生活環境的重視。西吉嶼自1979年起成為無人島，目前不開放一般民眾登島；制煞效力屬民俗信念。",
+    "sources": [
+      {
+        "name": "臺灣國家公園主題網・百年石塔信仰",
+        "url": "https://www.taiwan.nps.gov.tw/home/zh-tw/topic/32084.html"
+      },
+      {
+        "name": "海洋國家公園管理處・澎湖南方四島發展歷史調查",
+        "url": "https://www.marine.gov.tw/filesys/107/107%E6%BE%8E%E6%B9%96%E5%8D%97%E6%96%B9%E5%9B%9B%E5%B3%B6%E7%99%BC%E5%B1%95%E6%AD%B7%E5%8F%B2%E8%AA%BF%E6%9F%A5.pdf"
       }
     ]
   }
