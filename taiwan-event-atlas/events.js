@@ -1543,4 +1543,29 @@ window.ATLAS_EVENTS = [
       }
     ]
   }
+,
+  {
+    "id": "daxi-puji-gold-vein",
+    "title": "大溪普濟堂・帝君指點金脈",
+    "category": "religion",
+    "date": null,
+    "year": null,
+    "city": "桃園市",
+    "place": "大溪區普濟堂",
+    "lat": 24.88,
+    "lng": 121.29,
+    "precision": "大溪老城區概略座標，非礦坑位置",
+    "summary": "相傳大溪採金者請關聖帝君指點礦脈，致富後集資造神轎。",
+    "body": "日治時期，大溪樟腦產業逐漸衰退，簡阿牛等地方人士轉往九份投資採金，卻苦於找不到礦脈。相傳眾人迎請普濟堂關聖帝君前往礦區指點開採位置，竟因此獲得豐富金礦。為答謝神恩，股東黃丙南向同鄉採金者募集款項，製作神轎，並於1917年組織同人社加入大溪遶境。此後各行業也陸續組成社頭。採金神蹟屬地方信仰傳說，社頭沿革則有文化資產紀錄。",
+    "sources": [
+      {
+        "name": "文化部國家文化資產網",
+        "url": "https://nchdb.boch.gov.tw/city/Taoyuan/assets/overview/folklore/20111229000001/"
+      },
+      {
+        "name": "桃園在地化課程・普濟堂",
+        "url": "https://tlc.tyc.edu.tw/temples/pujitang/"
+      }
+    ]
+  }
 ];
