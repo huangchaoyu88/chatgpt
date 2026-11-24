@@ -1426,5 +1426,29 @@ window.ATLAS_EVENTS = [
     "date": null,
     "year": null,
     "precision": "聚落概略座標"
+  },
+  {
+    "id": "keelung-heping-wangboat",
+    "title": "和平島社靈廟・漂來王爺與不焚王船",
+    "category": "religion",
+    "city": "基隆市",
+    "place": "中正區和平島社靈廟",
+    "lat": 25.16,
+    "lng": 121.76,
+    "precision": "聚落概略座標",
+    "date": null,
+    "year": null,
+    "summary": "相傳王爺神像漂抵和平島，形成不焚王船的海上巡境信仰。",
+    "body": "相傳兩百多年前，一尊王爺神像隨船漂抵基隆和平島，居民搭起草屋奉祀，後於1917年遷建社靈廟，供奉林、溫、傅三府王爺。漁民為祈求出海平安，在王爺聖誕期間備妥柴米油鹽，讓王船帶領漁船巡行海域。不同於送王船祭典，這艘王船返航後不予焚化，而是安置於專設船廠。海上巡境曾於1975年中斷，2010年恢復。神像漂來屬地方口傳。",
+    "sources": [
+      {
+        "name": "基隆市政府・海上遊江授證",
+        "url": "https://www.klcg.gov.tw/tw/personnel/2631-288801.html"
+      },
+      {
+        "name": "中央社・海上遊江登錄",
+        "url": "https://www.cna.com.tw/news/acul/202405160205.aspx"
+      }
+    ]
   }
 ];
