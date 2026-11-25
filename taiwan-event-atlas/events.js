@@ -1830,5 +1830,49 @@ window.ATLAS_EVENTS = [
     "date": null,
     "year": null,
     "precision": "公開聚落或廟宇所在區域概略座標"
+  },
+  {
+    "id": "taitung-sanxiantai-three-immortals",
+    "title": "三仙台・仙劍峽與合歡洞",
+    "category": "myth",
+    "city": "臺東縣",
+    "place": "成功鎮・三仙台",
+    "lat": 23.12316,
+    "lng": 121.40662,
+    "summary": "三位仙人渡海歇息，天神擲劍劈開岩山的傳說。",
+    "body": "相傳八仙渡海途中，李鐵拐、呂洞賓與何仙姑來到臺東外海的小島歇息。地方另有一種講法，說呂洞賓與何仙姑在洞中相會，李鐵拐偷偷前去窺看，卻被天庭的金光巨神發現。巨神擲下仙劍，沒有擊中仙人，反而將山岩劈開，留下狹長的仙劍峽。島上的合歡洞與三座岩峰，也因此被賦予仙人留下足跡的想像，成為三仙台地名故事的一部分。",
+    "sources": [
+      {
+        "name": "內政部臺灣宗教百景・三仙台",
+        "url": "https://taiwangods.moi.gov.tw/html/landscape_EN/1_0011.aspx?i=60"
+      },
+      {
+        "name": "地方導遊講述・三仙台故事",
+        "url": "https://www.youtube.com/watch?v=eHtOe7etonA"
+      }
+    ],
+    "date": null,
+    "year": null,
+    "precision": "公開景區概略座標，非傳說精確發生地"
+  },
+  {
+    "id": "nantou-sunmoonlake-earth-dragon",
+    "title": "日月潭地龍・玉島神社鎮龍",
+    "category": "myth",
+    "city": "南投縣",
+    "place": "魚池鄉・拉魯島周邊",
+    "lat": 23.86,
+    "lng": 120.91,
+    "summary": "地龍受工程驚動，高僧設神社與巨弓鎮伏的傳說。",
+    "body": "相傳日治時期開發日月潭水力工程時，施工驚動了藏在山脈中的地龍。牠飛上天空作怪，山間傳出怪異吼聲，居民惶恐，工程也屢受阻礙。施工方於是請來日本高僧，高僧建議在玉島設立神社，奉祀水神，並架起朝向西南方的巨弓，藉此威嚇地龍。據說法會舉行後，怪聲終於平息，工程完成後巨弓也被拆除。這是地方傳說中的鎮龍故事。",
+    "sources": [
+      {
+        "name": "地龍（日月潭）・傳說及鄧相揚著作書目",
+        "url": "https://zh.wikipedia.org/wiki/地龍_(日月潭)"
+      }
+    ],
+    "date": null,
+    "year": null,
+    "precision": "公開景區概略座標，非傳說精確發生地"
   }
 ];
