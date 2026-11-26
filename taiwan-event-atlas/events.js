@@ -1874,5 +1874,33 @@ window.ATLAS_EVENTS = [
     "date": null,
     "year": null,
     "precision": "公開景區概略座標，非傳說精確發生地"
+  },
+  {
+    "id": "taichung-tiezhenshan-sword-well",
+    "title": "鐵砧山劍井・插劍湧泉",
+    "category": "folklore",
+    "date": null,
+    "year": null,
+    "city": "臺中市",
+    "place": "大甲區鐵砧山",
+    "lat": 24.359239,
+    "lng": 120.64998,
+    "precision": "風景區概略座標",
+    "summary": "相傳鄭成功插劍得泉，寶劍於端午浮現。",
+    "body": "相傳鄭成功率軍來到大甲鐵砧山，因山上缺乏飲水，士兵口渴難耐。鄭成功拔出佩劍，向天祈求後將劍刺入地面，地下竟湧出清泉，使眾人得以解渴。日治時期採錄的民間版本另稱，寶劍沉入井中，每逢農曆五月初五便會浮上水面。地方居民將泉井稱為國姓井，又稱劍井，後世也有端午取午時水的習俗。以上為地方傳說，並非鄭成功行軍史實。",
+    "sources": [
+      {
+        "name": "臺中市政府・劍井傳說",
+        "url": "https://www.taichung.gov.tw/8868/8872/9971/1441828"
+      },
+      {
+        "name": "彭衍綸・日治時期日文臺灣民間故事集重要性試論",
+        "url": "https://tailit.nccu.edu.tw/upload/36/doc/3533/012-06-%E5%BD%AD%E8%A1%8D%E7%B6%B8.pdf"
+      },
+      {
+        "name": "國家圖書館・國姓井紀",
+        "url": "https://tm.ncl.edu.tw/article?u=014_002_0000007708"
+      }
+    ]
   }
 ];
