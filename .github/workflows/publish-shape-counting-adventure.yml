@@ -10,6 +10,7 @@ on:
       - "games/shape-counting-adventure/**"
       - "giant-webgpu-3d/**"
       - "taiwan-event-atlas/**"
+      - "three-digit-division/**"
       - ".github/workflows/publish-shape-counting-adventure.yml"
 
 permissions:
@@ -60,6 +61,11 @@ jobs:
           mkdir -p _site/veloscape
           cp veloscape/index.html _site/veloscape/index.html
           test -s _site/veloscape/index.html
+      - name: Include three-digit division practice
+        run: |
+          mkdir -p _site/three-digit-division
+          cp three-digit-division/index.html _site/three-digit-division/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
