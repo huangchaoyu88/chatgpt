@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
     paths:
+      - "veloscape/**"
       - "gray-area-lab/**"
       - 'games/direction-counting/**'
       - '.github/workflows/publish-direction-game.yml'
@@ -66,6 +67,11 @@ jobs:
         run: |
           mkdir -p _site/gray-area-lab
           cp gray-area-lab/index.html _site/gray-area-lab/index.html
+      - name: Include VELOSCAPE cycling simulator
+        run: |
+          mkdir -p _site/veloscape
+          cp veloscape/index.html _site/veloscape/index.html
+          test -s _site/veloscape/index.html
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
