@@ -53,6 +53,8 @@ jobs:
         run: |
           mkdir -p _site/gray-area-lab
           cp gray-area-lab/index.html _site/gray-area-lab/index.html
+      - name: Test VELOSCAPE core
+        run: node --test veloscape/tests/smoke.test.cjs
       - name: Include VELOSCAPE cycling simulator
         run: |
           mkdir -p _site/veloscape
